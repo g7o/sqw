@@ -144,7 +144,6 @@
             }
         } //FERTIG  
         function delete($connection,$qString,$table,$control,$controlItem){ 
-           
            $check=mysqli_query($connection,"SELECT ".$control." FROM ".$table." WHERE ".$control."='$controlItem'");
            if(mysqli_num_rows($check)==1){
                $result=mysqli_query($connection,$qString);
@@ -230,7 +229,13 @@
                 echo "Email erfolgreich gesendet!";
         }
         function editUser($connection,$username,$mail){
-            
+            $check= mysqli_fetch_object(mysqli_query($connection,"SELECT username,mail FROM Users WHERE username='$username'"));
+            if(mysqli_num_rows($check)==0){ 
+                if(mysqli_query($connection,"Update Users set mail='$mail' where username='$username'"){
+                    echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert.";
+                }else{
+                    echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
+                } 
         }//-tbc
         function changePasswordBe($connection, $username, $password){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
@@ -297,15 +302,15 @@
                 break;
             case 512: check($connection,"SELECT mail FROM users WHERE mail='$textInput'");
                 break;
-            case 513: check($connection,"Select isActivated FROM users WHERE isActivated='$$textInput'");
+            case 513: check($connection,"SELECT  isActivated FROM users WHERE isActivated='$$textInput'");
                 break;
-            case 514: check($connection,"Select isRetailer FROM users WHERE isRetailer='$textInput'");
+            case 514: check($connection,"SELECT  isRetailer FROM users WHERE isRetailer='$textInput'");
                 break;
-            case 521: check($connection,"Select isActivated FROM notice WHERE isActivated='$textInput'");
+            case 521: check($connection,"SELECT  isActivated FROM notice WHERE isActivated='$textInput'");
                 break;
-            case 531: check($connection,"Select isActivated FROM rating WHERE isActivated='$textInput'");
+            case 531: check($connection,"SELECT  isActivated FROM rating WHERE isActivated='$textInput'");
                 break;
-            case 541: check($connection,"Select title FROM categories WHERE title='$textInput'");
+            case 541: check($connection,"SELECT  title FROM categories WHERE title='$textInput'");
                 break;
             case 550: changePasswordBe($connection, $username, $password);
                 break;
