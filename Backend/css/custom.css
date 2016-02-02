@@ -1,0 +1,96 @@
+.username {
+	margin-top: 0px;
+    margin-bottom: 0px;
+    
+}
+
+.head-kat {
+	margin-top: 0px;
+    margin-bottom: 10px;
+    
+}
+
+.btn-login {
+margin-bottom: 15px !important;
+}
+
+.fehler-hint-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+#fehler-hint {
+    color: red;
+}
+
+.login {
+    background: #319394;
+}
+.login-header {
+	border: 1px solid black;
+    border-bottom-color: white;
+    background: #606363;
+    height: 100px;
+    padding: 0px;
+    padding-top: 10px;  
+    color: white;
+}
+.login-field {
+	border: 1px solid black;
+    border-top-color: white;
+    background: #818485;
+    min-height: 150px;
+    padding: 0px;
+
+    font-size: 1.3em;
+    color: white;
+}
+
+.table-top {
+    margin-top: 50px !important;
+}
+
+.btn-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.table-responsive {
+    border: 0px !important;
+}
+
+@media (max-device-height: 500px) and (orientation: landscape) {
+.user-btn {
+    margin-top: -10px !important;
+    margin-bottom: 3px !important;
+}
+.nav-item > a {
+	padding: 5px !important;
+}
+}
+
+.modal-row {
+	margin-bottom: 0px !important;
+}
+
+.login-h2 {
+	padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.firstR {
+    border: 1px solid lightgrey;
+    padding: 10px;
+    height: 200px;
+    margin: 20px;
+}
+
+.anz {
+    text-align: center;
+}
+
+.row {
+	margin-bottom: 15px;
+    margin-top: 15px;
+}
