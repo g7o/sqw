@@ -9,10 +9,7 @@
         $password=$_POST['password'];
     if($code == 18){
         $username=$_POST['username'];
-    }
-    if($code == 18){
-        $username=$_POST['username'];
-        $password=$_POST['password'];
+        $mail=$_POST['mail';]
     }
     if($code == 550){
         $username=$_GET['username'];
