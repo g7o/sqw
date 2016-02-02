@@ -52,7 +52,8 @@
                 return;
             }else{
             $t='<table class="table table-hover">';
-            $glyph='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+            $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+            $glyphRemove='<span class="glyphicon glyphicon-remove" aria-hidden="true">';
           switch($table){
               case "users":     echo "<h3>Ergebnis:</h3>$t
                                 <tr>
@@ -62,6 +63,7 @@
                                 <td>E-Mail:</td>
                                 <td>Aktiv</td>
                                 <td>Bearbeiten</td>
+                                <td>Löschen</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_object($result))
@@ -71,8 +73,8 @@
                                 <td>$row->sirname</td>
                                 <td>$row->mail</td>
                                 <td>$row->isActivated</td>                            
-                                <td>$glyph</td>
-                                <td></td>
+                                <td>$glyphPencil</td>
+                                <td>$glyphRemove</td>
                                 </tr>	 
                                 ";
                                 echo "</table>";
