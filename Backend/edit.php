@@ -37,10 +37,10 @@
     include_once("dbCon.inc");
         function check($connection,$qString) {
             $checkVar=mysqli_query($connection,$qString);
-            if(mysqli_num_rows($checkVar)==1){
-                 echo "Check war erfolgreich!";
+            if(mysqli_num_rows($checkVar)==0){
+                 echo "Existiert nicht!";
            } else {
-               echo "Existiert nicht!";
+               echo "Check war erfolgreich!";
            }
         } //-tbc
         function search($connection,$qString,$table){
