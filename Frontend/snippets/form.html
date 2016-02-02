@@ -1,0 +1,84 @@
+<form class="form-horizontal">
+                <h4>Basisdaten:</h4>
+                    <hr>
+                  <div class="form-group">
+                    <label for="vname" class="col-xs-2 control-label">Vorname:</label>
+                    <div class="col-xs-10">
+                      <input required type="text" class="form-control" id="vname" placeholder="Oachkatzl">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nname" class="col-xs-2 control-label">Nachname:</label>
+                    <div class="col-xs-10">
+                      <input required type="text" class="form-control" id="nname" placeholder="Schwoaf">
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                    <label for="uname" class="col-xs-2 control-label">Username:</label>
+                    <div class="col-xs-10">
+                      <input required type="text" class="form-control" id="uname" placeholder="oachkatzl-schwoaf">
+                    </div>
+                  </div>     
+                  <div class="form-group">
+                    <label for="mail" class="col-xs-2 control-label">E-Mail:</label>
+                    <div class="col-xs-10">
+                      <input required type="email" class="form-control" id="mail" placeholder="oachkatzl@sqwirrel.eu">
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                    <label for="birth" class="col-xs-2 control-label">Geboren am:</label>
+                    <div class="col-xs-10">
+                      <input required type="date" class="form-control" id="birth" min="1936-01-01" max="1998-01-08">
+                    </div>
+                  </div> 
+                  <h4>Adressdaten:</h4>    
+                  <hr>
+                  <div class="form-group">
+                    <label for="street" class="col-xs-2 control-label">Straße:</label>
+                    <div class="col-xs-10">
+                      <input required type="text" class="form-control" id="street" placeholder="Nussstraße">
+                    </div>
+                  </div>     
+                  <div class="form-group">
+                    <label for="hnumber" class="col-xs-2 control-label">Hausnummer / Stiege / Tür:</label>
+                    <div class="col-xs-4">
+                      <input required type="text" class="form-control" id="hnumber" placeholder="Nussstraße">
+                    </div>
+                    <div class="col-xs-3">
+                      <input required type="text" class="form-control" id="snumber" placeholder="13">
+                    </div>
+                    <div class="col-xs-3">
+                      <input required type="text" class="form-control" id="tnumber" placeholder="12">
+                    </div>                      
+                  </div>     
+                  <div class="form-group">
+                    <label for="betreff" class="col-xs-2 control-label">Kategorie:</label>
+                    <div class="col-xs-10">
+                        <select class="form-control">
+                          <option>Allgemein</option>
+                          <option>Problem melden</option>
+                          <option>Fragen zum Konto</option>
+                          <option>Probleme beim Login</option>
+                          <option>Probleme beim Registrieren</option>
+                        </select>   
+                    </div>
+                  </div>                     
+                  <div class="form-group">
+                    <label for="betreff" class="col-xs-2 control-label">Nachricht:</label>
+                    <div class="col-xs-10">
+                       <textarea required class="form-control" rows="7" placeholder="Eure Seite ist einfach leiwand!"></textarea> 
+                    </div>
+                  </div> 
+                  <div class="form-group col-sm-12">
+                    <label for="datei" class="col-sm text-center center-block"><span class="glyphicon glyphicon-open"></span>Datei hochladen</label>
+                      
+                    <input type="file" id="datei" class="inputfile" accept="image/png, image/jpeg, image/gif, application/pdf, ">
+                    <p class="help-block">Erlaubte Dateien: .JPG | .PNG | .PDF | .JPEG | .GIF</p>
+                      
+                  </div> 
+                  <div class="form-group">
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 center-block">
+                      <button type="submit" class="btn btn-primary">Absenden</button>
+                    </div>
+                  </div>                    
+                </form>
