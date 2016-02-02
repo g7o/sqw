@@ -238,7 +238,7 @@
                 }else{
                     echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
                 }
-        }//-tbc
+        }//FERTIG
         function changePasswordBe($connection, $username, $password, $pwOld){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
             $pw=md5($password);
