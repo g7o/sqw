@@ -2,7 +2,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=$_POST['code'];
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17)
+    if($code != 17 && $code != 550)
     $textInput=$_POST['textInput'];
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -13,6 +13,11 @@
     if($code == 18){
         $username=$_POST['username'];
         $password=$_POST['password'];
+    }
+    if($code == 550){
+        $username=$_GET['username'];
+        $password=$_GET['password'];
+        $pwOld=$_GET['pwOld'];
     }
     if($code == 17){
         $username=$_POST['username'];
@@ -237,11 +242,11 @@
                     echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
                 } 
         }//-tbc
-        function changePasswordBe($connection, $username, $password){
+        function changePasswordBe($connection, $username, $password, $pwOld){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
             $pw=md5($password);
             $pwcheck=$check->password;
-            if($pw == $pwcheck) {
+            if(md5($pwOld) == $pwcheck) {
                 mysqli_query($connection,"UPDATE be SET password='$pw' WHERE name='$username'");
                 echo "Erfolg";
             }else{
@@ -312,7 +317,7 @@
                 break;
             case 541: check($connection,"SELECT  title FROM categories WHERE title='$textInput'");
                 break;
-            case 550: changePasswordBe($connection, $username, $password);
+            case 550: changePasswordBe($connection, $username, $password, $pwOld);
                 break;
         }
         mysqli_close($connection);
