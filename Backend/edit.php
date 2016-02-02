@@ -2,7 +2,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=$_POST['code'];
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550)
+    if($code != 17 && $code != 550 && $code != 18)
     $textInput=$_POST['textInput'];
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -231,8 +231,8 @@
                 echo "Email erfolgreich gesendet!";
         }
         function editUser($connection,$username,$mail){
-            $check= mysqli_fetch_object(mysqli_query($connection,"SELECT username FROM users WHERE username='$username'"));
-            if(mysqli_num_rows($check)==0)
+            $check= mysqli_fetch_object(mysqli_query($connection,"SELECT * FROM users WHERE username='$username'"));
+            if($check)
                 if(mysqli_query($connection,"UPDATE users SET mail='$mail' WHERE username='$username'")){
                    echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert.";
                 }else{
