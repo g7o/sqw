@@ -38,7 +38,6 @@
         function check($connection,$qString) {
             $checkVar=mysqli_query($connection,$qString);
             if(mysqli_num_rows($checkVar)==1){
-               $result=mysqli_query($connection,$qString);
                  echo "Check war erfolgreich!";
            } else {
                echo "Existiert nicht!";
