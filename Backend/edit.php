@@ -52,7 +52,8 @@
                 return;
             }else{
             $t='<table class="table table-hover">';
-            $glyph='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+            $glyphPencill='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+            $glyphRemove='<span class="glyphicon glyphicon-remove" aria-hidden="true">';
           switch($table){
               case "users":     echo "<h3>Ergebnis:</h3>$t
                                 <tr>
@@ -62,6 +63,7 @@
                                 <td>E-Mail:</td>
                                 <td>Aktiv</td>
                                 <td>Bearbeiten</td>
+                                <td>Löschen</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_object($result))
@@ -71,7 +73,8 @@
                                 <td>$row->sirname</td>
                                 <td>$row->mail</td>
                                 <td>$row->isActivated</td>                            
-                                <td>$glyph</td>
+                                <td>$glyphPencil</td>
+                                <td>$glyphRemove</td>
                                 <td></td>
                                 </tr>	 
                                 ";
@@ -99,6 +102,7 @@
                                 <td>$row->category</td>
                                 <td>$row->picture</td>
                                 <td>Bearbeiten</td>
+                                <td>Löschen</td>
                                 </tr>	 
                                 ";
                                 echo "</table>";
@@ -136,6 +140,7 @@
                                      <td>$row->id</td>
                                      <td>$row->type</td>
                                      <td>Bearbeiten</td>
+                                     <td>Löschen</td>
                                      </tr>
                                      ";
                                      echo "</table>";
