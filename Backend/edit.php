@@ -42,7 +42,7 @@
            } else {
                echo "Check war erfolgreich!";
            }
-        } //-tbc
+        }//FERTIG
         function search($connection,$qString,$table){
             $result=mysqli_query($connection,$qString);
             if(mysqli_num_rows($result)==0){
@@ -229,7 +229,9 @@
             else
                 echo "Email erfolgreich gesendet!";
         }
-        function editUser($connection,$username,$mail){}//-tbc
+        function editUser($connection,$username,$mail){
+            
+        }//-tbc
         function changePasswordBe($connection, $username, $password){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
             $pw=md5($password);
@@ -242,7 +244,6 @@
             }
         }
     if($connection){
-    
         switch($code){
             case 10: delete($connection,"DELETE FROM users WHERE username='$textInput'","users","username",$textInput);
                 break;
