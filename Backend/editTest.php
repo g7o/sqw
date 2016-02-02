@@ -2,7 +2,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=$_GET['code'];
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550)
+    if($code != 17 && $code != 550 && $code != 18)
     $textInput=$_GET['textInput'];
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -12,7 +12,7 @@
     }
     if($code == 18){
         $username=$_GET['username'];
-        $password=$_GET['password'];
+        $mail=$_GET['mail'];
     }
     if($code == 550){
         $username=$_GET['username'];
@@ -235,7 +235,13 @@
                 echo "Email erfolgreich gesendet!";
         }
         function editUser($connection,$username,$mail){
-            
+            $check= mysqli_fetch_object(mysqli_query($connection,"SELECT username,mail FROM users WHERE username='$username'"));
+            if(mysqli_num_rows($check)==0)
+                if(mysqli_query($connection,"UPDATE users SET mail='$mail' WHERE username='$username'")){
+                   echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert.";
+                }else{
+                    echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
+                }
         }//-tbc
         function changePasswordBe($connection, $username, $password, $pwOld){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
