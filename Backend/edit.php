@@ -232,7 +232,7 @@
         }
         function editUser($connection,$username,$mail){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT username FROM users WHERE username='$username'"));
-            if(mysqli_num_rows($check)==1)
+            if(mysqli_num_rows($check)==0)
                 if(mysqli_query($connection,"UPDATE users SET mail='$mail' WHERE username='$username'")){
                    echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert.";
                 }else{
