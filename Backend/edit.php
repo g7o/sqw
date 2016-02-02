@@ -32,9 +32,18 @@
         $isActivated=$_POST['isActivated'];
         $isRetailer=$_POST['isRetailer'];
         $maximum=$_POST['maximum'];
+         $vorhanden=$_GET['vorhanden'];
     }
     include_once("dbCon.inc");
-        function check() {} //-tbc
+        function check($connection,$qString) {
+            $checkVar=mysqli_query($connection,$qString);
+            if(mysqli_num_rows($checkVar)==1){
+               $result=mysqli_query($connection,$qString);
+                 echo "Check war erfolgreich!";
+           } else {
+               echo "Existiert nicht!";
+           }
+        } //-tbc
         function search($connection,$qString,$table){
             $result=mysqli_query($connection,$qString);
             if(mysqli_num_rows($result)==0){
@@ -211,7 +220,16 @@
                 echo "Der User ".$username." wurde erfolgreich angelegt.";
             }    
         } 
-        function contactUser($connection,$firstname,$mail){}//-tbc
+       function contactUser($connection,$mail,$textInput,$subject){
+            $to=$mail;
+            $message=$textInput;
+            $from='Sqwirrel';
+            $fromMail='support@Sqwirrel.com';
+            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
+                echo "Fehler bei der Übermittlung!";
+            else
+                echo "Email erfolgreich gesendet!";
+        }
         function editUser($connection,$username,$mail){}//-tbc
         function changePasswordBe($connection, $username, $password){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
@@ -275,11 +293,23 @@
                 break;
             case 42: addCategory($connection,$textInput);
                 break;
+            case 511: check($connection,"SELECT username FROM users WHERE username='$textInput'");
+                break;
+            case 512: check($connection,"SELECT mail FROM users WHERE mail='$textInput'");
+                break;
+            case 513: check($connection,"Select isActivated FROM users WHERE isActivated='$$textInput'");
+                break;
+            case 514: check($connection,"Select isRetailer FROM users WHERE isRetailer='$textInput'");
+                break;
+            case 521: check($connection,"Select isActivated FROM notice WHERE isActivated='$textInput'");
+                break;
+            case 531: check($connection,"Select isActivated FROM rating WHERE isActivated='$textInput'");
+                break;
+            case 541: check($connection,"Select title FROM categories WHERE title='$textInput'");
+                break;
             case 550: changePasswordBe($connection, $username, $password);
                 break;
         }
-  
- 
         mysqli_close($connection);
     }else{
         mysqli_close($connection);
