@@ -9,9 +9,6 @@
         $password=$_GET['password'];
     if($code == 18){
         $username=$_GET['username'];
-    }
-    if($code == 18){
-        $username=$_GET['username'];
         $mail=$_GET['mail'];
     }
     if($code == 550){
@@ -63,8 +60,7 @@
                                 <td>Nachname</td>
                                 <td>E-Mail:</td>
                                 <td>Aktiv</td>
-                                <td>Typ</td>
-                                <td></td>
+                                <td>Bearbeiten</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_object($result))
@@ -74,7 +70,7 @@
                                 <td>$row->sirname</td>
                                 <td>$row->mail</td>
                                 <td>$row->isActivated</td>                            
-                                <td>Bearbeiten</td>
+                                <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></td>
                                 <td></td>
                                 </tr>	 
                                 ";

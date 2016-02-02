@@ -9,7 +9,7 @@
         $password=$_POST['password'];
     if($code == 18){
         $username=$_POST['username'];
-        $mail=$_POST['mail';]
+        $mail=$_POST['mail'];
     }
     if($code == 550){
         $username=$_GET['username'];
@@ -47,11 +47,12 @@
         }//FERTIG
         function search($connection,$qString,$table){
             $result=mysqli_query($connection,$qString);
-            if(mysqli_num_rows($result)==0){
+            if(!$result){
                 echo "Die Suche hat keinen Treffer ergeben.";
                 return;
             }else{
             $t='<table class="table table-hover">';
+            $glyph='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
           switch($table){
               case "users":     echo "<h3>Ergebnis:</h3>$t
                                 <tr>
@@ -60,8 +61,7 @@
                                 <td>Nachname</td>
                                 <td>E-Mail:</td>
                                 <td>Aktiv</td>
-                                <td>Typ</td>
-                                <td></td>
+                                <td>Bearbeiten</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_object($result))
@@ -71,7 +71,7 @@
                                 <td>$row->sirname</td>
                                 <td>$row->mail</td>
                                 <td>$row->isActivated</td>                            
-                                <td>Bearbeiten</td>
+                                <td>$glyph</td>
                                 <td></td>
                                 </tr>	 
                                 ";
