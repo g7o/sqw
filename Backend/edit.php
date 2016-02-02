@@ -52,7 +52,7 @@
                 return;
             }else{
             $t='<table class="table table-hover">';
-            $glyphPencill='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+            $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
             $glyphRemove='<span class="glyphicon glyphicon-remove" aria-hidden="true">';
           switch($table){
               case "users":     echo "<h3>Ergebnis:</h3>$t
