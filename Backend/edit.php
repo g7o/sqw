@@ -52,7 +52,12 @@
                 return;
             }else{
             $t='<table class="table table-hover">';
+<<<<<<< HEAD
 
+=======
+            $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+            $glyphRemove='<span class="glyphicon glyphicon-remove" aria-hidden="true">';
+>>>>>>> origin/master
           switch($table){
               case "users":     echo "<h3>Ergebnis:</h3>$t
                                 <tr>
@@ -71,6 +76,7 @@
                                 $glyphRemove='<span onclick="search('.$row[4].')" class="glyphicon glyphicon-remove" aria-hidden="true">';
                                 $urlRemove='<a href="" >'.$glyphRemove.'</a>';
                                 echo "
+<<<<<<< HEAD
                                 <td>$row[4]</td>
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
@@ -79,6 +85,16 @@
                                 <td>$row[17]</td> 
                                 <td>$glyphPencil</td>
                                 <td>$urlRemove</td>
+=======
+                                <td>$row->username</td>
+                                <td>$row->firstname</td>
+                                <td>$row->sirname</td>
+                                <td>$row->mail</td>
+                                <td>$row->isActivated</td>                            
+                                <td>$glyphPencil</td>
+                                <td>$glyphRemove</td>
+                                <td></td>
+>>>>>>> origin/master
                                 </tr>	 
                                 ";}
                                 echo "</table>";
@@ -106,6 +122,7 @@
                                 <td>$row->category</td>
                                 <td>$row->picture</td>
                                 <td>Bearbeiten</td>
+                                <td>Löschen</td>
                                 </tr>	 
                                 ";
                                 echo "</table>";
@@ -143,6 +160,7 @@
                                      <td>$row->id</td>
                                      <td>$row->type</td>
                                      <td>Bearbeiten</td>
+                                     <td>Löschen</td>
                                      </tr>
                                      ";
                                      echo "</table>";
