@@ -52,8 +52,7 @@
                 return;
             }else{
             $t='<table class="table table-hover">';
-            $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
-            $glyphRemove='<span class="glyphicon glyphicon-remove" aria-hidden="true">';
+
           switch($table){
               case "users":     echo "<h3>Ergebnis:</h3>$t
                                 <tr>
@@ -62,22 +61,28 @@
                                 <td>Nachname</td>
                                 <td>E-Mail:</td>
                                 <td>Aktiv</td>
+                                <td>Maximum</td>
                                 <td>Bearbeiten</td>
                                 <td>Löschen</td>
                                 </tr>
                                 <tr>";
-                                while($row = mysqli_fetch_object($result))
+                                while($row = mysqli_fetch_array($result)){
+                                $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+                                $glyphRemove='<span onclick="search('.$row[4].')" class="glyphicon glyphicon-remove" aria-hidden="true">';
+                                $urlRemove='<a href="" >'.$glyphRemove.'</a>';
                                 echo "
-                                <td>$row->username</td>
-                                <td>$row->firstname</td>
-                                <td>$row->sirname</td>
-                                <td>$row->mail</td>
-                                <td>$row->isActivated</td>                            
+                                <td>$row[4]</td>
+                                <td>$row[2]</td>
+                                <td>$row[1]</td>
+                                <td>$row[7]</td>
+                                <td>$row[15]</td>                            
+                                <td>$row[17]</td> 
                                 <td>$glyphPencil</td>
-                                <td>$glyphRemove</td>
+                                <td>$urlRemove</td>
                                 </tr>	 
-                                ";
+                                ";}
                                 echo "</table>";
+                                
                             
                   break;
               case "notice":    echo "<h3>Ergebnis:</h3>$t

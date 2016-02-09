@@ -1,4 +1,5 @@
- 	function search(tInput){
+
+function search(tInput){
 		document.getElementById('inText').value="";
 		var art = document.getElementById('art').value;
 		if (tInput==""){
