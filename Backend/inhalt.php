@@ -84,7 +84,8 @@ $name = $_SESSION["username"];
             </div>                            
             <div class="form-group">
                 <div class="col-xs-6 col-xs-offset-3">
-                    <input required type="password" class="form-control" id="pw-neu-check" placeholder="Neues Passwort bestätigen" required>
+                    <input required type="password" class="form-control" id="pw-neu-check" placeholder="Neues Passwort bestätigen" required aria-describedby="fehler-hint">
+                    <p id="fehler-hint"></p>
                 </div>
             </div> 
               
@@ -93,8 +94,9 @@ $name = $_SESSION["username"];
           </div>
       </div>
       <div class="modal-footer">
+          <span class="fehler-hint-hidden" id="username"><?php echo $name; ?></span>
         <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-        <button type="button" class="btn btn-primary">Speichern</button>
+        <button type="button" id="pw-save" onclick="changePassword( document.getElementById('username').innerHTML)" class="btn btn-primary">Speichern</button>
       </div>
     </div>
   </div>

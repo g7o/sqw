@@ -39,11 +39,11 @@ session_start();
 $username = $_POST["username"];
 $passwort = md5($_POST["password"]);
 
-$abfrage = "SELECT name, password FROM be WHERE name LIKE '$username' LIMIT 1";
+$abfrage = "SELECT * FROM be WHERE name='$username'";
 $ergebnis = mysqli_query($connection,$abfrage);
-$row = mysqli_fetch_object($ergebnis);
+$row = mysqli_fetch_array($ergebnis);
 
-if($row->password == $passwort)
+if($row[1] == $passwort)
     {
     $_SESSION["username"] = $username;
     mysqli_close($connection);

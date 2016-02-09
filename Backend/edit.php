@@ -12,9 +12,10 @@
         $mail=$_POST['mail'];
     }
     if($code == 550){
-        $username=$_GET['username'];
-        $password=$_GET['password'];
-        $pwOld=$_GET['pwOld'];
+        $username=$_POST['username'];
+        $pwOld=$_POST['pwOld'];
+        $pwNew=$_POST['pwNew'];
+        $pwNewChk=$_POST['pwNewChk'];
     }
     if($code == 17){
         $username=$_POST['username'];
@@ -34,7 +35,7 @@
         $isActivated=$_POST['isActivated'];
         $isRetailer=$_POST['isRetailer'];
         $maximum=$_POST['maximum'];
-         $vorhanden=$_GET['vorhanden'];
+         $vorhanden=$_POST['vorhanden'];
     }
     include_once("dbCon.inc");
         function check($connection,$qString) {
@@ -247,15 +248,24 @@
                     echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
                 }
         }//FERTIG
-        function changePasswordBe($connection, $username, $password, $pwOld){
-            $check= mysqli_fetch_object(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
-            $pw=md5($password);
-            $pwcheck=$check->password;
-            if(md5($pwOld) == $pwcheck) {
-                mysqli_query($connection,"UPDATE be SET password='$pw' WHERE name='$username'");
-                echo "Erfolg";
-            }else{
-                echo "Fehler";
+        function changePasswordBe($connection, $username, $pwOld, $pwNew, $pwNewChk){
+            
+            if($pwNew == $pwNewChk){
+                $check= mysqli_fetch_array(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
+                $pw=md5($pwOld);
+                $pwcheck=$check[0];
+                if($pw == $pwcheck) {
+                    $pwN=md5($pwNew);
+                    mysqli_query($connection,"UPDATE be SET password='$pwN' WHERE name='$username'");
+                    echo '<span class="help-block hint-success">Das Passwort wurde erfolgreich ge&auml;ndert!</span>';
+                    return;
+                }else{
+                    echo '<span class="help-block hint-failure">Das eingegebene Passwort ist falsch!</span>';
+                    return;
+                }   
+            } else {
+                echo '<span class="help-block hint-failure">Die beiden Passw&ouml;rter stimmen nicht &uuml;berein!</span>';
+                return;
             }
         }
     if($connection){
@@ -322,7 +332,7 @@
                 break;
             case 541: check($connection,"SELECT  title FROM categories WHERE title='$textInput'");
                 break;
-            case 550: changePasswordBe($connection, $username, $password, $pwOld);
+            case 550: changePasswordBe($connection, $username, $pwOld, $pwNew, $pwNewChk);
                 break;
         }
         mysqli_close($connection);

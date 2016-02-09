@@ -1,3 +1,28 @@
+function changePassword(username){
+    var pwOld=encodeURIComponent(document.getElementById("pw-alt").value);
+    var pwNew=encodeURIComponent(document.getElementById("pw-neu").value);
+    var pwNewChk=encodeURIComponent(document.getElementById("pw-neu-check").value);
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+				document.getElementById("fehler-hint").innerHTML=xmlhttp.responseText;
+                document.getElementById("pw-alt").value="";
+                document.getElementById("pw-neu").value="";
+                document.getElementById("pw-neu-check").value="";
+                
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=550&username="+username+"&pwOld="+pwOld+"&pwNew="+pwNew+"&pwNewChk="+pwNewChk);
+	}
 
 function search(tInput){
 		document.getElementById('inText').value="";

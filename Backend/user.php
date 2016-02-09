@@ -56,7 +56,7 @@ $name = $_SESSION["username"];
         <li class="nav-item"><a href="inhalt.php">Inhalt</a></li>
       </ul>
         <hr class="visible-xs-inline-block visible-xs-block">
-      <button type="button" data-toggle="modal" data-target="#userModal" class="btn btn-primary navbar-btn navbar-right btn-menue user-btn"> <?php echo $name; ?></button>          
+      <button type="button" data-toggle="modal" data-target="#userModal" id="username-btn" class="btn btn-primary navbar-btn navbar-right btn-menue user-btn"> <?php echo $name; ?></button>          
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -104,7 +104,7 @@ $name = $_SESSION["username"];
             <div class="form-group">
                 <div class="col-xs-6 col-xs-offset-3">
                     <input required type="password" class="form-control" id="pw-neu-check" placeholder="Neues Passwort bestätigen" required aria-describedby="fehler-hint">
-                    <span id="fehler-hint" class="help-block fehler-hint-hidden">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                    <p id="fehler-hint"></p>
                 </div>
             </div> 
               
@@ -113,8 +113,9 @@ $name = $_SESSION["username"];
           </div>
       </div>
       <div class="modal-footer">
+          <span class="fehler-hint-hidden" id="username"><?php echo $name; ?></span>
         <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-        <button type="button" id="pw-save" onclick="check()" class="btn btn-primary">Speichern</button>
+        <button type="button" id="pw-save" onclick="changePassword( document.getElementById('username').innerHTML)" class="btn btn-primary">Speichern</button>
       </div>
     </div>
   </div>
