@@ -36,13 +36,13 @@
                             <div class="form-group">
                                 <label for="username" class="col-xs-12 col-sm-2 col-sm-offset-3 control-label">Username:</label>
                                 <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0">
-                                    <input required type="text" class="form-control" name="username" id="username" placeholder="Oachkatzl">
+                                    <input required type="text" class="form-control" name="username" id="username" placeholder="Benutzername">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-xs-12 col-sm-2 col-sm-offset-3 control-label">Password:</label>
                                 <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0">
-                                    <input required type="password" class="form-control" name="password" id="password" placeholder="********">
+                                    <input required type="password" class="form-control" name="password" id="password" placeholder="Passwort">
                                 </div>
                             </div>                            
                             <div class="form-group">
