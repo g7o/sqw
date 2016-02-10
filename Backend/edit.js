@@ -1,5 +1,5 @@
 function deleteUser(username){
-    alert(username);
+    username = encodeURIComponent(username);
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -15,8 +15,9 @@ function deleteUser(username){
 		}
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=10&username="+username);
-	}
+		xmlhttp.send("code=10&textInput="+username);
+}
+
 function changePassword(username){
     var pwOld=encodeURIComponent(document.getElementById("pw-alt").value);
     var pwNew=encodeURIComponent(document.getElementById("pw-neu").value);
@@ -44,7 +45,7 @@ function changePassword(username){
 	}
 
 function search(tInput){
-		document.getElementById('inText').value="";
+        document.getElementById('inText').value="";
 		var art = document.getElementById('art').value;
 		if (tInput==""){
 				document.getElementById("ergebnis").innerHTML="Kein Suchbegriff eingegeben!";
@@ -70,15 +71,7 @@ function search(tInput){
 		xmlhttp.send("code="+art+"&textInput="+tInput+"&password=0");
 	}
     
-    function check(){
-        var pw1=document.getElementById("pw-neu").value;
-        var pw2=document.getElementById("pw-neu-check").value;
-        if(pw1 == pw2){
-            alert("korrekt");
-        } else {
-            alert("fehler");
-        }
-    }
+
 var timoutNow = 600000; // Timeout 60s
 var logoutUrl = 'http://www.htl-hl.ac.at/wi/sqwirrel/backend/logout.php'; // URL to logout page.
 

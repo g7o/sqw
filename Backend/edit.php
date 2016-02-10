@@ -1,18 +1,16 @@
 <?php
+include_once("dbCon.inc");
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=$_POST['code'];
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
     if($code != 17 && $code != 550 && $code != 18)
-    $textInput=$_POST['textInput'];
+    $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
         $password=$_POST['password'];
     if($code == 18){
         $username=$_POST['username'];
         $mail=$_POST['mail'];
-    }
-    if($code == 10){
-        $username=$_POST['username'];
     }
     if($code == 550){
         $username=$_POST['username'];
@@ -40,7 +38,7 @@
         $maximum=$_POST['maximum'];
          $vorhanden=$_POST['vorhanden'];
     }
-    include_once("dbCon.inc");
+    
         function check($connection,$qString) {
             $checkVar=mysqli_query($connection,$qString);
             if(mysqli_num_rows($checkVar)==0){
@@ -72,7 +70,7 @@
                                 while($row = mysqli_fetch_array($result)){
                                 $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
                                 $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
-                                $urlRemove='<a href="" >'.$glyphRemove.'</a>';
+                                $urlRemove='<a>'.$glyphRemove.'</a>';
                                 echo "
                                 <td>$row[4]</td>
                                 <td>$row[2]</td>
@@ -161,10 +159,9 @@
                $result=mysqli_query($connection,$qString);
                if($result){
                    echo "Datensatz erfolgreich gelöscht!";
-                   return;
                } else {
                echo "Datensatz konnte nicht gelöscht werden da er nicht existiert!";
-            return;
+        
            }
         
         }      //Fertig
@@ -272,7 +269,7 @@
         }
     if($connection){
         switch($code){
-            case 10: delete($connection,"DELETE FROM users WHERE username='".$username."'");
+            case 10: delete($connection,"DELETE FROM users WHERE username='".$textInput."'");
                 break;
             case 11: search($connection,"SELECT * FROM users WHERE username LIKE '%$textInput%' OR mail LIKE '%$textInput%'","users");
                 break;
