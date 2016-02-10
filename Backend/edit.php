@@ -158,12 +158,13 @@
             }
         } //FERTIG  
         function delete($connection,$qString){ 
-            echo "fkt";
                $result=mysqli_query($connection,$qString);
                if($result){
                    echo "Datensatz erfolgreich gelöscht!";
+                   return;
                } else {
                echo "Datensatz konnte nicht gelöscht werden da er nicht existiert!";
+            return;
            }
         
         }      //Fertig
