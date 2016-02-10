@@ -1,3 +1,26 @@
+var searchText;
+function shConForm(mail,fname,sname){
+    mail = encodeURIComponent(mail);
+    fname = encodeURIComponent(fname);
+    sname = encodeURIComponent(sname);
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=501&mail="+mail+"&firstname="+fname+"&sirname="+sname);
+}
 function deleteUser(username){
     username = encodeURIComponent(username);
 		if (window.XMLHttpRequest){
@@ -10,7 +33,7 @@ function deleteUser(username){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                search(searchText);
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -18,7 +41,10 @@ function deleteUser(username){
 		xmlhttp.send("code=10&textInput="+username);
 }
 
-function contact(mail){
+function contactUser(mail){
+    alert("contac");
+    textInput = encodeURIComponent(document.getElementById('message').value);
+    subject = encodeURIComponent(document.getElementById('subject').value);
     mail = encodeURIComponent(mail);
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
@@ -35,7 +61,7 @@ function contact(mail){
 		}
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=10&textInput="+mail);
+		xmlhttp.send("code=19&textInput="+textInput+"&mail="+mail+"&subject="+subject);
 }
 
 function changePassword(username){
@@ -65,6 +91,7 @@ function changePassword(username){
 	}
 
 function search(tInput){
+        searchText=tInput;
         document.getElementById('inText').value="";
 		var art = document.getElementById('art').value;
 		if (tInput==""){

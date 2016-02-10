@@ -69,11 +69,11 @@ $name = $_SESSION["username"];
     </div></div>
     <div class="row center-block">
         <div class="text-center col-xs-12 col-md-8 col-md-offset-2 table-responsive" id="ergebnis">
-          <!-- Ergebnis hierhin -->           
+                     
         </div>
     </div>
 <div class="row" >
-        <a id="hidden-btn" class="col-xs-4 col-xs-offset-4 text-center btn btn-danger btn-hidden">Ergebnis löschen</a>
+        <a id="hidden-btn" class="col-xs-4 col-xs-offset-4 text-center btn btn-danger btn-hidden">Leeren</a>
 </div>
 </div>
 <!-- PWChange-Modal -->
