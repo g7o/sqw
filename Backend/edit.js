@@ -1,3 +1,22 @@
+function deleteUser(username){
+    alert(username);
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=10&username="+username);
+	}
 function changePassword(username){
     var pwOld=encodeURIComponent(document.getElementById("pw-alt").value);
     var pwNew=encodeURIComponent(document.getElementById("pw-neu").value);

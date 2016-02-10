@@ -111,7 +111,7 @@ $name = $_SESSION["username"];
       <div class="modal-footer">
           <span class="fehler-hint-hidden" id="username"><?php echo $name; ?></span>
         <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-        <button type="button" id="pw-save" onclick="changePassword( document.getElementById('username').innerHTML)" class="btn btn-primary">Speichern</button>
+        <button type="button" id="pw-save" onclick="changePassword(document.getElementById('username').innerHTML)" class="btn btn-primary">Speichern</button>
       </div>
     </div>
   </div>

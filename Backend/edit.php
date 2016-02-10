@@ -11,6 +11,9 @@
         $username=$_POST['username'];
         $mail=$_POST['mail'];
     }
+    if($code == 10){
+        $username=$_POST['username'];
+    }
     if($code == 550){
         $username=$_POST['username'];
         $pwOld=$_POST['pwOld'];
@@ -68,7 +71,7 @@
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
                                 $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
-                                $glyphRemove='<span onclick="search('.$row[4].')" class="glyphicon glyphicon-remove" aria-hidden="true">';
+                                $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
                                 $urlRemove='<a href="" >'.$glyphRemove.'</a>';
                                 echo "
                                 <td>$row[4]</td>
@@ -154,17 +157,15 @@
           return;
             }
         } //FERTIG  
-        function delete($connection,$qString,$table,$control,$controlItem){ 
-           $check=mysqli_query($connection,"SELECT ".$control." FROM ".$table." WHERE ".$control."='$controlItem'");
-           if(mysqli_num_rows($check)==1){
+        function delete($connection,$qString){ 
+            echo "fkt";
                $result=mysqli_query($connection,$qString);
                if($result){
                    echo "Datensatz erfolgreich gelöscht!";
-               }
-           } else {
+               } else {
                echo "Datensatz konnte nicht gelöscht werden da er nicht existiert!";
            }
-           
+        
         }      //Fertig
         function changePassword($connection,$qString,$password){ 
            if($password != null){
@@ -270,7 +271,7 @@
         }
     if($connection){
         switch($code){
-            case 10: delete($connection,"DELETE FROM users WHERE username='$textInput'","users","username",$textInput);
+            case 10: delete($connection,"DELETE FROM users WHERE username='".$username."'");
                 break;
             case 11: search($connection,"SELECT * FROM users WHERE username LIKE '%$textInput%' OR mail LIKE '%$textInput%'","users");
                 break;
