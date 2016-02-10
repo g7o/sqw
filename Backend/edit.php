@@ -1,42 +1,42 @@
 <?php
 include_once("dbCon.inc");
     /** @param[in] code Beinhaltet den Bearbeitungscode */
-    $code=$_POST['code'];
+    $code=mysqli_real_escape_string($_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
     if($code != 17 && $code != 550 && $code != 18)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
-        $password=$_POST['password'];
+        $password=mysqli_real_escape_string($_POST['password']);
     if($code == 18){
-        $username=$_POST['username'];
-        $mail=$_POST['mail'];
+        $username=mysqli_real_escape_string($_POST['username']);
+        $mail=mysqli_real_escape_string($_POST['mail']);
     }
     if($code == 550){
-        $username=$_POST['username'];
-        $pwOld=$_POST['pwOld'];
-        $pwNew=$_POST['pwNew'];
-        $pwNewChk=$_POST['pwNewChk'];
+        $username=mysqli_real_escape_string($_POST['username']);
+        $pwOld=mysqli_real_escape_string($_POST['pwOld']);
+        $pwNew=mysqli_real_escape_string($_POST['pwNew']);
+        $pwNewChk=mysqli_real_escape_string($_POST['pwNewChk']);
     }
     if($code == 17){
-        $username=$_POST['username'];
-        $sirname=$_POST['sirname'];
-        $sex=$_POST['sex'];
-        $firstname=$_POST['firstname'];
-        $password=$_POST['password'];
-        $tel=$_POST['tel'];
-        $mail=$_POST['mail'];
-        $geb=$_POST['geb'];
-        $plz=$_POST['plz'];
-        $country=$_POST['country'];
-        $city=$_POST['city'];
-        $street=$_POST['street'];
-        $housenr=$_POST['housenr'];
-        $picture=$_POST['picture'];
-        $isActivated=$_POST['isActivated'];
-        $isRetailer=$_POST['isRetailer'];
-        $maximum=$_POST['maximum'];
-         $vorhanden=$_POST['vorhanden'];
+        $username=mysqli_real_escape_string($_POST['username']);
+        $sirname=mysqli_real_escape_string($_POST['sirname']);
+        $sex=mysqli_real_escape_string($_POST['sex']);
+        $firstname=mysqli_real_escape_string($_POST['firstname']);
+        $password=mysqli_real_escape_string($_POST['password']);
+        $tel=mysqli_real_escape_string($_POST['tel']);
+        $mail=mysqli_real_escape_string($_POST['mail']);
+        $geb=mysqli_real_escape_string($_POST['geb']);
+        $plz=mysqli_real_escape_string($_POST['plz']);
+        $country=mysqli_real_escape_string($_POST['country']);
+        $city=mysqli_real_escape_string($_POST['city']);
+        $street=mysqli_real_escape_string($_POST['street']);
+        $housenr=mysqli_real_escape_string($_POST['housenr']);
+        $picture=mysqli_real_escape_string($_POST['picture']);
+        $isActivated=mysqli_real_escape_string($_POST['isActivated']);
+        $isRetailer=mysqli_real_escape_string($_POST['isRetailer']);
+        $maximum=mysqli_real_escape_string($_POST['maximum']);
+         $vorhanden=mysqli_real_escape_string($_POST['vorhanden']);
     }
     
         function check($connection,$qString) {
@@ -69,6 +69,8 @@ include_once("dbCon.inc");
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
                                 $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+                                $glyphContact='<span id="'.$row[7].'" onclick="contact(this.id)" class="glyphicon glyphicon-envelope" aria-hidden="true">';
+                                $$urlContact='<a>'.$glyphContact.'</a>';
                                 $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
                                 $urlRemove='<a>'.$glyphRemove.'</a>';
                                 echo "
