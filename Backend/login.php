@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Sqwirrel - Backend - Login</title>
-      <style>
-          body {
-              margin-top: 100px !important; 
-          }
-      </style>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">      

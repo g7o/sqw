@@ -14,11 +14,7 @@ $name = $_SESSION["username"];
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Sqwirrel - Backend - Inhalt</title>
-      <style>
-          body {
-              margin-top: 100px !important; 
-          }
-      </style>
+
     <link href="favicon.ico" rel="icon" type="image/x-icon">
     <script type="text/javascript" src="edit.js"></script>       
     <!-- Bootstrap -->
