@@ -15,6 +15,7 @@ include_once("dbCon.inc");
     if($code == 19){
         $subject=mysqli_real_escape_string($connection, $_POST['subject']);
         $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+        $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     }
     if($code == 501){
         $mail=mysqli_real_escape_string($connection, $_POST['mail']);
@@ -288,10 +289,9 @@ include_once("dbCon.inc");
                 echo "Der User ".$username." wurde erfolgreich angelegt.";
             }    
         } 
-       function contactUser($connection,$mail,$textInput){
+       function contactUser($connection,$mail,$textInput,$subject){
             $to=$mail;
             $message=$textInput;
-            $subject='Sqwirrel-Team';
             $from='Sqwirrel';
             $fromMail='support@Sqwirrel.com';
             if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
@@ -348,11 +348,7 @@ include_once("dbCon.inc");
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
-<<<<<<< HEAD
-            case 19: contactUser($connection,$mail,$textInput);
-=======
             case 19: contactUser($connection,$mail,$textInput,$subject);
->>>>>>> origin/master
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;

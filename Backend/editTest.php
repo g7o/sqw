@@ -19,6 +19,7 @@
     if(code==19){
         $textInput=$_GET['textInput'];
         $mail=$_GET['mail'];
+        $subject=$_GET['subject'];
     }
     if($code == 17){
         $username=$_GET['username'];
@@ -244,10 +245,9 @@
                 echo "Fehler";
             }
         }
-    function contactUser($connection,$mail,$textInput){
+    function contactUser($connection,$mail,$textInput,$subject){
             $to=$mail;
             $message=$textInput;
-            $subject='Sqwirrel-Team';
             $from='Sqwirrel';
             $fromMail='support@Sqwirrel.com';
             if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
@@ -275,7 +275,7 @@
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
-            case 19: contactUser($connection,$mail,$textInput);
+            case 19: contactUser($connection,$mail,$textInput,$subject);
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;
