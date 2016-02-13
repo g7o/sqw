@@ -1,5 +1,51 @@
+var searchText;
+function shConForm(mail,fname,sname){
+    mail = encodeURIComponent(mail);
+    fname = encodeURIComponent(fname);
+    sname = encodeURIComponent(sname);
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=501&mail="+mail+"&firstname="+fname+"&sirname="+sname);
+}
 function deleteUser(username){
-    alert(username);
+    username = encodeURIComponent(username);
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                search(searchText);
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=10&textInput="+username);
+}
+
+function contactUser(mail){
+    alert("contac");
+    textInput = encodeURIComponent(document.getElementById('message').value);
+    subject = encodeURIComponent(document.getElementById('subject').value);
+    mail = encodeURIComponent(mail);
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -15,8 +61,9 @@ function deleteUser(username){
 		}
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=10&username="+username);
-	}
+		xmlhttp.send("code=19&textInput="+textInput+"&mail="+mail+"&subject="+subject);
+}
+
 function changePassword(username){
     var pwOld=encodeURIComponent(document.getElementById("pw-alt").value);
     var pwNew=encodeURIComponent(document.getElementById("pw-neu").value);
@@ -44,7 +91,8 @@ function changePassword(username){
 	}
 
 function search(tInput){
-		document.getElementById('inText').value="";
+        searchText=tInput;
+        document.getElementById('inText').value="";
 		var art = document.getElementById('art').value;
 		if (tInput==""){
 				document.getElementById("ergebnis").innerHTML="Kein Suchbegriff eingegeben!";
@@ -70,15 +118,7 @@ function search(tInput){
 		xmlhttp.send("code="+art+"&textInput="+tInput+"&password=0");
 	}
     
-    function check(){
-        var pw1=document.getElementById("pw-neu").value;
-        var pw2=document.getElementById("pw-neu-check").value;
-        if(pw1 == pw2){
-            alert("korrekt");
-        } else {
-            alert("fehler");
-        }
-    }
+
 var timoutNow = 600000; // Timeout 60s
 var logoutUrl = 'http://www.htl-hl.ac.at/wi/sqwirrel/backend/logout.php'; // URL to logout page.
 

@@ -72,7 +72,7 @@ $name = $_SESSION["username"];
         </div>
     </div>  
 <div class="row" >
-        <a id="hidden-btn" class="col-xs-4 col-xs-offset-4 btn btn-danger btn-hidden">Ergebnis löschen</a>
+        <a id="hidden-btn" class="col-xs-4 col-xs-offset-4 btn btn-danger btn-hidden">Leeren</a>
 </div>    
       </div>
 <!-- PWChange-Modal -->

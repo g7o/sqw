@@ -32,8 +32,8 @@ session_start();
 ?>
 <?php
   include_once("dbCon.inc");
-$username = $_POST["username"];
-$passwort = md5($_POST["password"]);
+$username = mysqli_real_escape_string($connection,$_POST["username"]);
+$passwort = mysqli_real_escape_string($connection,md5($_POST["password"]));
 
 $abfrage = "SELECT * FROM be WHERE name='$username'";
 $ergebnis = mysqli_query($connection,$abfrage);

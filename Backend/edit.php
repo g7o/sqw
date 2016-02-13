@@ -1,50 +1,99 @@
 <?php
+include_once("dbCon.inc");
     /** @param[in] code Beinhaltet den Bearbeitungscode */
-    $code=$_POST['code'];
+    $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18)
-    $textInput=$_POST['textInput'];
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501)
+    $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
-        $password=$_POST['password'];
+        $password=mysqli_real_escape_string($connection, $_POST['password']);
     if($code == 18){
-        $username=$_POST['username'];
-        $mail=$_POST['mail'];
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
     }
-    if($code == 10){
-        $username=$_POST['username'];
+    if($code == 19){
+        $subject=mysqli_real_escape_string($connection, $_POST['subject']);
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+    }
+    if($code == 501){
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+        $firstname=mysqli_real_escape_string($connection, $_POST['firstname']);
+        $sirname=mysqli_real_escape_string($connection, $_POST['sirname']);        
     }
  if(code==19){
         $textInput=$_POST['textInput'];
         $mail=$_POST['mail'];
     }
     if($code == 550){
-        $username=$_POST['username'];
-        $pwOld=$_POST['pwOld'];
-        $pwNew=$_POST['pwNew'];
-        $pwNewChk=$_POST['pwNewChk'];
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $pwOld=mysqli_real_escape_string($connection, $_POST['pwOld']);
+        $pwNew=mysqli_real_escape_string($connection, $_POST['pwNew']);
+        $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
     if($code == 17){
-        $username=$_POST['username'];
-        $sirname=$_POST['sirname'];
-        $sex=$_POST['sex'];
-        $firstname=$_POST['firstname'];
-        $password=$_POST['password'];
-        $tel=$_POST['tel'];
-        $mail=$_POST['mail'];
-        $geb=$_POST['geb'];
-        $plz=$_POST['plz'];
-        $country=$_POST['country'];
-        $city=$_POST['city'];
-        $street=$_POST['street'];
-        $housenr=$_POST['housenr'];
-        $picture=$_POST['picture'];
-        $isActivated=$_POST['isActivated'];
-        $isRetailer=$_POST['isRetailer'];
-        $maximum=$_POST['maximum'];
-         $vorhanden=$_POST['vorhanden'];
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $sirname=mysqli_real_escape_string($connection, $_POST['sirname']);
+        $sex=mysqli_real_escape_string($connection, $_POST['sex']);
+        $firstname=mysqli_real_escape_string($connection, $_POST['firstname']);
+        $password=mysqli_real_escape_string($connection, $_POST['password']);
+        $tel=mysqli_real_escape_string($connection, $_POST['tel']);
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+        $geb=mysqli_real_escape_string($connection, $_POST['geb']);
+        $plz=mysqli_real_escape_string($connection, $_POST['plz']);
+        $country=mysqli_real_escape_string($connection, $_POST['country']);
+        $city=mysqli_real_escape_string($connection, $_POST['city']);
+        $street=mysqli_real_escape_string($connection, $_POST['street']);
+        $housenr=mysqli_real_escape_string($connection, $_POST['housenr']);
+        $picture=mysqli_real_escape_string($connection, $_POST['picture']);
+        $isActivated=mysqli_real_escape_string($connection, $_POST['isActivated']);
+        $isRetailer=mysqli_real_escape_string($connection, $_POST['isRetailer']);
+        $maximum=mysqli_real_escape_string($connection, $_POST['maximum']);
+         $vorhanden=mysqli_real_escape_string($connection, $_POST['vorhanden']);
     }
-    include_once("dbCon.inc");
+        function showContactForm($mail, $firstname, $sirname){
+            $jsFunct="contactUser(document.getElementById('mail').value)";
+            $message='<div class="row center-block">
+    <div class="col-xs-12 text-center">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="mail" class="col-xs-2 control-label">Mail:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="mail" id="mail" value="'.$mail.'" readonly>
+                </div>
+            </div> 
+        <div class="form-group">
+            <label for="name" class="col-xs-2 control-label">Name:</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="name" name="name" value="'.$sirname.' '.$firstname.'" readonly>
+            </div>
+        </div>
+            <div class="form-group">
+                <label for="subject" class="col-xs-2 control-label">Betreff:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="subject" id="subject" value="Sqwirrel-Support" readonly>
+                </div>
+            </div>         
+        <div class="form-group">
+            <label for="message" class="col-xs-2 control-label">Nachricht:</label>
+            <div class="col-xs-10">
+                <textarea required cols="10" rows="10" name="message" class="form-control" id="message">
+                </textarea>
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-sm-12">
+                  <a class="btn btn-primary" onclick="'.$jsFunct.'">Absenden</a>
+            </div>
+        </div>         
+        </form> 
+        
+    </div>  
+</div>         
+
+';
+            echo $message;
+        }
         function check($connection,$qString) {
             $checkVar=mysqli_query($connection,$qString);
             if(mysqli_num_rows($checkVar)==0){
@@ -71,12 +120,16 @@
                                 <td>Maximum</td>
                                 <td>Bearbeiten</td>
                                 <td>Löschen</td>
+                                <td>Kontaktieren</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
                                 $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+                                $shC="shConForm('".$row[7]."','".$row[1]."','".$row[2]."')";
+                                $glyphContact='<span id="'.$row[7].'" onclick="'.$shC.'" class="glyphicon glyphicon-envelope" aria-hidden="true">'; 
+                                $urlContact='<a>'.$glyphContact.'</a>';
                                 $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
-                                $urlRemove='<a href="" >'.$glyphRemove.'</a>';
+                                $urlRemove='<a>'.$glyphRemove.'</a>';
                                 echo "
                                 <td>$row[4]</td>
                                 <td>$row[2]</td>
@@ -86,6 +139,7 @@
                                 <td>$row[17]</td> 
                                 <td>$glyphPencil</td>
                                 <td>$urlRemove</td>
+                                <td>$urlContact</td>
                                 </tr>	 
                                 ";}
                                 echo "</table>";
@@ -165,10 +219,9 @@
                $result=mysqli_query($connection,$qString);
                if($result){
                    echo "Datensatz erfolgreich gelöscht!";
-                   return;
                } else {
                echo "Datensatz konnte nicht gelöscht werden da er nicht existiert!";
-            return;
+        
            }
         
         }      //Fertig
@@ -277,7 +330,7 @@
         }
     if($connection){
         switch($code){
-            case 10: delete($connection,"DELETE FROM users WHERE username='".$username."'");
+            case 10: delete($connection,"DELETE FROM users WHERE username='".$textInput."'");
                 break;
             case 11: search($connection,"SELECT * FROM users WHERE username LIKE '%$textInput%' OR mail LIKE '%$textInput%'","users");
                 break;
@@ -295,7 +348,11 @@
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
+<<<<<<< HEAD
             case 19: contactUser($connection,$mail,$textInput);
+=======
+            case 19: contactUser($connection,$mail,$textInput,$subject);
+>>>>>>> origin/master
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;
@@ -325,6 +382,8 @@
                 break;
             case 42: addCategory($connection,$textInput);
                 break;
+            case 501: showContactForm($mail,$firstname,$sirname);
+                break;                
             case 511: check($connection,"SELECT username FROM users WHERE username='$textInput'");
                 break;
             case 512: check($connection,"SELECT mail FROM users WHERE mail='$textInput'");
