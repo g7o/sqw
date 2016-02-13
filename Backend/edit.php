@@ -14,6 +14,10 @@
     if($code == 10){
         $username=$_POST['username'];
     }
+ if(code==19){
+        $textInput=$_POST['textInput'];
+        $mail=$_POST['mail'];
+    }
     if($code == 550){
         $username=$_POST['username'];
         $pwOld=$_POST['pwOld'];
@@ -231,9 +235,10 @@
                 echo "Der User ".$username." wurde erfolgreich angelegt.";
             }    
         } 
-       function contactUser($connection,$mail,$textInput,$subject){
+       function contactUser($connection,$mail,$textInput){
             $to=$mail;
             $message=$textInput;
+            $subject='Sqwirrel-Team';
             $from='Sqwirrel';
             $fromMail='support@Sqwirrel.com';
             if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
@@ -290,7 +295,7 @@
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
-            case 19: contactUser($connection,$firstname,$mail);
+            case 19: contactUser($connection,$mail,$textInput);
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;

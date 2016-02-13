@@ -16,6 +16,10 @@
         $password=$_GET['password'];
         $pwOld=$_GET['pwOld'];
     }
+    if(code==19){
+        $textInput=$_GET['textInput'];
+        $mail=$_GET['mail'];
+    }
     if($code == 17){
         $username=$_GET['username'];
         $sirname=$_GET['sirname'];
@@ -220,16 +224,6 @@
                 echo "Der User ".$username." wurde erfolgreich angelegt.";
             }    
         } 
-       function contactUser($connection,$mail,$textInput,$subject){
-            $to=$mail;
-            $message=$textInput;
-            $from='Sqwirrel';
-            $fromMail='support@Sqwirrel.com';
-            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
-                echo "Fehler bei der Übermittlung!";
-            else
-                echo "Email erfolgreich gesendet!";
-        }
         function editUser($connection,$username,$mail){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT * FROM users WHERE username='$username'"));
             if($check)
@@ -249,6 +243,17 @@
             }else{
                 echo "Fehler";
             }
+        }
+    function contactUser($connection,$mail,$textInput){
+            $to=$mail;
+            $message=$textInput;
+            $subject='Sqwirrel-Team';
+            $from='Sqwirrel';
+            $fromMail='support@Sqwirrel.com';
+            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
+                echo "Fehler bei der Übermittlung!";
+            else
+                echo "Email erfolgreich gesendet!";
         }
     if($connection){
         switch($code){
@@ -270,7 +275,7 @@
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
-            case 19: contactUser($connection,$firstname,$mail);
+            case 19: contactUser($connection,$mail,$textInput);
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;
