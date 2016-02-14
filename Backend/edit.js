@@ -1,5 +1,6 @@
 var searchText;
 var wait;
+var timeWait=2000;
 function changeMail(username,mail){
     mail = encodeURIComponent(mail);
     username = encodeURIComponent(username);    
@@ -14,7 +15,7 @@ function changeMail(username,mail){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",2000);
+                wait= setInterval("search(searchText)",timeWait);
 
 			}
 		}
@@ -37,7 +38,7 @@ function changeActive(username,active){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",2000);
+                wait= setInterval("search(searchText)",timeWait);
 
 			}
 		}
@@ -60,7 +61,7 @@ function changeType(username,type){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",2000);
+                wait= setInterval("search(searchText)",timeWait);
 
 			}
 		}
@@ -83,7 +84,7 @@ function changeMax(username,max){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",2000);
+                wait= setInterval("search(searchText)",timeWait);
 
 			}
 		}
@@ -151,7 +152,7 @@ function deleteUser(username){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",2000);      
+                wait= setInterval("search(searchText)",timeWait);      
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
