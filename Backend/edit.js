@@ -1,5 +1,5 @@
 var searchText;
-
+var wait;
 function changeMail(username,mail){
     mail = encodeURIComponent(mail);
     username = encodeURIComponent(username);    
@@ -13,7 +13,8 @@ function changeMail(username,mail){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                wait= setInterval("search(searchText)",2000);
 
 			}
 		}
@@ -35,7 +36,8 @@ function changeActive(username,active){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                wait= setInterval("search(searchText)",2000);
 
 			}
 		}
@@ -57,7 +59,8 @@ function changeType(username,type){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                wait= setInterval("search(searchText)",2000);
 
 			}
 		}
@@ -79,7 +82,8 @@ function changeMax(username,max){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                wait= setInterval("search(searchText)",2000);
 
 			}
 		}
@@ -146,7 +150,8 @@ function deleteUser(username){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                search(searchText);
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                wait= setInterval("search(searchText)",2000);      
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -203,7 +208,8 @@ function changePassword(username){
 		xmlhttp.send("code=550&username="+username+"&pwOld="+pwOld+"&pwNew="+pwNew+"&pwNewChk="+pwNewChk);
 	}
 
-function search(tInput){
+    function search(tInput){
+        clearInterval(wait);
         searchText=tInput;
         document.getElementById('inText').value="";
 		var art = document.getElementById('art').value;
