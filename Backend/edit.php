@@ -409,13 +409,16 @@ include_once("dbCon.inc");
                 echo "Email erfolgreich gesendet!";
         }
         function editUser($connection,$username,$mail){
-            $check= mysqli_fetch_object(mysqli_query($connection,"SELECT * FROM users WHERE username='$username'"));
-            if($check)
+            $checkMail= mysqli_fetch_object(mysqli_query($connection,"SELECT mail FROM users WHERE username='$username'"));
+            if($checkMail->mail != $mail){
                 if(mysqli_query($connection,"UPDATE users SET mail='$mail' WHERE username='$username'")){
                    echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert.";
                 }else{
                     echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
                 }
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }
         }//FERTIG
         function changePasswordBe($connection, $username, $pwOld, $pwNew, $pwNewChk){
             
