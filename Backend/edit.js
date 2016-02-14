@@ -1,4 +1,117 @@
 var searchText;
+
+function changeMail(username,mail){
+    mail = encodeURIComponent(mail);
+    username = encodeURIComponent(username);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=18&mail="+mail+"&username="+username);
+}
+
+function changeActive(username,active){
+    active = encodeURIComponent(active);
+    username = encodeURIComponent(username);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=15&username="+username+"&active="+active);
+}
+
+function changeType(username,type){
+    type = encodeURIComponent(type);
+    username = encodeURIComponent(username);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=16&username="+username+"&type="+type);
+}
+
+function changeMax(username,max){
+    max = encodeURIComponent(max);
+    username = encodeURIComponent(username);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=17&username="+username+"&max="+max);
+}
+
+function shEdForm(username,mail,activated,retailer,max){
+    mail = encodeURIComponent(mail);
+    activated = encodeURIComponent(activated);
+    retailer = encodeURIComponent(retailer);
+    max = encodeURIComponent(max);
+    username = encodeURIComponent(username);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=502&mail="+mail+"&isActivated="+activated+"&isRetailer="+retailer+"&maximum="+max+"&username="+username);
+}
 function shConForm(mail,fname,sname){
     mail = encodeURIComponent(mail);
     fname = encodeURIComponent(fname);

@@ -1,9 +1,10 @@
 <?php
+
 include_once("dbCon.inc");
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18 && $code !=501)
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -11,6 +12,18 @@ include_once("dbCon.inc");
     if($code == 18){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
         $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+    }
+    if($code == 15){
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $active=mysqli_real_escape_string($connection, $_POST['active']);    
+    }
+    if($code == 16){
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $type=mysqli_real_escape_string($connection, $_POST['type']);    
+    }
+    if($code == 17){
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $maximum=mysqli_real_escape_string($connection, $_POST['max']);    
     }
     if($code == 19){
         $subject=mysqli_real_escape_string($connection, $_POST['subject']);
@@ -22,7 +35,14 @@ include_once("dbCon.inc");
         $firstname=mysqli_real_escape_string($connection, $_POST['firstname']);
         $sirname=mysqli_real_escape_string($connection, $_POST['sirname']);        
     }
- if(code==19){
+    if($code == 502){
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $isActivated=mysqli_real_escape_string($connection, $_POST['isActivated']);
+        $isRetailer=mysqli_real_escape_string($connection, $_POST['isRetailer']);        
+        $maximum=mysqli_real_escape_string($connection, $_POST['maximum']);                
+    }
+ if($code==19){
         $textInput=$_POST['textInput'];
         $mail=$_POST['mail'];
     }
@@ -32,7 +52,7 @@ include_once("dbCon.inc");
         $pwNew=mysqli_real_escape_string($connection, $_POST['pwNew']);
         $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
-    if($code == 17){
+/*    if($code == 17){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
         $sirname=mysqli_real_escape_string($connection, $_POST['sirname']);
         $sex=mysqli_real_escape_string($connection, $_POST['sex']);
@@ -52,9 +72,72 @@ include_once("dbCon.inc");
         $maximum=mysqli_real_escape_string($connection, $_POST['maximum']);
          $vorhanden=mysqli_real_escape_string($connection, $_POST['vorhanden']);
     }
-        function showContactForm($mail, $firstname, $sirname){
+*/    
+    function showEditUserForm($username,$mail,$isActivated,$isRetailer,$maximum){
+        $jsChgMail="changeMail('".$username."',document.getElementById('mail').value)";
+        $jsChgActiv="changeActive('".$username."',document.getElementById('aktiv').value)";
+        $jsChgType="changeType('".$username."',document.getElementById('ktype').value)";
+        $jsChgMax="changeMax('".$username."',document.getElementById('max').value)";
+        $optTypFree='<option value="0">Kostenlos</option><option value="1">H&auml;ndler</option>';
+        $optTypRetailer='<option value="1">H&auml;ndler</option><option value="0">Kostenlos</option>';
+        if($isRetailer==1){
+            $optTyp=$optTypRetailer;
+        } else {
+            $optTyp=$optTypFree;
+        }
+        $optActivYes='<option value="1">Ja</option><option value="0">Nein</option>';
+        $optActivNo='<option value="0">Nein</option><option value="1">Ja</option>'; 
+        if($isActivated == 1){
+            $optActiv=$optActivYes;
+        } else {
+            $optActiv=$optActivNo;
+        }
+        $content=' <div class="row center-block">
+    <div class="col-xs-12 text-center">
+        <form class="form-horizontal">            
+            <h3>User: '.$username.'</h3>
+            <div class="form-group">
+                <label for="mail" class="col-xs-2 control-label">Mail:</label>
+                <div class="col-xs-6">
+                    <input type="email" class="form-control" value="'.$mail.'" id="mail">
+                </div>
+                <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgMail.'">Speichern</a>     
+            </div> 
+        <div class="form-group">
+            <label for="ktype" class="col-xs-2 control-label">Typ:</label>
+            <div class="col-xs-6">
+                <select id="ktype">
+                '.$optTyp.'
+                </select>
+            </div>
+            <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
+        </div>
+        <div class="form-group">
+            <label for="aktiv" class="col-xs-2 control-label">Aktiv:</label>
+            <div class="col-xs-6">
+                <select id="aktiv">
+                    '.$optActiv.'
+                </select>
+            </div>
+            <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgActiv.'">Speichern</a>                 
+        </div>
+        <div class="form-group text-center">
+            <label for="max" class="col-xs-2 control-label">Maximum:</label>
+            <div class="col-xs-6">
+                <input type="number" min="0" value="'.$maximum.'" class="form-control" id="max">                
+            </div>
+            <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgMax.'">Speichern</a>     
+            
+        </div>  
+        </form>
+    </div>  
+</div>  ';
+        echo $content;
+    }
+
+    function showContactForm($mail, $firstname, $sirname){
             $jsFunct="contactUser(document.getElementById('mail').value)";
-            $message='<div class="row center-block">
+            $content='<div class="row center-block">
     <div class="col-xs-12 text-center">
         <form class="form-horizontal">
             <div class="form-group">
@@ -93,7 +176,7 @@ include_once("dbCon.inc");
 </div>         
 
 ';
-            echo $message;
+            echo $content;
         }
         function check($connection,$qString) {
             $checkVar=mysqli_query($connection,$qString);
@@ -116,7 +199,8 @@ include_once("dbCon.inc");
                                 <td>Username</td>
                                 <td>Vorname</td>
                                 <td>Nachname</td>
-                                <td>E-Mail:</td>
+                                <td>E-Mail</td>
+                                <td>Typ</td>
                                 <td>Aktiv</td>
                                 <td>Maximum</td>
                                 <td>Bearbeiten</td>
@@ -126,6 +210,9 @@ include_once("dbCon.inc");
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
                                 $glyphPencil='<span class="glyphicon glyphicon-pencil" aria-hidden="true">';
+                                $shE="shEdForm('".$row[4]."','".$row[7]."','".$row[15]."','".$row[16]."','".$row[17]."')";
+                                $glyphEdit='<span id="'.$row[7].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
+                                $urlEdit='<a>'.$glyphEdit.'</a>';                                    
                                 $shC="shConForm('".$row[7]."','".$row[1]."','".$row[2]."')";
                                 $glyphContact='<span id="'.$row[7].'" onclick="'.$shC.'" class="glyphicon glyphicon-envelope" aria-hidden="true">'; 
                                 $urlContact='<a>'.$glyphContact.'</a>';
@@ -136,9 +223,10 @@ include_once("dbCon.inc");
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
                                 <td>$row[7]</td>
+                                <td>$row[16]</td>                                                            
                                 <td>$row[15]</td>                            
                                 <td>$row[17]</td> 
-                                <td>$glyphPencil</td>
+                                <td>$urlEdit</td>
                                 <td>$urlRemove</td>
                                 <td>$urlContact</td>
                                 </tr>	 
@@ -243,34 +331,55 @@ include_once("dbCon.inc");
                echo "Es wurde kein Passwort übergeben!";
            }
         } //FERTIG 
-        function setActive($connection,$qString){ 
-            $check=mysqli_query($connection,"SELECT username FROM users WHERE username='$qString'");
-           if(mysqli_num_rows($check)==1){
-                $currentValue=mysqli_fetch_object(mysqli_query($connection,"SELECT isActivated FROM users WHERE username='$qString'"));
-                if($currentValue->isActivated == 0){
-                    mysqli_query($connection,"UPDATE users SET isActivated='1' WHERE username='$qString'");
-                    echo "Der User ".$qString." wurde aktiviert.";
-                }else{
-                    mysqli_query($connection,"UPDATE users SET isActivated='0' WHERE username='$qString'");
-                    echo "Der User ".$qString." wurde deaktiviert.";
-                }
-           }else{
-               echo "Der User ".$qString." ist nicht vorhanden.";
-           }
-        } //FERTIG 
-        function upgradeAccount($connection,$qString){ 
-            $check=mysqli_query($connection,"SELECT username FROM users WHERE username='$qString'");
-           if(mysqli_num_rows($check)==1){            
-            $currentValue=mysqli_fetch_object(mysqli_query($connection,"SELECT isRetailer FROM users WHERE username='$qString'"));
-            if($currentValue->isRetailer == 0){
-                mysqli_query($connection,"UPDATE users SET isRetailer='1' WHERE username='$qString'");
-                echo "Der User ".$qString." wurde als Händler eingetragen.";
+        function setActive($connection,$username,$active){ 
+            $checkActive=mysqli_fetch_object(mysqli_query($connection,"SELECT isActivated FROM users WHERE username='$username'"));
+            if($checkActive->isActivated != $active){
+            if($active == 0){
+                if(mysqli_query($connection,"UPDATE users SET isActivated='0' WHERE username='$username'")){
+                    echo "Der User ".$username." wurde aktiviert.";
             }else{
-                mysqli_query($connection,"UPDATE users SET isRetailer='0' WHERE username='$qString'");
-                echo "Der User ".$qString." wurde als Händler ausgetragen.";
-            }  
-               echo "Der User ".$qString." ist nicht vorhanden.";
-           }               
+                echo "Bitte versuche es nochmal!";
+            }}
+            if($active == 1){
+                if(mysqli_query($connection,"UPDATE users SET isActivated='1' WHERE username='$username'")){
+                    echo "Der User ".$username." wurde deaktiviert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }
+        } //FERTIG 
+        function updateMaximum($connection,$username,$maximum){ 
+            $checkMax=mysqli_fetch_object(mysqli_query($connection,"SELECT maximum FROM users WHERE username='$username'"));
+            if($checkMax->maximum != $maximum){
+                if(mysqli_query($connection,"UPDATE users SET maximum='$maximum' WHERE username='$username'")){
+                    echo "Das Maximum von User ".$username." wurde von ".$checkMax->maximum." auf ".$maximum." ge&auml;ndert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }              
+        } //FERTIG        
+        function upgradeAccount($connection,$username,$type){ 
+            $checkType=mysqli_fetch_object(mysqli_query($connection,"SELECT isRetailer FROM users WHERE username='$username'"));
+            if($checkType->isRetailer != $type){
+            if($type == 0){
+                if(mysqli_query($connection,"UPDATE users SET isRetailer='0' WHERE username='$username'")){
+                    echo "Der Kontotyp von User ".$username." wurde von H&auml;ndler zu Kostenlos ge&auml;ndert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
+            if($type == 1){
+                if(mysqli_query($connection,"UPDATE users SET isRetailer='1' WHERE username='$username'")){
+                    echo "Der Kontotyp von User ".$username." wurde von Kostenlos zu H&auml;ndler ge&auml;ndert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }              
         } //FERTIG
         function addCategory($connection,$qString){
             $check=mysqli_query($connection,"SELECT type FROM categories WHERE type='$qString'");
@@ -340,11 +449,11 @@ include_once("dbCon.inc");
                 break;
             case 14: changePassword($connection,$textInput,$password);
                 break;
-            case 15: setActive($connection,$textInput);
+            case 15: setActive($connection,$username,$active);
                 break;
-            case 16: upgradeAccount($connection,$textInput);
+            case 16: upgradeAccount($connection,$username,$type);
                 break;
-            case 17: addUser($connection,$firstname,$sirname,$username,$sex,$password,$tel,$mail,$geb,$plz,$country,$city,$street,$housenr,$picture,$isActivated,$isRetailer,$maximum);
+            case 17: updateMaximum($connection,$username,$maximum);
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
@@ -379,7 +488,9 @@ include_once("dbCon.inc");
             case 42: addCategory($connection,$textInput);
                 break;
             case 501: showContactForm($mail,$firstname,$sirname);
-                break;                
+                break;   
+            case 502: showEditUserForm($username,$mail,$isActivated,$isRetailer,$maximum);
+                break;
             case 511: check($connection,"SELECT username FROM users WHERE username='$textInput'");
                 break;
             case 512: check($connection,"SELECT mail FROM users WHERE mail='$textInput'");

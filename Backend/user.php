@@ -68,8 +68,8 @@ $name = $_SESSION["username"];
                         </select>
     </div></div>
     <div class="row center-block">
-        <div class="text-center col-xs-12 col-md-8 col-md-offset-2 table-responsive" id="ergebnis">
-                     
+        <div class="text-center col-xs-12 table-responsive" id="ergebnis">         
+                  
         </div>
     </div>
 <div class="row" >

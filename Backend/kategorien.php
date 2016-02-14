@@ -67,7 +67,7 @@ $name = $_SESSION["username"];
 
 </div>
     <div class="row center-block">
-        <div class="text-center col-xs-12 col-md-8 col-md-offset-2 table-responsive" id="ergebnis">
+        <div class="text-center col-xs-12 table-responsive" id="ergebnis">   
                      
         </div>
     </div>  
