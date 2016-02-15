@@ -1,9 +1,13 @@
 var searchText;
 var wait;
 var timeWait=2000;
-function changeMail(username,mail){
-    mail = encodeURIComponent(mail);
-    username = encodeURIComponent(username);    
+function changeMail(chgId,username,mail,active,type,max){
+    max = encodeURIComponent(max);
+    username = encodeURIComponent(username);
+    chgId = encodeURIComponent(chgId);    
+    mail = encodeURIComponent(mail);    
+    active = encodeURIComponent(active);    
+    type = encodeURIComponent(type);     
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -24,9 +28,13 @@ function changeMail(username,mail){
 		xmlhttp.send("code=18&mail="+mail+"&username="+username);
 }
 
-function changeActive(username,active){
-    active = encodeURIComponent(active);
-    username = encodeURIComponent(username);    
+function changeActive(chgId,username,mail,active,type,max){
+    max = encodeURIComponent(max);
+    username = encodeURIComponent(username);
+    chgId = encodeURIComponent(chgId);    
+    mail = encodeURIComponent(mail);    
+    active = encodeURIComponent(active);    
+    type = encodeURIComponent(type);    
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -38,8 +46,7 @@ function changeActive(username,active){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",timeWait);
-
+                    wait= setInterval("search(searchText)",timeWait);
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -47,9 +54,13 @@ function changeActive(username,active){
 		xmlhttp.send("code=15&username="+username+"&active="+active);
 }
 
-function changeType(username,type){
-    type = encodeURIComponent(type);
-    username = encodeURIComponent(username);    
+function changeType(chgId,username,mail,active,type,max){
+    max = encodeURIComponent(max);
+    username = encodeURIComponent(username);
+    chgId = encodeURIComponent(chgId);    
+    mail = encodeURIComponent(mail);    
+    active = encodeURIComponent(active);    
+    type = encodeURIComponent(type);    
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -61,8 +72,7 @@ function changeType(username,type){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",timeWait);
-
+                    wait= setInterval("search(searchText)",timeWait);
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -70,9 +80,13 @@ function changeType(username,type){
 		xmlhttp.send("code=16&username="+username+"&type="+type);
 }
 
-function changeMax(username,max){
+function changeMax(chgId,username,mail,active,type,max){
     max = encodeURIComponent(max);
-    username = encodeURIComponent(username);    
+    username = encodeURIComponent(username);
+    chgId = encodeURIComponent(chgId);    
+    mail = encodeURIComponent(mail);    
+    active = encodeURIComponent(active);    
+    type = encodeURIComponent(type);    
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -94,6 +108,7 @@ function changeMax(username,max){
 }
 
 function shEdForm(username,mail,activated,retailer,max){
+        clearInterval(wait);    
     mail = encodeURIComponent(mail);
     activated = encodeURIComponent(activated);
     retailer = encodeURIComponent(retailer);
@@ -118,6 +133,7 @@ function shEdForm(username,mail,activated,retailer,max){
 		xmlhttp.send("code=502&mail="+mail+"&isActivated="+activated+"&isRetailer="+retailer+"&maximum="+max+"&username="+username);
 }
 function shConForm(mail,fname,sname){
+    clearInterval(wait);
     mail = encodeURIComponent(mail);
     fname = encodeURIComponent(fname);
     sname = encodeURIComponent(sname);

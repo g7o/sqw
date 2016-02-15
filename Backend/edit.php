@@ -74,10 +74,10 @@ include_once("dbCon.inc");
     }
 */    
     function showEditUserForm($username,$mail,$isActivated,$isRetailer,$maximum){
-        $jsChgMail="changeMail('".$username."',document.getElementById('mail').value)";
-        $jsChgActiv="changeActive('".$username."',document.getElementById('aktiv').value)";
-        $jsChgType="changeType('".$username."',document.getElementById('ktype').value)";
-        $jsChgMax="changeMax('".$username."',document.getElementById('max').value)";
+        $jsChgMail="changeMail(1,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
+        $jsChgActiv="changeActive(2,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
+        $jsChgType="changeType(3,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
+        $jsChgMax="changeMax(4,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
         $optTypFree='<option value="0">Kostenlos</option><option value="1">H&auml;ndler</option>';
         $optTypRetailer='<option value="1">H&auml;ndler</option><option value="0">Kostenlos</option>';
         if($isRetailer==1){
@@ -336,13 +336,13 @@ include_once("dbCon.inc");
             if($checkActive->isActivated != $active){
             if($active == 0){
                 if(mysqli_query($connection,"UPDATE users SET isActivated='0' WHERE username='$username'")){
-                    echo "Der User ".$username." wurde aktiviert.";
+                    echo "Der User ".$username." wurde deaktiviert.";
             }else{
                 echo "Bitte versuche es nochmal!";
             }}
             if($active == 1){
                 if(mysqli_query($connection,"UPDATE users SET isActivated='1' WHERE username='$username'")){
-                    echo "Der User ".$username." wurde deaktiviert.";
+                    echo "Der User ".$username." wurde aktiviert.";
             }else{
                 echo "Bitte versuche es nochmal!";
             }}
