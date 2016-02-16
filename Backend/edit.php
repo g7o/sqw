@@ -1,6 +1,5 @@
 <?php
-
-
+    include_once("dbCon.inc"); 
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
@@ -113,7 +112,23 @@
 </div>  ';
         echo $content;
     }
-
+function showEditCategoryForm($type){
+        $jsChgType="changeCategories(document.getElementById('type').value)";
+        $content=' <div class="row center-block">
+    <div class="col-xs-12 text-center">
+        <form class="form-horizontal">            
+            <div class="form-group">
+                <label for="mail" class="col-xs-2 control-label">Kategorie:</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" value="'.$type.'" id="type">
+                </div>
+                <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
+            </div>   
+        </form>
+    </div>  
+</div>  ';
+        echo $content;
+    }
     function showContactForm($mail, $firstname, $sirname){
             $jsFunct="contactUser(document.getElementById('mail').value)";
             $content='<div class="row center-block">

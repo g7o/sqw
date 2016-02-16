@@ -79,6 +79,26 @@ function changeType(chgId,username,mail,active,type,max){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=16&username="+username+"&type="+type);
 }
+function changeCategories(type){   
+    type = encodeURIComponent(type);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                    wait= setInterval(location.reload(),timeWait);
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=43&type="+type);
+}
 
 function changeMax(chgId,username,mail,active,type,max){
     max = encodeURIComponent(max);
@@ -131,6 +151,27 @@ function shEdForm(username,mail,activated,retailer,max){
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=502&mail="+mail+"&isActivated="+activated+"&isRetailer="+retailer+"&maximum="+max+"&username="+username);
+}
+function shEdCategoryForm(type){
+        clearInterval(wait);    
+    type = encodeURIComponent(type);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=43&type="+type);
 }
 function shConForm(mail,fname,sname){
     clearInterval(wait);

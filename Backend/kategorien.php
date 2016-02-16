@@ -64,7 +64,6 @@ $name = $_SESSION["username"];
     <div class="row center-block">
         <div class="text-center col-xs-12 table-responsive" id="ergebnis">   
                     <?php include_once("listCategories.php"); ?>
-        
         </div>
     </div>  
 <div class="row" >
