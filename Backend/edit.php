@@ -1,6 +1,6 @@
 <?php
 
-include_once("dbCon.inc");
+
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
