@@ -44,9 +44,10 @@ if($row[1] == $passwort)
     $_SESSION["username"] = $username;
     $time = date_create();
     $time=date_timestamp_get($time);
-    $time=date('m/d/Y',$time);
-    $abfrage = "INSERT INTO `belog'('user', 'date') VALUES ('Hansi','123')";
-    $ergebnis = mysqli_query($connection,$abfrage); 
+    $time=date('m/d/Y H:i:s',$time);
+    $abfrage = "UPDATE belog SET date='$time' WHERE user='$username'";
+    $ergebnis = mysqli_query($connection,$abfrage);
+    echo $time;
     mysqli_close($connection);
     echo "Login erfolgreich!";
 echo '<meta http-equiv="refresh" content="3; URL=user.php">';
