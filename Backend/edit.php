@@ -367,6 +367,8 @@ function showEditCategoryForm($type){
             }else{
                 echo "Die Kategorie ".$qString." ist schon vorhanden.";
             }
+        } //FERTIG
+
        function contactUser($connection,$mail,$textInput,$subject){
             $to=$mail;
             $message=$textInput;
