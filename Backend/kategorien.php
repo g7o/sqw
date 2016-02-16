@@ -60,9 +60,7 @@ $name = $_SESSION["username"];
 <div class="container">
 <div class="row center-block">
     <div class="col-xs-12 text-center">
-                 <input type="text" id="inText" autocomplete="off"  onkeydown="if(event.keyCode == 13){search(this.value)}">
-         <input type="button" value="Suchen" onclick="search(document.getElementById('inText').value)">
-
+        <!-- empty div -->
     </div>
 
 </div>
