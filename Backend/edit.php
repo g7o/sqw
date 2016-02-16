@@ -107,7 +107,7 @@
             <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgActiv.'">Speichern</a>                 
         </div>
         <div class="form-group text-center">
-            <label for="max" class="col-xs-2 control-label">Maximum:</label>
+            <label for="max" class="col-xs-2 control-label">Max.:</label>
             <div class="col-xs-6">
                 <input type="number" min="0" value="'.$maximum.'" class="form-control" id="max">                
             </div>
@@ -125,7 +125,6 @@ function showEditCategoryForm($type){
     <div class="col-xs-12 text-center">
         <form class="form-horizontal">            
             <div class="form-group">
-                <label for="mail" class="col-xs-2 control-label">Kategorie:</label>
                 <div class="col-xs-6">
                     <input type="text" class="form-control" value="'.$type.'" id="type">
                 </div>

@@ -1,3 +1,4 @@
+
 var searchText;
 var wait;
 var timeWait=2000;
@@ -93,7 +94,7 @@ function changeCategories(type,typeNew){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                    wait= setInterval(location.reload(),timeWait);
+                    setTimeout(function () { location.reload(true); },timeWait);
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -167,6 +168,7 @@ function shEdCategoryForm(type){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("hidden-btn").classList.remove("btn-hidden");
 
 			}
 		}

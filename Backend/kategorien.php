@@ -67,9 +67,9 @@ $name = $_SESSION["username"];
         </div>
     </div>  
 <div class="row" >
-        <a id="hidden-btn" class="col-xs-4 col-xs-offset-4 btn btn-danger btn-hidden">Leeren</a>
+        <a id="hidden-btn" class="col-xs-4 col-xs-offset-4 btn btn-danger btn-hidden">Zur&uuml;ck</a>
 </div>    
-      </div>
+    </div></div>
 <!-- PWChange-Modal -->
 <div class="modal fade" id="pwModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -139,7 +139,7 @@ $name = $_SESSION["username"];
             $("#pwModal").modal('show');
         });
         $("#hidden-btn").click(function(){
-            $("#ergebnis").html("");
+            location.reload();
             $("#hidden-btn").addClass("btn-hidden");
         });        	
       </script>
