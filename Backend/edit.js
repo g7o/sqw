@@ -79,8 +79,9 @@ function changeType(chgId,username,mail,active,type,max){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=16&username="+username+"&type="+type);
 }
-function changeCategories(type){   
-    type = encodeURIComponent(type);    
+function changeCategories(type,typeNew){   
+    type = encodeURIComponent(type); 
+    typeNew = encodeURIComponent(typeNew); 
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -97,7 +98,7 @@ function changeCategories(type){
 		}
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=44&type="+type);
+		xmlhttp.send("code=44&type="+type+"&typeNew="+typeNew);
 }
 
 function changeMax(chgId,username,mail,active,type,max){

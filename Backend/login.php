@@ -43,6 +43,11 @@ if($row[1] == $passwort)
     {
     $_SESSION["username"] = $username;
     mysqli_close($connection);
+    $time = date_create();
+    $datum=date_timestamp_get($time);
+    $time=date('m/d/Y',$datum)
+    $abfrage = "UPDATE log SET time='$time'";
+    $ergebnis = mysqli_query($connection,$abfrage); 
     echo "Login erfolgreich!";
 echo '<meta http-equiv="refresh" content="3; URL=user.php">';
    exit;
