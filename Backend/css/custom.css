@@ -1,3 +1,10 @@
+.pencil-smaller {
+    font-size: 0.8em !important;
+}
+.cat-h3 {
+    font-size: 1.7em !important;
+    font-weight: 400 !important;
+}
 body {
     margin-top: 80px !important;
 }

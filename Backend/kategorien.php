@@ -62,7 +62,7 @@ $name = $_SESSION["username"];
     <div class="col-xs-12 text-center">
 </div>
     <div class="row center-block">
-        <div class="text-center col-xs-12 table-responsive" id="ergebnis">   
+        <div class="text-center col-xs-12 center-block" id="ergebnis">   
                     <?php include_once("listCategories.php"); ?>
         </div>
     </div>  
