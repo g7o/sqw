@@ -60,11 +60,11 @@ $name = $_SESSION["username"];
 <div class="container">
 <div class="row center-block">
     <div class="col-xs-12 text-center">
-       <?php include_once("listCategories.php"); ?>
 </div>
     <div class="row center-block">
         <div class="text-center col-xs-12 table-responsive" id="ergebnis">   
-                     
+                    <?php include_once("listCategories.php"); ?>
+        
         </div>
     </div>  
 <div class="row" >
