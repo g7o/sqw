@@ -368,11 +368,11 @@ function showEditCategoryForm($type){
                 echo "Die Kategorie ".$qString." ist schon vorhanden.";
             }
         } //FERTIG
-        function addUser($connection,$firstname,$sirname,$username,$sex,$password,$tel,$mail,$geb,$plz,$country,$city,$street,$housenr,$picture,$isActivated,$isRetailer,$maximum){
+       /* function addUser($connection,$firstname,$sirname,$username,$sex,$password,$tel,$mail,$geb,$plz,$country,$city,$street,$housenr,$picture,$isActivated,$isRetailer,$maximum){
             if(mysqli_query($connection,"INSERT INTO users VALUES(null,'$firstname','$sirname','$sex','$username','$password','$tel','$mail','$geb','$plz','$country','$city','$street','$housenr','$picture','$isActivated','$isRetailer','$maximum')")){
                 echo "Der User ".$username." wurde erfolgreich angelegt.";
             }    
-        } 
+        } */
        function contactUser($connection,$mail,$textInput,$subject){
             $to=$mail;
             $message=$textInput;
