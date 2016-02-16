@@ -52,27 +52,6 @@ include_once("dbCon.inc");
         $pwNew=mysqli_real_escape_string($connection, $_POST['pwNew']);
         $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
-/*    if($code == 17){
-        $username=mysqli_real_escape_string($connection, $_POST['username']);
-        $sirname=mysqli_real_escape_string($connection, $_POST['sirname']);
-        $sex=mysqli_real_escape_string($connection, $_POST['sex']);
-        $firstname=mysqli_real_escape_string($connection, $_POST['firstname']);
-        $password=mysqli_real_escape_string($connection, $_POST['password']);
-        $tel=mysqli_real_escape_string($connection, $_POST['tel']);
-        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
-        $geb=mysqli_real_escape_string($connection, $_POST['geb']);
-        $plz=mysqli_real_escape_string($connection, $_POST['plz']);
-        $country=mysqli_real_escape_string($connection, $_POST['country']);
-        $city=mysqli_real_escape_string($connection, $_POST['city']);
-        $street=mysqli_real_escape_string($connection, $_POST['street']);
-        $housenr=mysqli_real_escape_string($connection, $_POST['housenr']);
-        $picture=mysqli_real_escape_string($connection, $_POST['picture']);
-        $isActivated=mysqli_real_escape_string($connection, $_POST['isActivated']);
-        $isRetailer=mysqli_real_escape_string($connection, $_POST['isRetailer']);
-        $maximum=mysqli_real_escape_string($connection, $_POST['maximum']);
-         $vorhanden=mysqli_real_escape_string($connection, $_POST['vorhanden']);
-    }
-*/    
     function showEditUserForm($username,$mail,$isActivated,$isRetailer,$maximum){
         $jsChgMail="changeMail(1,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
         $jsChgActiv="changeActive(2,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
@@ -176,8 +155,8 @@ include_once("dbCon.inc");
 </div>         
 
 ';
-            echo $content;
-        }
+    echo $content;
+}
         function check($connection,$qString) {
             $checkVar=mysqli_query($connection,$qString);
             if(mysqli_num_rows($checkVar)==0){
