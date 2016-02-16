@@ -231,26 +231,26 @@ function showEditCategoryForm($type){
                   break;
               case "notice":    echo "<h3>Ergebnis:</h3>$t
                                 <tr>
-                                <td>UserID</td>
+                                <td>Verfasser</td>
                                 <td>Title</td>
-                                <td>Description</td>
-                                <td>Price</td>
-                                <td>Category</td>
-                                <td>Picture</td>
-                                <td>Amount</td>
-                                <td></td>
+                                <td>St&uuml;ck</td>
+                                <td>Preis</td>
+                                <td>Preis/St&uuml;ck</td>
+                                <td>Originalpreis</td>
+                                <td>Ort</td>
+                                <td>L&auml;uft bis</td>
                                 </tr>
                                 <tr>";
-                                while($row = mysqli_fetch_object($result))
+                                while($row = mysqli_fetch_array($result))
                                 echo "
-                                <td>$row->UserID</td>
-                                <td>$row->title</td>
-                                <td>$row->description</td>
-                                <td>$row->price</td>
-                                <td>$row->category</td>
-                                <td>$row->picture</td>
-                                <td>Bearbeiten</td>
-                                <td>Löschen</td>
+                                <td>$row[2]</td>
+                                <td>$row[1]</td>
+                                <td>$row[3]</td>
+                                <td>$row[4]</td>
+                                <td>$row[5]</td>
+                                <td>$row[6]</td>
+                                <td>$row[10]</td>
+                                <td>$row[13]</td>
                                 </tr>	 
                                 ";
                                 echo "</table>";
@@ -264,7 +264,7 @@ function showEditCategoryForm($type){
                                  <td>Inhalt</td>
                                  </tr>
                                  <tr>";
-                                 while($row = mysqli_fetch_object($result))	 
+                                 while($row = mysqli_fetch_array($result))	 
                                  echo "
                                  <td>$row->UserID</td>
                                  <td>$row->authorID</td>
@@ -275,29 +275,10 @@ function showEditCategoryForm($type){
                                  echo "</table>";
                             
                   break;
-              case "categories":     echo "<h3>Ergebnis:</h3>$t
-                                     <tr>
-                                     <td>ID</td>
-                                     <td>Type</td>
-                                     <td>Nachname</td>
-                                     <td></td>
-                                     </tr>
-                                     <tr>";
-                                     while($row = mysqli_fetch_object($result))
-                                     echo"
-                                     <td>$row->id</td>
-                                     <td>$row->type</td>
-                                     <td>Bearbeiten</td>
-                                     <td>Löschen</td>
-                                     </tr>
-                                     ";
-                                     echo "</table>";
-                            
-                  break;
           }
           return;
             }
-        } //FERTIG  
+        } //FERTIG
         function delete($connection,$qString){ 
                $result=mysqli_query($connection,$qString);
                if($result){
