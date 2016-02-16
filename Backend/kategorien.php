@@ -60,8 +60,7 @@ $name = $_SESSION["username"];
 <div class="container">
 <div class="row center-block">
     <div class="col-xs-12 text-center">
-        <!-- empty div -->
-    </div>
+        <div class="col-xs-4"><h2>KATEGORIE</h2></div>
 
 </div>
     <div class="row center-block">
