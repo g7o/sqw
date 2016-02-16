@@ -3,7 +3,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17)
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -20,9 +20,16 @@
         $username=mysqli_real_escape_string($connection, $_POST['username']);
         $type=mysqli_real_escape_string($connection, $_POST['type']);    
     }
+    if($code == 43){
+        $type=mysqli_real_escape_string($connection, $_POST['type']);    
+    }
+    if($code == 44){
+        $type=mysqli_real_escape_string($connection, $_POST['type']);   
+        $typeNew=mysqli_real_escape_string($connection, $_POST['typeNew']);    
+    }
     if($code == 17){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
-        $maximum=mysqli_real_escape_string($connection, $_POST['max']);    
+        $maximum=mysqli_real_esca3e_string($connection, $_POST['max']);    
     }
     if($code == 19){
         $subject=mysqli_real_escape_string($connection, $_POST['subject']);
@@ -113,7 +120,7 @@
         echo $content;
     }
 function showEditCategoryForm($type){
-        $jsChgType="changeCategories(document.getElementById('type').value)";
+        $jsChgType="changeCategories('".$type."',document.getElementById('type').value)";
         $content=' <div class="row center-block">
     <div class="col-xs-12 text-center">
         <form class="form-horizontal">            
@@ -308,6 +315,18 @@ function showEditCategoryForm($type){
                echo "Es wurde kein Passwort übergeben!";
            }
         } //FERTIG 
+        function changeCategories($connection,$type,$typeNew){ 
+            $checkType=mysqli_fetch_object(mysqli_query($connection,"SELECT type FROM categories WHERE type='$type'"));
+            if($checkType->type != $typeNew){
+                if(mysqli_query($connection,"UPDATE categories SET type='$typeNew' WHERE type='$type'")){
+                    echo "Die Kategorie wurde auf ".$typeNew." ge&auml;ndert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }
+        } //FERTIG 
         function setActive($connection,$username,$active){ 
             $checkActive=mysqli_fetch_object(mysqli_query($connection,"SELECT isActivated FROM users WHERE username='$username'"));
             if($checkActive->isActivated != $active){
@@ -462,6 +481,10 @@ function showEditCategoryForm($type){
             case 41: search($connection,"SELECT * FROM categories WHERE type LIKE '%$textInput%'","categories");
                 break;
             case 42: addCategory($connection,$textInput);
+                break;
+            case 43: showEditCategoryForm($type);
+                break;
+            case 44: changeCategories($connection,$type,$typeNew);
                 break;
             case 501: showContactForm($mail,$firstname,$sirname);
                 break;   

@@ -43,6 +43,11 @@ if($row[1] == $passwort)
     {
     $_SESSION["username"] = $username;
     mysqli_close($connection);
+    $time = date_create();
+    $time=date_timestamp_get($time);
+    $time=date('m/d/Y',$time)
+    $abfrage = "UPDATE belog SET date='$time' WHERE user='$username'";
+    $ergebnis = mysqli_query($connection,$abfrage); 
     echo "Login erfolgreich!";
 echo '<meta http-equiv="refresh" content="3; URL=user.php">';
    exit;
