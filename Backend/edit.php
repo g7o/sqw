@@ -239,6 +239,7 @@ function showEditCategoryForm($type){
                                 <td>Originalpreis</td>
                                 <td>Ort</td>
                                 <td>L&auml;uft bis</td>
+                                <td>Aktiv</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_array($result))
@@ -251,6 +252,7 @@ function showEditCategoryForm($type){
                                 <td>$row[6]</td>
                                 <td>$row[10]</td>
                                 <td>$row[13]</td>
+                                <td>$row[14]</td>
                                 </tr>	 
                                 ";
                                 echo "</table>";
