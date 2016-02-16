@@ -97,7 +97,7 @@ function changeCategories(type){
 		}
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=43&type="+type);
+		xmlhttp.send("code=44&type="+type);
 }
 
 function changeMax(chgId,username,mail,active,type,max){

@@ -3,7 +3,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17)
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -20,8 +20,14 @@
         $username=mysqli_real_escape_string($connection, $_POST['username']);
         $type=mysqli_real_escape_string($connection, $_POST['type']);    
     }
+    if($code == 43){
+        $type=mysqli_real_escape_string($connection, $_POST['type']);    
+    }
+    if($code == 44){
+        $type=mysqli_real_escape_string($connection, $_POST['type']);    
+    }
     if($code == 17){
-        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $username=mysql4_real_escape_string($connection, $_POST['username']);
         $maximum=mysqli_real_escape_string($connection, $_POST['max']);    
     }
     if($code == 19){
@@ -460,6 +466,10 @@ function showEditCategoryForm($type){
             case 41: search($connection,"SELECT * FROM categories WHERE type LIKE '%$textInput%'","categories");
                 break;
             case 42: addCategory($connection,$textInput);
+                break;
+            case 43: showEditCategoryForm($type);
+                break;
+            case 44: changeCategories($type);
                 break;
             case 501: showContactForm($mail,$firstname,$sirname);
                 break;   
