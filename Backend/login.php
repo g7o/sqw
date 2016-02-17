@@ -42,12 +42,9 @@ $row = mysqli_fetch_array($ergebnis);
 if($row[1] == $passwort)
     {
     $_SESSION["username"] = $username;
-    $time = date_create();
-    $time=date_timestamp_get($time);
-    $time=date('m/d/Y H:i:s',$time);
     $abfrage = "INSERT INTO belog (user) VALUES ('".$username."')";
     $ergebnis = mysqli_query($connection,$abfrage);
-    if($ergebnis){echo "ja";}else{echo "nein";}
+    
     mysqli_close($connection);
     echo "Login erfolgreich!";
 echo '<meta http-equiv="refresh" content="3; URL=user.php">';
