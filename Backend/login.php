@@ -34,7 +34,7 @@ session_start();
   include_once("dbCon.inc");
 $username = mysqli_real_escape_string($connection,$_POST["username"]);
 $passwort = mysqli_real_escape_string($connection,md5($_POST["password"]));
-
+$addr=$_SERVER['REMOTE_ADDR'];
 $abfrage = "SELECT * FROM be WHERE name='$username'";
 $ergebnis = mysqli_query($connection,$abfrage);
 $row = mysqli_fetch_array($ergebnis);
@@ -42,7 +42,7 @@ $row = mysqli_fetch_array($ergebnis);
 if($row[1] == $passwort)
     {
     $_SESSION["username"] = $username;
-    $abfrage = "INSERT INTO belog (user) VALUES ('".$username."')";
+    $abfrage = "INSERT INTO belog (user,IP) VALUES ('".$username."','".$addr."')";
     $ergebnis = mysqli_query($connection,$abfrage);
     
     mysqli_close($connection);
