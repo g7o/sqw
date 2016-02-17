@@ -54,6 +54,27 @@ function changeActive(chgId,username,mail,active,type,max){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=15&username="+username+"&active="+active);
 }
+function changeActiveNotice(id,active){
+    active = encodeURIComponent(active);    
+    id = encodeURIComponent(id);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                    wait= setInterval("search(searchText)",timeWait);
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=26&id="+id+"&active="+active);
+}
 
 function changeType(chgId,username,mail,active,type,max){
     max = encodeURIComponent(max);
@@ -175,6 +196,28 @@ function shEdCategoryForm(type){
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=43&type="+type);
+}
+function shEdNoticeForm(active){
+        clearInterval(wait);    
+    active = encodeURIComponent(active);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("hidden-btn").classList.remove("btn-hidden");
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=25&active="+active);
 }
 function shConForm(mail,fname,sname){
     clearInterval(wait);

@@ -3,7 +3,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44)
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44 && $code != 25 && $code !=26)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -22,6 +22,13 @@
     }
     if($code == 43){
         $type=mysqli_real_escape_string($connection, $_POST['type']);    
+    }
+    if($code == 25){
+        $active=mysqli_real_escape_string($connection, $_POST['active']);    
+    }
+    if($code == 26){
+        $id=mysqli_real_escape_string($connection, $_POST['id']);
+        $active=mysqli_real_escape_string($connection, $_POST['active']); 
     }
     if($code == 44){
         $type=mysqli_real_escape_string($connection, $_POST['type']);   
@@ -127,6 +134,22 @@ function showEditCategoryForm($type){
             <div class="form-group">
                 <div class="col-xs-6">
                     <input type="text" class="form-control" value="'.$type.'" id="type">
+                </div>
+                <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
+            </div>   
+        </form>
+    </div>  
+</div>  ';
+        echo $content;
+    }
+function showEditNoticeForm($id,$active){
+        $jsChgType="changeActiveNotice('".$id."','".$active."',document.getElementById('active').value)";
+        $content=' <div class="row center-block">
+    <div class="col-xs-12 text-center">
+        <form class="form-horizontal">            
+            <div class="form-group">
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" value="'.$active.'" id="active">
                 </div>
                 <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
             </div>   
@@ -248,7 +271,10 @@ function showEditCategoryForm($type){
                                 <td>Aktiv</td>
                                 </tr>
                                 <tr>";
-                                while($row = mysqli_fetch_array($result))
+                                while($row = mysqli_fetch_array($result)){
+                                $shE="shEdNoticeForm('".$row[0]."'.'".$row[14]."')";
+                                $glyphEdit='<span id="'.$row[14].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
+                                $urlEdit='<a>'.$glyphEdit.'</a>';  
                                 echo "
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
@@ -259,8 +285,9 @@ function showEditCategoryForm($type){
                                 <td>$row[10]</td>
                                 <td>$row[13]</td>
                                 <td>$row[14]</td>
+                                <td>$urlEdit</td>
                                 </tr>	 
-                                ";
+                                ";}
                                 echo "</table>";
                             
                   break;
@@ -322,6 +349,25 @@ function showEditCategoryForm($type){
             }else{
                 echo "Bitte versuche es nochmal!";
             }
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }
+        } //FERTIG
+    function setActiveNotice($connection,$id,$active){ 
+            $checkActive=mysqli_fetch_object(mysqli_query($connection,"SELECT active FROM notice WHERE ID='$id'"));
+            if($checkActive->active != $active){
+            if($active == 0){
+                if(mysqli_query($connection,"UPDATE notice SET active='0' WHERE ID='$id'")){
+                    echo "Die Anzeige wurde deaktiviert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
+            if($active == 1){
+                if(mysqli_query($connection,"UPDATE notice SET active='1' WHERE ID='$id'")){
+                    echo "Die Anzeige wurde aktiviert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
             }else{
                 echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
             }
@@ -393,7 +439,7 @@ function showEditCategoryForm($type){
             $to=$mail;
             $message=$textInput;
             $from='Sqwirrel';
-            $fromMail='support@Sqwirrel.com';
+            $fromMail='support@sqwirrel.com';
             if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
                 echo "Fehler bei der Übermittlung!";
             else
@@ -462,6 +508,10 @@ function showEditCategoryForm($type){
             case 23: search($connection,"SELECT * FROM notice WHERE category LIKE '%$textInput%' OR UserID LIKE '%$textInput%'","notice");
                 break;
             case 24: search($connection,"SELECT * FROM notice WHERE UserID LIKE '%$textInput%'","notice");
+                break;
+            case 25: showEditNoticeForm($active);
+                break;
+            case 26: setActiveNotice($connection,$id,$active);
                 break;
             case 30: delete($connection,"DELETE FROM rating WHERE ID='$textInput'","rating","ID",$textInput);
                 break;
