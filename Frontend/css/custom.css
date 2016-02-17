@@ -79,8 +79,28 @@ hr {
 .table-responsive {
     border: 0px !important;
 }
-
+.navbar-btn {
+	margin-top: 2px !important;
+    margin-bottom: 0px !important;
+}
+.marg-top {
+	margin-top: 2px !important;
+}
+@media (max-device-width: 500px) and (orientation: portrait) {
+.navbar-collapse {
+	min-height: 200px !important;
+}
+.navbar-btn {
+	margin-top: 8px !important;
+}
+}
 @media (max-device-height: 500px) and (orientation: landscape) {
+    .navbar-btn {
+	margin-top: 8px !important;
+}
+.navbar-collapse {
+	min-height: 200px !important;
+}    
 .user-btn {
     margin-top: -10px !important;
     margin-bottom: 3px !important;
