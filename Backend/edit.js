@@ -197,9 +197,10 @@ function shEdCategoryForm(type){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=43&type="+type);
 }
-function shEdNoticeForm(active){
+function shEdNoticeForm(id,active){
         clearInterval(wait);    
-    active = encodeURIComponent(active);    
+    active = encodeURIComponent(active);
+    id = encodeURIComponent(id);        
 		if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -217,7 +218,7 @@ function shEdNoticeForm(active){
 		}
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=25&active="+active);
+		xmlhttp.send("code=25&active="+active+"&id="+id);
 }
 function shConForm(mail,fname,sname){
     clearInterval(wait);

@@ -24,7 +24,8 @@
         $type=mysqli_real_escape_string($connection, $_POST['type']);    
     }
     if($code == 25){
-        $active=mysqli_real_escape_string($connection, $_POST['active']);    
+        $active=mysqli_real_escape_string($connection, $_POST['active']);  
+        $id=mysqli_real_escape_string($connection, $_POST['id']);
     }
     if($code == 26){
         $id=mysqli_real_escape_string($connection, $_POST['id']);
@@ -143,13 +144,23 @@ function showEditCategoryForm($type){
         echo $content;
     }
 function showEditNoticeForm($id,$active){
-        $jsChgType="changeActiveNotice('".$id."','".$active."',document.getElementById('active').value)";
+$optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option>';
+        $optActivNo='<option value="0">Inaktiv</option><option value="1">Aktiv</option>'; 
+        if($active == 1){
+            $optActiv=$optActivYes;
+        } else {
+            $optActiv=$optActivNo;
+        }    
+        $jsChgType="changeActiveNotice('".$id."',document.getElementById('active').value)";
         $content=' <div class="row center-block">
     <div class="col-xs-12 text-center">
         <form class="form-horizontal">            
             <div class="form-group">
+            <label for="acitve" class="col-xs-2 control-label">Status:</label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" value="'.$active.'" id="active">
+                    <select id="active">
+                        '.$optActiv.'
+                    </select>
                 </div>
                 <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
             </div>   
@@ -272,7 +283,7 @@ function showEditNoticeForm($id,$active){
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
-                                $shE="shEdNoticeForm('".$row[0]."'.'".$row[14]."')";
+                                $shE="shEdNoticeForm('".$row[0]."','".$row[14]."')";
                                 $glyphEdit='<span id="'.$row[14].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
                                 $urlEdit='<a>'.$glyphEdit.'</a>';  
                                 echo "
@@ -509,7 +520,7 @@ function showEditNoticeForm($id,$active){
                 break;
             case 24: search($connection,"SELECT * FROM notice WHERE UserID LIKE '%$textInput%'","notice");
                 break;
-            case 25: showEditNoticeForm($active);
+            case 25: showEditNoticeForm($id,$active);
                 break;
             case 26: setActiveNotice($connection,$id,$active);
                 break;
