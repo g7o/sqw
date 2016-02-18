@@ -75,7 +75,27 @@ function changeActiveNotice(id,active){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=26&id="+id+"&active="+active);
 }
-
+function changeActiveRating(id,active){
+    active = encodeURIComponent(active);    
+    id = encodeURIComponent(id);    
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                    wait= setInterval("search(searchText)",timeWait);
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=36&id="+id+"&active="+active);
+}
 function changeType(chgId,username,mail,active,type,max){
     max = encodeURIComponent(max);
     username = encodeURIComponent(username);
@@ -219,6 +239,29 @@ function shEdNoticeForm(id,active){
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=25&active="+active+"&id="+id);
+}
+function shEdRatingForm(id,active){
+        clearInterval(wait);    
+    active = encodeURIComponent(active);
+    id = encodeURIComponent(id);        
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("hidden-btn").classList.remove("btn-hidden");
+
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=37&active="+active+"&id="+id);
 }
 function shConForm(mail,fname,sname){
     clearInterval(wait);

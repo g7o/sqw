@@ -3,7 +3,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44 && $code != 25 && $code !=26)
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44 && $code != 25 && $code !=26 && $code !=36 && $code != 37)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -28,6 +28,14 @@
         $id=mysqli_real_escape_string($connection, $_POST['id']);
     }
     if($code == 26){
+        $id=mysqli_real_escape_string($connection, $_POST['id']);
+        $active=mysqli_real_escape_string($connection, $_POST['active']); 
+    }
+    if($code == 36){
+        $id=mysqli_real_escape_string($connection, $_POST['id']);
+        $active=mysqli_real_escape_string($connection, $_POST['active']); 
+    }
+    if($code == 37){
         $id=mysqli_real_escape_string($connection, $_POST['id']);
         $active=mysqli_real_escape_string($connection, $_POST['active']); 
     }
@@ -143,8 +151,9 @@ function showEditCategoryForm($type){
 </div>  ';
         echo $content;
     }
+
 function showEditNoticeForm($id,$active){
-$optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option>';
+$optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>';
         $optActivNo='<option value="0">Inaktiv</option><option value="1">Aktiv</option>'; 
         if($active == 1){
             $optActiv=$optActivYes;
@@ -152,6 +161,32 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option
             $optActiv=$optActivNo;
         }    
         $jsChgType="changeActiveNotice('".$id."',document.getElementById('active').value)";
+        $content=' <div class="row center-block">
+    <div class="col-xs-12 text-center">
+        <form class="form-horizontal">            
+            <div class="form-group">
+            <label for="acitve" class="col-xs-2 control-label">Status:</label>
+                <div class="col-xs-6">
+                    <select id="active">
+                        '.$optActiv.'
+                    </select>
+                </div>
+                <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
+            </div>   
+        </form>
+    </div>  
+</div>  ';
+        echo $content;
+    }
+function showEditRatingForm($id,$active){
+$optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>';
+        $optActivNo='<option value="0">Inaktiv</option><option value="1">Aktiv</option>'; 
+        if($active == 1){
+            $optActiv=$optActivYes;
+        } else {
+            $optActiv=$optActivNo;
+        }    
+        $jsChgType="changeActiveRating('".$id."',document.getElementById('active').value)";
         $content=' <div class="row center-block">
     <div class="col-xs-12 text-center">
         <form class="form-horizontal">            
@@ -280,6 +315,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option
                                 <td>Ort</td>
                                 <td>L&auml;uft bis</td>
                                 <td>Aktiv</td>
+                                <td>Bearbeiten</td>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
@@ -306,18 +342,23 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option
                                  <tr>
                                  <td>An User</td>
                                  <td>Von User</td>
-                                 <td>Titel</td>
                                  <td>Inhalt</td>
+                                 <td>Aktiv</td>
+                                 <td>Bearbeiten</td>
                                  </tr>
                                  <tr>";
-                                 while($row = mysqli_fetch_array($result))	 
+                                 while($row = mysqli_fetch_array($result)){
+                                $shE="shEdRatingForm('".$row[0]."','".$row[5]."')";
+                                $glyphEdit='<span id="'.$row[5].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
+                                $urlEdit='<a>'.$glyphEdit.'</a>';                                      
                                  echo "
-                                 <td>$row->UserID</td>
-                                 <td>$row->authorID</td>
-                                 <td>$row->title</td>
-                                 <td>$row->content</td>
+                                 <td>$row[1]</td>
+                                 <td>$row[2]</td>
+                                 <td>$row[4]</td>
+                                 <td>$row[5]</td>
+                                 <td>$urlEdit</td>
                                  </tr>	 
-                                 ";
+                                 ";}
                                  echo "</table>";
                             
                   break;
@@ -376,6 +417,25 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option
             if($active == 1){
                 if(mysqli_query($connection,"UPDATE notice SET active='1' WHERE ID='$id'")){
                     echo "Die Anzeige wurde aktiviert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
+            }else{
+                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
+            }
+        } //FERTIG 
+    function setActiveRating($connection,$id,$active){ 
+            $checkActive=mysqli_fetch_object(mysqli_query($connection,"SELECT active FROM rating WHERE ID='$id'"));
+            if($checkActive->active != $active){
+            if($active == 0){
+                if(mysqli_query($connection,"UPDATE rating SET active='0' WHERE ID='$id'")){
+                    echo "Die Bewertung wurde deaktiviert.";
+            }else{
+                echo "Bitte versuche es nochmal!";
+            }}
+            if($active == 1){
+                if(mysqli_query($connection,"UPDATE rating SET active='1' WHERE ID='$id'")){
+                    echo "Die Bewertung wurde aktiviert.";
             }else{
                 echo "Bitte versuche es nochmal!";
             }}
@@ -526,16 +586,19 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">OInaktiv</option
                 break;
             case 30: delete($connection,"DELETE FROM rating WHERE ID='$textInput'","rating","ID",$textInput);
                 break;
-            case 31: search($connection,"SELECT * FROM rating WHERE authorID LIKE '%$textInput%' OR content LIKE '%$textInput%' OR title LIKE '%$textInput%' OR UserID LIKE '%$textInput%'","rating");
+            case 31: search($connection,"SELECT * FROM rating WHERE author LIKE '%$textInput%' OR content LIKE '%$textInput%' OR drawee LIKE '%$textInput%'","rating");
                 break;
-            case 32: search($connection,"SELECT * FROM rating WHERE authorID LIKE '%$textInput%'","rating");
+            case 32: search($connection,"SELECT * FROM rating WHERE author LIKE '%$textInput%'","rating");
                 break;
             case 33: search($connection,"SELECT * FROM rating WHERE content LIKE '%$textInput%'","rating");
                 break;
-            case 34: search($connection,"SELECT * FROM rating WHERE title LIKE '%$textInput%'","rating");
+
+            case 35: search($connection,"SELECT * FROM rating WHERE drawee LIKE '%$textInput%'","rating");
                 break;
-            case 35: search($connection,"SELECT * FROM rating WHERE UserID LIKE '%$textInput%'","rating");
+            case 36: setActiveRating($connection,$id,$active);
                 break;
+            case 37: showEditRatingForm($id,$active);
+                break;                
             case 40: delete($connection,"DELETE FROM categories WHERE ID='$textInput'","categories","ID",$textInput);
                 break;
             case 41: search($connection,"SELECT * FROM categories WHERE type LIKE '%$textInput%'","categories");
