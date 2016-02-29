@@ -2,6 +2,30 @@
 var searchText;
 var wait;
 var timeWait=2000;
+function changeUser(username,mail,active,type,max){
+    max = encodeURIComponent(max);
+    username = encodeURIComponent(username); 
+    mail = encodeURIComponent(mail);    
+    active = encodeURIComponent(active);    
+    type = encodeURIComponent(type);     
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                wait= setInterval("search(searchText)",timeWait);
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=12&username="+username+"&mail="+mail+"&active="+active+"&type="+type+"&max="+max);
+}
 function changeMail(chgId,username,mail,active,type,max){
     max = encodeURIComponent(max);
     username = encodeURIComponent(username);
@@ -308,7 +332,6 @@ function deleteUser(username){
 }
 
 function contactUser(mail){
-    alert("contac");
     textInput = encodeURIComponent(document.getElementById('message').value);
     subject = encodeURIComponent(document.getElementById('subject').value);
     mail = encodeURIComponent(mail);
@@ -356,11 +379,10 @@ function changePassword(username){
 		xmlhttp.send("code=550&username="+username+"&pwOld="+pwOld+"&pwNew="+pwNew+"&pwNewChk="+pwNewChk);
 	}
 
-    function search(tInput){
+    function search(art,tInput){
         clearInterval(wait);
         searchText=tInput;
         document.getElementById('inText').value="";
-		var art = document.getElementById('art').value;
 		if (tInput==""){
 				document.getElementById("ergebnis").innerHTML="Kein Suchbegriff eingegeben!";
             document.getElementById("hidden-btn").classList.remove("btn-hidden");

@@ -3,7 +3,7 @@
     /** @param[in] code Beinhaltet den Bearbeitungscode */
     $code=mysqli_real_escape_string($connection, $_POST['code']);
     /** @param[in] textInput Beinhaltet den String für die SQL-Abfragen */
-    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44 && $code != 25 && $code !=26 && $code !=36 && $code != 37)
+    if($code != 17 && $code != 550 && $code != 18 && $code !=501 && $code != 502 && $code != 15 && $code != 16 && $code != 17 && $code != 43 && $code != 44 && $code != 25 && $code !=26 && $code !=36 && $code != 37 && $code != 12)
     $textInput=mysqli_real_escape_string($connection, $_POST['textInput']);
     /** @param[in] password Beinhaltet das zu ändernde Passwort - default: 0 */
     if($code == 14)
@@ -11,6 +11,13 @@
     if($code == 18){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
         $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+    }
+    if($code == 12){
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+        $type=mysqli_real_escape_string($connection, $_POST['type']);
+        $active=mysqli_real_escape_string($connection, $_POST['active']); 
+        $maximum=mysqli_real_escape_string($connection, $_POST['max']);  
     }
     if($code == 15){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
@@ -45,7 +52,7 @@
     }
     if($code == 17){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
-        $maximum=mysqli_real_esca3e_string($connection, $_POST['max']);    
+        $maximum=mysqli_real_escape_string($connection, $_POST['max']);    
     }
     if($code == 19){
         $subject=mysqli_real_escape_string($connection, $_POST['subject']);
@@ -75,6 +82,7 @@
         $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
     function showEditUserForm($username,$mail,$isActivated,$isRetailer,$maximum){
+        $jsUser="changeUser('".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
         $jsChgMail="changeMail(1,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
         $jsChgActiv="changeActive(2,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
         $jsChgType="changeType(3,'".$username."',document.getElementById('mail').value,document.getElementById('aktiv').value,document.getElementById('ktype').value,document.getElementById('max').value)";
@@ -101,17 +109,15 @@
                 <label for="mail" class="col-xs-2 control-label">Mail:</label>
                 <div class="col-xs-6">
                     <input type="email" class="form-control" value="'.$mail.'" id="mail">
-                </div>
-                <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgMail.'">Speichern</a>     
-            </div> 
+                </div> 
+             </div> 
         <div class="form-group">
             <label for="ktype" class="col-xs-2 control-label">Typ:</label>
             <div class="col-xs-6">
                 <select id="ktype">
                 '.$optTyp.'
                 </select>
-            </div>
-            <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
+            </div>  
         </div>
         <div class="form-group">
             <label for="aktiv" class="col-xs-2 control-label">Aktiv:</label>
@@ -119,17 +125,15 @@
                 <select id="aktiv">
                     '.$optActiv.'
                 </select>
-            </div>
-            <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgActiv.'">Speichern</a>                 
+            </div>               
         </div>
-        <div class="form-group text-center">
+        <div class="form-group">
             <label for="max" class="col-xs-2 control-label">Max.:</label>
             <div class="col-xs-6">
                 <input type="number" min="0" value="'.$maximum.'" class="form-control" id="max">                
-            </div>
-            <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgMax.'">Speichern</a>     
-            
-        </div>  
+            </div>       
+        </div>
+         <a class="col-xs-4 col-xs-offset-4 text-center btn btn-primary" onclick="'.$jsUser.'">Speichern</a>  
         </form>
     </div>  
 </div>  ';
@@ -230,8 +234,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
         <div class="form-group">
             <label for="message" class="col-xs-2 control-label">Nachricht:</label>
             <div class="col-xs-10">
-                <textarea required cols="10" rows="10" name="message" class="form-control" id="message">
-                </textarea>
+                <textarea required cols="10" rows="10" name="message" class="form-control" id="message" autofocus ></textarea>
             </div>
         </div> 
         <div class="form-group">
@@ -287,13 +290,17 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 $urlContact='<a>'.$glyphContact.'</a>';
                                 $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
                                 $urlRemove='<a>'.$glyphRemove.'</a>';
+                                if($row[15]==0)
+                                    $s="nein";
+                                else
+                                    $s="ja";
                                 echo "
                                 <td>$row[4]</td>
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
                                 <td>$row[7]</td>
                                 <td>$row[16]</td>                                                            
-                                <td>$row[15]</td>                            
+                                <td>$s</td>                            
                                 <td>$row[17]</td> 
                                 <td>$urlEdit</td>
                                 <td>$urlRemove</td>
@@ -321,7 +328,11 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 while($row = mysqli_fetch_array($result)){
                                 $shE="shEdNoticeForm('".$row[0]."','".$row[14]."')";
                                 $glyphEdit='<span id="'.$row[14].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
-                                $urlEdit='<a>'.$glyphEdit.'</a>';  
+                                $urlEdit='<a>'.$glyphEdit.'</a>'; 
+                                if($row[14]==0)
+                                    $s="nein";
+                                else
+                                    $s="ja";
                                 echo "
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
@@ -329,9 +340,9 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>$row[4]</td>
                                 <td>$row[5]</td>
                                 <td>$row[6]</td>
-                                <td>$row[10]</td>
+                                <td>$row[9]</td>
                                 <td>$row[13]</td>
-                                <td>$row[14]</td>
+                                <td>$s</td>
                                 <td>$urlEdit</td>
                                 </tr>	 
                                 ";}
@@ -350,12 +361,16 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                  while($row = mysqli_fetch_array($result)){
                                 $shE="shEdRatingForm('".$row[0]."','".$row[5]."')";
                                 $glyphEdit='<span id="'.$row[5].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
-                                $urlEdit='<a>'.$glyphEdit.'</a>';                                      
+                                $urlEdit='<a>'.$glyphEdit.'</a>';
+                                if($row[5]==0)
+                                    $s="nein";
+                                else
+                                    $s="ja";
                                  echo "
                                  <td>$row[1]</td>
                                  <td>$row[2]</td>
                                  <td>$row[4]</td>
-                                 <td>$row[5]</td>
+                                 <td>$s</td>
                                  <td>$urlEdit</td>
                                  </tr>	 
                                  ";}
@@ -511,7 +526,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
             $message=$textInput;
             $from='Sqwirrel';
             $fromMail='support@sqwirrel.com';
-            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
+            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8'))
                 echo "Fehler bei der Übermittlung!";
             else
                 echo "Email erfolgreich gesendet!";
@@ -528,8 +543,62 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                 echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
             }
         }//FERTIG
+        function changeUserNew($connection,$username,$mail,$active,$type,$maximum){
+            $checkMail= mysqli_fetch_object(mysqli_query($connection,"SELECT mail FROM users WHERE username='$username'"));
+            $checkMax=mysqli_fetch_object(mysqli_query($connection,"SELECT maximum FROM users WHERE username='$username'"));
+            $checkType=mysqli_fetch_object(mysqli_query($connection,"SELECT isRetailer FROM users WHERE username='$username'"));
+            $checkActive=mysqli_fetch_object(mysqli_query($connection,"SELECT isActivated FROM users WHERE username='$username'"));
+            if($checkMail->mail == $mail && $checkMax->maximum == $maximum && $checkType->isRetailer == $type && $checkActive->isActivated == $active){
+                echo "Es wurden keine Daten geändert.";
+            }
+            if($checkMail->mail != $mail){
+                if(mysqli_query($connection,"UPDATE users SET mail='$mail' WHERE username='$username'")){
+                   echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert. <br>";
+                }else{
+                    echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden. <br>";
+                }
+            }
+            if($checkMax->maximum != $maximum){
+                if(mysqli_query($connection,"UPDATE users SET maximum='$maximum' WHERE username='$username'")){
+                    echo "Das Maximum von User ".$username." ist nun ".$maximum.". <br>";
+                }else{
+                    echo "Bitte versuche es nochmal! <br>";
+                }
+            }
+            if($checkType->isRetailer != $type){
+                if($type == 0){
+                    if(mysqli_query($connection,"UPDATE users SET isRetailer='0' WHERE username='$username'")){
+                        echo "Der Kontotyp von User ".$username." ist nun 'Kostenlos'. <br>";
+                    }else{
+                        echo "Bitte versuche es nochmal! <br>";
+                    }
+                }
+                if($type == 1){
+                    if(mysqli_query($connection,"UPDATE users SET isRetailer='1' WHERE username='$username'")){
+                        echo "Der Kontotyp von User ".$username." ist nun 'H&auml;ndler'. <br>";
+                    }else{
+                        echo "Bitte versuche es nochmal! <br>";
+                    }
+                }
+            }
+            if($checkActive->isActivated != $active){
+                if($active == 0){
+                    if(mysqli_query($connection,"UPDATE users SET isActivated='0' WHERE username='$username'")){
+                        echo "Der User ".$username." wurde deaktiviert. <br>";
+                    }else{
+                        echo "Bitte versuche es nochmal! <br>";
+                    }
+                }
+                if($active == 1){
+                    if(mysqli_query($connection,"UPDATE users SET isActivated='1' WHERE username='$username'")){
+                        echo "Der User ".$username." wurde aktiviert. <br>";
+                    }else{
+                        echo "Bitte versuche es nochmal! <br>";
+                    }
+                }
+            }
+        }
         function changePasswordBe($connection, $username, $pwOld, $pwNew, $pwNewChk){
-            
             if($pwNew == $pwNewChk){
                 $check= mysqli_fetch_array(mysqli_query($connection,"SELECT password FROM be WHERE name='$username'"));
                 $pw=md5($pwOld);
@@ -554,9 +623,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                 break;
             case 11: search($connection,"SELECT * FROM users WHERE username LIKE '%$textInput%' OR mail LIKE '%$textInput%'","users");
                 break;
-            case 12: search($connection,"SELECT * FROM users WHERE username LIKE '%$textInput%'","users");
-                break;
-            case 13: search($connection,"SELECT * FROM users WHERE mail LIKE '%$textInput%'","users");
+            case 12: changeUserNew($connection,$username,$mail,$active,$type,$maximum);
                 break;
             case 14: changePassword($connection,$textInput,$password);
                 break;
@@ -572,13 +639,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;
-            case 21: search($connection,"SELECT * FROM notice WHERE title LIKE '%$textInput%' OR category LIKE '%$textInput%' OR UserID LIKE '%$textInput%'","notice");
-                break;
-            case 22: search($connection,"SELECT * FROM notice WHERE title LIKE '%$textInput%'","notice");
-                break;
-            case 23: search($connection,"SELECT * FROM notice WHERE category LIKE '%$textInput%' OR UserID LIKE '%$textInput%'","notice");
-                break;
-            case 24: search($connection,"SELECT * FROM notice WHERE UserID LIKE '%$textInput%'","notice");
+            case 21: search($connection,"SELECT * FROM notice WHERE title LIKE '%$textInput%' OR category LIKE '%$textInput%' OR UserID LIKE '%$textInput%' or location LIKE '%$textInput%'","notice");
                 break;
             case 25: showEditNoticeForm($id,$active);
                 break;
@@ -587,13 +648,6 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
             case 30: delete($connection,"DELETE FROM rating WHERE ID='$textInput'","rating","ID",$textInput);
                 break;
             case 31: search($connection,"SELECT * FROM rating WHERE author LIKE '%$textInput%' OR content LIKE '%$textInput%' OR drawee LIKE '%$textInput%'","rating");
-                break;
-            case 32: search($connection,"SELECT * FROM rating WHERE author LIKE '%$textInput%'","rating");
-                break;
-            case 33: search($connection,"SELECT * FROM rating WHERE content LIKE '%$textInput%'","rating");
-                break;
-
-            case 35: search($connection,"SELECT * FROM rating WHERE drawee LIKE '%$textInput%'","rating");
                 break;
             case 36: setActiveRating($connection,$id,$active);
                 break;

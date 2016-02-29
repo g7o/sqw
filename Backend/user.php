@@ -59,13 +59,8 @@ $name = $_SESSION["username"];
 <div class="container">
 <div class="row center-block">
     <div class="col-xs-12 text-center">
-                 <input type="text" id="inText" autocomplete="off"  onkeydown="if(event.keyCode == 13){search(this.value)}">
-         <input type="button" value="Suchen" onclick="search(document.getElementById('inText').value)">
-                        <select id="art">
-                          <option value="11">nach Beiden suchen</option>
-                          <option value="12">nach Username suchen</option>
-                          <option value="13">nach Email suchen</option>
-                        </select>
+                 <input type="text" id="inText" autofocus autocomplete="off"  onkeydown="if(event.keyCode == 13){search(11,this.value)}">
+         <input type="button" value="Suchen" onclick="search(11,document.getElementById('inText').value)">
     </div></div>
     <div class="row center-block">
         <div class="text-center col-xs-12 table-responsive" id="ergebnis">         
