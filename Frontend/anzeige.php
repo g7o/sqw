@@ -65,7 +65,7 @@
           <div class="row">
               <?php 
                 include_once("Modal.inc"); 
-?>
+              ?>
               <img class="img-circle img-responsive center-block" src="sqwirrel_logo1.png" >
               <h1 class="text-center username">TITEL</h1>
               <hr>

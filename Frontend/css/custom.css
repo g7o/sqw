@@ -83,6 +83,9 @@ hr {
 	margin-top: 2px !important;
     margin-bottom: 0px !important;
 }
+ body {
+    margin-top: 100px !important;
+}
 .marg-top {
 	margin-top: 2px !important;
 }
@@ -90,6 +93,7 @@ hr {
 .navbar-collapse {
 	min-height: 100px !important;
 }
+
 .navbar-btn {
 	margin-top: 8px !important;
 }
@@ -222,9 +226,7 @@ hr {
 
 }
 
-.con {
-    margin-top: 150px;
-}
+
 
 footer {
     background-color: lightgray;
