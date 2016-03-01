@@ -58,29 +58,12 @@
               <?php 
                 include_once("Modal.inc"); 
               ?>
-              <img class="img-circle img-responsive center-block" src="sqwirrel_logo1.png" >
-              <h1 class="text-center username">TITEL</h1>
-              <hr>
           </div><!--1ROW-->
       <div class="row" >
           <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left" >              
-                  <div style="font-size: 1.6em">
-                      <span class="glyphicon glyphicon-chevron-right"></span>X Stück <br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>€/Stück <br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Originalpreis: €/Stück <br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Kategorie: <br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Teams | Bands | Künstler: <br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Ort: <br>                      
-                      <span class="glyphicon glyphicon-chevron-right"></span>Datum: TT.MM.JJJJ | Zeit: HH:MM<br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Abholung / Versand <br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <a href="#">USERNAME</a>
-                  </div>
-                  <p><a href="#" class="btn btn-success center-block" style="margin-bottom: 5px;">Angebot abgeben</a> <a href="#" class="btn btn-warning center-block">Merken</a> <a href="#" class="btn btn-link center-block btn-sm">Melden</a></p> 
-              </div>
+            
           </div>      
-        
-      </div>
+      </div><!--2ROW-->
       </div><!--MAIN-->
         <footer>
             

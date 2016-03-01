@@ -74,35 +74,35 @@
                 include_once("Modal.inc"); 
               ?>
           <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
+              <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
                   <h1>Kontaktformular</h1>
                   <hr>
               </div>                  
           </div> <!-- header -->
           <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
+              <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
                 <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="name" class="col-xs-2 control-label">Name:</label>
-                    <div class="col-xs-10">
+                    <label for="name" class="col-xs-12 col-sm-2 control-label">Name:</label>
+                    <div class="col-xs-12 col-sm-10">
                       <input required type="text" class="form-control" id="name" placeholder="Oachkatzl Schwoaf">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="email" class="col-xs-2 control-label">E-Mail:</label>
-                    <div class="col-xs-10">
+                    <label for="email" class="col-xs-12 col-sm-2 control-label">E-Mail:</label>
+                    <div class="col-xs-12 col-sm-10">
                       <input required type="email" class="form-control" id="email" placeholder="oachkatzl@sqwirrel.eu">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="betreff" class="col-xs-2 control-label">Betreff:</label>
-                    <div class="col-xs-10">
+                    <label for="betreff" class="col-xs-12 col-sm-2 control-label">Betreff:</label>
+                    <div class="col-xs-12 col-sm-10">
                       <input required type="text" class="form-control" id="betreff" placeholder="Hallo Sqwirrel-Team">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="betreff" class="col-xs-2 control-label">Kategorie:</label>
-                    <div class="col-xs-10">
+                    <label for="betreff" class="col-xs-12 col-sm-2 control-label">Kategorie:</label>
+                    <div class="col-xs-12 col-sm-10">
                         <select class="form-control">
                           <option>Allgemein</option>
                           <option>Problem melden</option>
@@ -113,12 +113,12 @@
                     </div>
                   </div>                     
                   <div class="form-group">
-                    <label for="betreff" class="col-xs-2 control-label">Nachricht:</label>
-                    <div class="col-xs-10">
+                    <label for="betreff" class="col-xs-12 col-sm-2 control-label">Nachricht:</label>
+                    <div class="col-xs-12 col-sm-10">
                        <textarea required class="form-control" rows="7" placeholder="Eure Seite ist einfach leiwand!"></textarea> 
                     </div>
                   </div> 
-                  <div class="form-group col-sm-12">
+                  <div class="form-group col-xs-12">
                     <label for="datei" id="lbl" class="col-sm text-center center-block"><span class="glyphicon glyphicon-open
 "></span>Datei hochladen</label>
                       
@@ -127,7 +127,7 @@
                       
                   </div> 
                   <div class="form-group">
-                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 center-block">
+                    <div class="col-xs-12 col-sm-12 center-block">
                       <button type="submit" class="btn btn-primary">Absenden</button>
                     </div>
                   </div>                    
