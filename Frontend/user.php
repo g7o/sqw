@@ -72,11 +72,13 @@
                     
 
               <h1 class="text-center username">Username</h1>
+              <a class="melden-link center-block" href="#">Melden</a>
               <hr>
               <!--</div>-->
           </div><!--1ROW-->
           <div class="row">
             <h3 class="text-left username">Zu verkaufen:</h3>
+              <hr>
             <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
                     <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">

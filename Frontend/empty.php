@@ -60,9 +60,9 @@
               ?>
           </div><!--1ROW-->
       <div class="row" >
-          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
-            
-          </div>      
+          
+
+
       </div><!--2ROW-->
       </div><!--MAIN-->
         <footer>
