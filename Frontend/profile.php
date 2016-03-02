@@ -97,6 +97,7 @@
                     <p class="anz">Ort</p>
                     <h5 class="anz">PREIS</h5>
                     <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                    <p class="anz"><a href="#" class="btn btn-danger " role="button">Löschen</a></p>
                 </div> <!-- End Col 12 -->
             </div><!-- End Col 12 6 4 4 -->   
             <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -108,7 +109,8 @@
                     <p class="anz">TT.MM.JJJJ</p>
                     <p class="anz">Ort</p>
                     <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>  
+                    <p class="anz"><a href="#" class="btn btn-danger " role="button">Löschen</a></p>
                 </div> <!-- End Col 12 -->
             </div><!-- End Col 12 6 4 4 -->   
             <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -120,12 +122,12 @@
                     <p class="anz">TT.MM.JJJJ</p>
                     <p class="anz">Ort</p>
                     <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>
+                    <p class="anz"><a href="#" class="btn btn-danger " role="button">Löschen</a></p>
                 </div> <!-- End Col 12 -->
             </div><!-- End Col 12 6 4 4 -->             
       </div><!--2ROW--><hr>
-      <div class="row">
-      </div><!--3ROW--><hr>
+    
       <div class="row">
                <h2 class="text-left username">Meine Bewertungen:</h2>
               <hr>
