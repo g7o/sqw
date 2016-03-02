@@ -64,7 +64,7 @@
                   </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
-                      <a href="#" class="pull-right">Bearbeiten</a>
+                      <a href="editUser.php" class="pull-right">Bearbeiten</a>
                       <ul class="user-list">
                           <li>USERNAME</li>
                           <li>VORNAME</li>
@@ -77,12 +77,12 @@
           </div><!--1ROW-->
           <hr>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-last-line">KAT1</button></div>
-            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-last-line">KAT2</button></div>
-            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-last-line">KAT3</button></div>
-            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12">KAT4</button></div>
-            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12">KAT5</button></div>
-            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12">KAT6</button></div>
+            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-cstm">KAT1</button></div>
+            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-cstm">KAT2</button></div>
+            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-cstm">KAT3</button></div>
+            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-cstm">KAT4</button></div>
+            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-cstm">KAT5</button></div>
+            <div class="col-xs-12 col-sm-6 col-md-4"><button class="btn disabled btn-default col-xs-12 btn-cstm">KAT6</button></div>
           </div><!--INTEREST_ROW--><hr>
       <div class="row" >
 <h2 class="text-left username">Aktuelle Verkäufe:</h2>
