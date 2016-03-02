@@ -58,104 +58,50 @@
               <?php 
                 include_once("Modal.inc"); 
               ?>
-                <h2 class="username">Anzeige erstellen:</h2>
-              <hr>
+
               <div class="text-center">
 <form class="form-horizontal">
+                <h3><a href="anzeige.php">Ticket</a></h3>
+                <a href="#" class="btn btn-success btn-cstm-ang">Annehmen</a>
+                <a href="#" class="btn btn-danger btn-cstm-ang">Ablehnen</a><hr>
+                <h2 class="username">Angebot abgeben:</h2>
+              <hr>    
                   <div class="form-group">
-                    <label for="title" class="col-xs-12 col-sm-2 control-label">Titel:</label>
+                    <label for="avail" class="col-xs-12 col-sm-2 control-label">Stück verfügbar:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="title" placeholder="Titel">
-                    </div>
-                  </div>    
-                  <div class="form-group">
-                    <label for="piece" class="col-xs-12 col-sm-2 control-label">Stückzahl:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="piece" min="1">
+                      <input required type="text" class="form-control" disabled id="avail" value="3">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="price" class="col-xs-12 col-sm-2 control-label">Preis:</label>
+                    <label for="piece" class="col-xs-12 col-sm-2 control-label">Stück benötigt:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="price" min="0">
+                      <input required type="number" class="form-control" id="piece" min="1" max="3" value="3">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="minprice" class="col-xs-12 col-sm-2 control-label">Mindespreis:</label>
+                    <label for="isPrice" class="col-xs-12 col-sm-2 control-label">Preis - Vorgabe:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="minprice" min="0">
-                    </div>
-                  </div>     
-                  <div class="form-group">
-                    <label for="origPrice" class="col-xs-12 col-sm-2 control-label">Originalpreis:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="origPrice" min="0">
-                    </div>
-                  </div>     
-                    <div class="form-group">
-                    <label for="categories" class="col-xs-12 col-sm-2 control-label">Kategorie:</label>
-                    <div class="col-xs-12 col-sm-10 ">
-                      <select id="categories" class="form-control">
-                          <option>Sport</option>
-                          <option>KAt 1</option>
-                          <option>KAt 2</option>
-                          <option>KAt 3</option>
-                      </select>
+                      <input required type="text" class="form-control" disabled id="isPrice" value="30">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="actors" class="col-xs-12 col-sm-2 control-label">Akteure:</label>
+                    <label for="price" class="col-xs-12 col-sm-2 control-label">Preis - Angebot:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="actors">
+                      <input required type="number" class="form-control" id="price" min="1" value="3">
                     </div>
-                  </div>  
-                  <div class="form-group">
-                    <label for="date" class="col-xs-12 col-sm-2 control-label">Datum:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="date" class="form-control" id="date" value="1997-01-01">
-                    </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="shipping" class="col-xs-12 col-sm-2 control-label">Versand:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <select id="shipping" class="form-control">
-                          <option>Versand</option>
-                          <option>Abholung</option>
-                      </select>
-                    </div>
-                  </div> 
-                    <div class="form-group">
-                    <label for="payment" class="col-xs-12 col-sm-2 control-label">Bezahlung:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <select id="payment" class="form-control">
-                          <option>Bar</option>
-                          <option>Überweisung</option>
-                      </select>
-                    </div>
-                  </div> 
-                                      
-                <h4 >Profilbild auswählen: (optional)</h4>
-                <hr>
-                  <div class="form-group col-xs-12">
-                    <label id="lbl" for="datei" class="col-x2-12 text-center center-block"><span class="glyphicon glyphicon-open"></span>Datei hochladen</label>
-                      
-                    <input type="file" id="datei" class="inputfile" accept="image/png, image/jpeg, image/gif, " onchange="chg()">
-                    <p class="help-block">Erlaubte Dateien: .JPG | .PNG | .JPEG | .GIF</p>
-                      
                   </div> 
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                      <button type="submit" class="btn btn-primary">Speichern<button>
+                      <button type="submit" class="btn btn-success">Absenden</button>
                     </div>
-                  </div>                    
-                </form>  
-              </div>
+                  </div>     
+                  </form>
           </div><!--1ROW-->
       <div class="row" >
           
         
       </div>
-      </div><!--MAIN-->
+          </div><!--MAIN--></div>
         <footer>
             
           <div class="container-fluid">

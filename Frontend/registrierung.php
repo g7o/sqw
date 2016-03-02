@@ -62,11 +62,6 @@
 
       </div>            
      </div>
-  	
-  		
-
-     
-     
   </div><!--NAV-->
       
       <div class="container con">

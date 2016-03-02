@@ -81,6 +81,12 @@
                     </div>
                   </div> 
                   <div class="form-group">
+                    <label for="minprice" class="col-xs-12 col-sm-2 control-label">Mindespreis:</label>
+                    <div class="col-xs-12 col-sm-10">
+                      <input required type="number" class="form-control" id="minprice" min="0">
+                    </div>
+                  </div>     
+                  <div class="form-group">
                     <label for="origPrice" class="col-xs-12 col-sm-2 control-label">Originalpreis:</label>
                     <div class="col-xs-12 col-sm-10">
                       <input required type="number" class="form-control" id="origPrice" min="0">
@@ -139,7 +145,7 @@
                   </div> 
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                      <button type="submit" class="btn btn-primary">Registrieren!</button>
+                      <button type="submit" class="btn btn-primary">Speichern</button>
                     </div>
                   </div>                    
                 </form>  
