@@ -61,7 +61,7 @@ function changeActiveRating(id,active){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                    wait= setInterval("search(searchText)",timeWait);
+                wait= setInterval("search(searchText)",timeWait);
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -82,7 +82,7 @@ function changeCategories(type,typeNew){
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                    setTimeout(function () { location.reload(true); },timeWait);
+                setTimeout(function () { location.reload(true); },timeWait);
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -106,8 +106,7 @@ function shEdForm(username,mail,activated,retailer,max){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
 			}
 		}
 		xmlhttp.open("POST","edit.php",true);
@@ -127,7 +126,7 @@ function shEdCategoryForm(type){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
                 document.getElementById("hidden-btn").classList.remove("btn-hidden");
 
 			}
@@ -150,7 +149,7 @@ function shEdNoticeForm(id,active){
 		}
 		xmlhttp.onreadystatechange=function(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                				document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
                 document.getElementById("hidden-btn").classList.remove("btn-hidden");
 
 			}

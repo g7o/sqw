@@ -146,7 +146,7 @@ function showEditCategoryForm($type){
         <form class="form-horizontal">            
             <div class="form-group">
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" value="'.$type.'" id="type">
+                    <input type="text" autofocus autocomplete="off" class="form-control" value="'.$type.'" id="type">
                 </div>
                 <a class="col-xs-4 text-center btn btn-primary" onclick="'.$jsChgType.'">Speichern</a>     
             </div>   
@@ -307,9 +307,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>$urlContact</td>
                                 </tr>	 
                                 ";}
-                                echo "</table>";
-                                
-                            
+                                echo "</table>";                        
                   break;
               case "notice":    echo "<h3>Ergebnis:</h3>$t
                                 <tr>
@@ -317,7 +315,6 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>Title</td>
                                 <td>St&uuml;ck</td>
                                 <td>Preis</td>
-                                <td>Preis/St&uuml;ck</td>
                                 <td>Originalpreis</td>
                                 <td>Ort</td>
                                 <td>L&auml;uft bis</td>
@@ -326,22 +323,22 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 </tr>
                                 <tr>";
                                 while($row = mysqli_fetch_array($result)){
-                                $shE="shEdNoticeForm('".$row[0]."','".$row[14]."')";
-                                $glyphEdit='<span id="'.$row[14].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
-                                $urlEdit='<a>'.$glyphEdit.'</a>'; 
-                                if($row[14]==0)
+                                $shE="shEdNoticeForm('".$row[0]."','".$row[13]."')";
+                                $glyphEdit='<span id="'.$row[13].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
+                                $urlEdit='<a>'.$glyphEdit.'</a>';
+                                $authorResult=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE id='$row[2]'"));
+                                if($row[13]==0)
                                     $s="nein";
                                 else
                                     $s="ja";
                                 echo "
-                                <td>$row[2]</td>
+                                <td>$authorResult[4]</td>
                                 <td>$row[1]</td>
                                 <td>$row[3]</td>
                                 <td>$row[4]</td>
                                 <td>$row[5]</td>
-                                <td>$row[6]</td>
-                                <td>$row[9]</td>
-                                <td>$row[13]</td>
+                                <td>$row[8]</td>
+                                <td>$row[12]</td>
                                 <td>$s</td>
                                 <td>$urlEdit</td>
                                 </tr>	 
@@ -362,13 +359,15 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 $shE="shEdRatingForm('".$row[0]."','".$row[5]."')";
                                 $glyphEdit='<span id="'.$row[5].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
                                 $urlEdit='<a>'.$glyphEdit.'</a>';
+                                $authorResult=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE id='$row[1]'"));
+                                $draweeResult=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE id='$row[2]'"));
                                 if($row[5]==0)
                                     $s="nein";
                                 else
                                     $s="ja";
                                  echo "
-                                 <td>$row[1]</td>
-                                 <td>$row[2]</td>
+                                 <td>$authorResult[4]</td>
+                                 <td>$draweeResult[4]</td>
                                  <td>$row[4]</td>
                                  <td>$s</td>
                                  <td>$urlEdit</td>
@@ -470,7 +469,6 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                 echo "Die Kategorie ".$qString." ist schon vorhanden.";
             }
         } //FERTIG
-
        function contactUser($connection,$mail,$textInput,$subject){
             $to=$mail;
             $message=$textInput;
