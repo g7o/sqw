@@ -458,56 +458,6 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                 echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
             }
         } //FERTIG 
-        function setActive($connection,$username,$active){ 
-            $checkActive=mysqli_fetch_object(mysqli_query($connection,"SELECT isActivated FROM users WHERE username='$username'"));
-            if($checkActive->isActivated != $active){
-            if($active == 0){
-                if(mysqli_query($connection,"UPDATE users SET isActivated='0' WHERE username='$username'")){
-                    echo "Der User ".$username." wurde deaktiviert.";
-            }else{
-                echo "Bitte versuche es nochmal!";
-            }}
-            if($active == 1){
-                if(mysqli_query($connection,"UPDATE users SET isActivated='1' WHERE username='$username'")){
-                    echo "Der User ".$username." wurde aktiviert.";
-            }else{
-                echo "Bitte versuche es nochmal!";
-            }}
-            }else{
-                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
-            }
-        } //FERTIG 
-        function updateMaximum($connection,$username,$maximum){ 
-            $checkMax=mysqli_fetch_object(mysqli_query($connection,"SELECT maximum FROM users WHERE username='$username'"));
-            if($checkMax->maximum != $maximum){
-                if(mysqli_query($connection,"UPDATE users SET maximum='$maximum' WHERE username='$username'")){
-                    echo "Das Maximum von User ".$username." wurde von ".$checkMax->maximum." auf ".$maximum." ge&auml;ndert.";
-            }else{
-                echo "Bitte versuche es nochmal!";
-            }
-            }else{
-                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
-            }              
-        } //FERTIG        
-        function upgradeAccount($connection,$username,$type){ 
-            $checkType=mysqli_fetch_object(mysqli_query($connection,"SELECT isRetailer FROM users WHERE username='$username'"));
-            if($checkType->isRetailer != $type){
-            if($type == 0){
-                if(mysqli_query($connection,"UPDATE users SET isRetailer='0' WHERE username='$username'")){
-                    echo "Der Kontotyp von User ".$username." wurde von H&auml;ndler zu Kostenlos ge&auml;ndert.";
-            }else{
-                echo "Bitte versuche es nochmal!";
-            }}
-            if($type == 1){
-                if(mysqli_query($connection,"UPDATE users SET isRetailer='1' WHERE username='$username'")){
-                    echo "Der Kontotyp von User ".$username." wurde von Kostenlos zu H&auml;ndler ge&auml;ndert.";
-            }else{
-                echo "Bitte versuche es nochmal!";
-            }}
-            }else{
-                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
-            }              
-        } //FERTIG
         function addCategory($connection,$qString){
             $check=mysqli_query($connection,"SELECT type FROM categories WHERE type='$qString'");
             if(mysqli_num_rows($check)==0){ 
@@ -531,18 +481,6 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
             else
                 echo "Email erfolgreich gesendet!";
         }
-        function editUser($connection,$username,$mail){
-            $checkMail= mysqli_fetch_object(mysqli_query($connection,"SELECT mail FROM users WHERE username='$username'"));
-            if($checkMail->mail != $mail){
-                if(mysqli_query($connection,"UPDATE users SET mail='$mail' WHERE username='$username'")){
-                   echo "Die Email ".$mail." von User ".$username." wurde erfolgreich geändert.";
-                }else{
-                    echo "Die Email ".$mail." von User ".$username." konnte nicht geändert werden.";
-                }
-            }else{
-                echo "Bitte &auml;ndern Sie den Wert bevor Sie speichern!";
-            }
-        }//FERTIG
         function changeUserNew($connection,$username,$mail,$active,$type,$maximum){
             $checkMail= mysqli_fetch_object(mysqli_query($connection,"SELECT mail FROM users WHERE username='$username'"));
             $checkMax=mysqli_fetch_object(mysqli_query($connection,"SELECT maximum FROM users WHERE username='$username'"));

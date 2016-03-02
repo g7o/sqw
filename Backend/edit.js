@@ -26,58 +26,6 @@ function changeUser(username,mail,active,type,max){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=12&username="+username+"&mail="+mail+"&active="+active+"&type="+type+"&max="+max);
 }
-function changeMail(chgId,username,mail,active,type,max){
-    max = encodeURIComponent(max);
-    username = encodeURIComponent(username);
-    chgId = encodeURIComponent(chgId);    
-    mail = encodeURIComponent(mail);    
-    active = encodeURIComponent(active);    
-    type = encodeURIComponent(type);     
-		if (window.XMLHttpRequest){
-			//IE7+, Chrome, Firefox, Safari, Opera
-			xmlhttp=new XMLHttpRequest();
-		}
-		else{
-			//IE6, IE5
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",timeWait);
-
-			}
-		}
-		xmlhttp.open("POST","edit.php",true);
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=18&mail="+mail+"&username="+username);
-}
-
-function changeActive(chgId,username,mail,active,type,max){
-    max = encodeURIComponent(max);
-    username = encodeURIComponent(username);
-    chgId = encodeURIComponent(chgId);    
-    mail = encodeURIComponent(mail);    
-    active = encodeURIComponent(active);    
-    type = encodeURIComponent(type);    
-		if (window.XMLHttpRequest){
-			//IE7+, Chrome, Firefox, Safari, Opera
-			xmlhttp=new XMLHttpRequest();
-		}
-		else{
-			//IE6, IE5
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                    wait= setInterval("search(searchText)",timeWait);
-			}
-		}
-		xmlhttp.open("POST","edit.php",true);
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=15&username="+username+"&active="+active);
-}
 function changeActiveNotice(id,active){
     active = encodeURIComponent(active);    
     id = encodeURIComponent(id);    
@@ -120,31 +68,6 @@ function changeActiveRating(id,active){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=36&id="+id+"&active="+active);
 }
-function changeType(chgId,username,mail,active,type,max){
-    max = encodeURIComponent(max);
-    username = encodeURIComponent(username);
-    chgId = encodeURIComponent(chgId);    
-    mail = encodeURIComponent(mail);    
-    active = encodeURIComponent(active);    
-    type = encodeURIComponent(type);    
-		if (window.XMLHttpRequest){
-			//IE7+, Chrome, Firefox, Safari, Opera
-			xmlhttp=new XMLHttpRequest();
-		}
-		else{
-			//IE6, IE5
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                    wait= setInterval("search(searchText)",timeWait);
-			}
-		}
-		xmlhttp.open("POST","edit.php",true);
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=16&username="+username+"&type="+type);
-}
 function changeCategories(type,typeNew){   
     type = encodeURIComponent(type); 
     typeNew = encodeURIComponent(typeNew); 
@@ -166,34 +89,6 @@ function changeCategories(type,typeNew){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code=44&type="+type+"&typeNew="+typeNew);
 }
-
-function changeMax(chgId,username,mail,active,type,max){
-    max = encodeURIComponent(max);
-    username = encodeURIComponent(username);
-    chgId = encodeURIComponent(chgId);    
-    mail = encodeURIComponent(mail);    
-    active = encodeURIComponent(active);    
-    type = encodeURIComponent(type);    
-		if (window.XMLHttpRequest){
-			//IE7+, Chrome, Firefox, Safari, Opera
-			xmlhttp=new XMLHttpRequest();
-		}
-		else{
-			//IE6, IE5
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
-                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
-                wait= setInterval("search(searchText)",timeWait);
-
-			}
-		}
-		xmlhttp.open("POST","edit.php",true);
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("code=17&username="+username+"&max="+max);
-}
-
 function shEdForm(username,mail,activated,retailer,max){
         clearInterval(wait);    
     mail = encodeURIComponent(mail);
