@@ -54,7 +54,7 @@ echo '<meta http-equiv="refresh" content="3; URL=user.php">';
 else
     {
         mysqli_close($connection);
-    echo "Sie sind nicht eingeloggt. Wir leiten Sie automatisch weiter zum Login!";
+    echo "Login fehlgeschlagen!";
 echo '<meta http-equiv="refresh" content="3; URL=index.php">';
    exit;
 

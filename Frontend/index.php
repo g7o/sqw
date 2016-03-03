@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Sqwirrel</title>
-      <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">      
 
@@ -18,24 +18,14 @@
     <![endif]-->
   </head>
   <body>
-<?php include_once("menue.inc");  ?>      
+<?php include_once("menue.inc");  ?>
+      
       <div class="container con">
               <?php 
                 include_once("Modal.inc"); 
-              ?>          
+              ?>
           <div class="row">
-              <!--<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">-->
-                  <img class="img-circle img-responsive center-block" src="default_user.png" >
-                    
-
-              <h1 class="text-center username">Username</h1>
-              <a class="melden-link center-block" href="#">Melden</a>
-              <hr>
-              <!--</div>-->
-          </div><!--1ROW-->
-          <div class="row">
-            <h3 class="text-left username">Zu verkaufen:</h3>
-              <hr>
+            <h3 class="text-left head-kat">Sport:</h3>
             <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
                     <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
@@ -71,132 +61,132 @@
                     <h5 class="anz">PREIS</h5>
                     <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
                 </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->                 
+            </div><!-- End Col 12 6 4 4 -->  
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>
           </div><!--2ROW-->
-          <div class="row">
-              <hr>
-               <h1 class="text-left username">Bewertungen anderer Nutzer:</h1>
-              <hr>
+          <hr>
+         <div class="row">
+            <h3 class="text-left head-kat">Musik:</h3>
             <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
                     <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <h3 class="anz">USERNAME</h3>
-                    <hr> <!-- Horizontal Line -->                    
-                    <p class="text-center"><span class="glyphicon glyphicon-star glyph-big"></span><span class="glyphicon glyphicon-star glyph-big"></span><span class="glyphicon glyphicon-star glyph-big"></span><span class="glyphicon glyphicon-star glyph-big"></span><span class="glyphicon glyphicon-star glyph-big"></span></p>
-                    <hr> <!-- Horizontal Line -->                     
-                    <p class="anz">Ea varias possumus excepteur ex quibusdam e illum proident, culpa laborum 
-                        praesentibus ab appellat de senserit. Quid e quo illum laborum id velit quamquam 
-                        laboris iis te fugiat nisi sint laborum, lorem quamquam ita legam esse. Cillum 
-                        sed senserit quo esse, dolore pariatur iis illustriora ubi fabulas ex possumus, 
-                        excepteur ubi ipsum. Admodum dolor elit sed varias aut amet ubi probant, 
-                        ingeniis consectetur ad arbitror o culpa cupidatat exquisitaque ubi laboris 
-                        consectetur ex voluptate est malis ut occaecat eu velit, doctrina minim nulla 
-                        vidisse quem, expetendis nam aliqua nescius. Eu summis e nulla ea se nulla quis 
-                        quid nescius est quem aut probant ea ut duis fore anim arbitror. Aliquip quem 
-                        fabulas quamquam. Se quorum pariatur mentitum, laboris tamen et consequat 
-                        tractavissent nam ita sint non illum, nisi cupidatat de elit legam eu est 
-                        litteris exercitation o magna eiusmod laboris aut labore laborum et sunt minim, 
-                        nam de sunt arbitror.</p>
-                    <p class="anz"><a href="#" class="btn btn-link " role="button">Bewertung melden</a></p>                    
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
                 </div> <!-- End Col 12 -->
             </div><!-- End Col 12 6 4 4 -->   
-          </div><!--Ratings-->
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->   
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->  
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>
+          </div><!--3ROW-->  
+          <hr>
+         <div class="row">
+            <h3 class="text-left head-kat">Kultur:</h3>
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->   
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->   
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 --> 
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>             
+          </div><!--4ROW-->   
+          <hr>
+         <div class="row">
+            <h3 class="text-left head-kat">Vorträge:</h3>
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->   
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->   
+            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
+                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
+                    <hr> <!-- Horizontal Line -->
+                    <h3 class="anz">TITEL</h3>
+                    <p class="anz">Teams/Bands/Künstler</p>
+                    <p class="anz">TT.MM.JJJJ</p>
+                    <p class="anz">Ort</p>
+                    <h5 class="anz">PREIS</h5>
+                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
+                </div> <!-- End Col 12 -->
+            </div><!-- End Col 12 6 4 4 -->    
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>
+          </div><!--5ROW-->          
       </div><!--MAIN-->
         <footer>
             

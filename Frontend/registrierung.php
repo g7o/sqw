@@ -27,56 +27,16 @@
     <![endif]-->
   </head>
   <body>
-  <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-
-                <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav-bar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>                
-                <a class="nav navbar-brand">
-                    Sqwirrel
-                </a>
-                </div>
-            <hr class="hr">
-<div class="collapse navbar-collapse" id="collapse-nav-bar">
-            
-<div class="navbar-left col-xs-12 col-sm-4 col-md-4 marg-top">
-<div class="input-group">
-      <input type="text" class="form-control" aria-label="...">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
-   </div>             
-                 <a class="navbar-btn btn btn-warning navbar-right col-xs-6 col-sm-2 col-md-1" data-toggle="modal" data-target="#userModal" style="font-weight: bold; color: white">Login</a>              
-
-      </div>            
-     </div>
-  </div><!--NAV-->
+<?php include_once("menue.inc");  ?>
       
       <div class="container con">
               <?php 
                 include_once("Modal.inc"); 
               ?>
           <div class="row">
-              <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
-                  <h1>Kostenloses Konto anlegen:</h1>
-                  <hr>
-              </div>                  
-          </div> <!-- header -->
-          <div class="row">
               <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center" id="ergebnis">
+                  <h1>Kostenloses Konto anlegen:</h1>
+                  <hr>                  
 <form class="form-horizontal">
                 <h4>Basisdaten:</h4>
                     <hr>
@@ -119,7 +79,7 @@
                   <div class="form-group">
                     <label for="birth" class="col-xs-12 col-sm-4 control-label">Geboren am:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="date" class="form-control" id="birth" min="1936-01-01" max="1998-01-08">
+                      <input required type="date" class="form-control" id="birth">
                     </div>
                   </div>
                   <div class="form-group">
@@ -142,15 +102,9 @@
                   </div>     
                   <div class="form-group">
                     <label for="hnumber" class="col-xs-12 col-sm-4 control-label">Adresszusatz:</label>
-                    <div class="col-xs-4 col-sm-4">
-                      <input required type="text" class="form-control" id="hnumber" placeholder="Hausnummer">
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                      <input required type="text" class="form-control" id="snumber" placeholder="Stiege">
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                      <input required type="text" class="form-control" id="tnumber" placeholder="Tür">
-                    </div>                      
+                    <div class="col-xs-12 col-sm-8">
+                      <input required type="text" class="form-control" id="hnumber" placeholder="Hausnummer/Stiege/Tür">
+                    </div>                    
                   </div> 
                   <div class="form-group">
                     <label for="plz" class="col-xs-12 col-sm-4 control-label">PLZ:</label>
@@ -189,17 +143,17 @@
                       </button>                        
                   </div> 
                   <div class="col-xs-6 col-md-4">
-                      <button id="Filme" type="button" class="btn btn-default btn-filter btn-last-line" >
+                      <button id="Filme" type="button" class="btn btn-default btn-filter" >
                         Filme
                       </button>                        
                   </div> 
                   <div class="col-xs-6 col-md-4">
-                      <button id="Seminare" type="button" class="btn btn-default btn-filter btn-last-line" >
+                      <button id="Seminare" type="button" class="btn btn-default btn-filter" >
                         Seminare
                       </button>                        
                   </div> 
                   <div class="col-xs-6 col-md-4">
-                      <button id="Vortrag" type="button" class="btn btn-default btn-filter btn-last-line" >
+                      <button id="Vortrag" type="button" class="btn btn-default btn-filter" >
                         Vorträge
                       </button>                        
                   </div>     
