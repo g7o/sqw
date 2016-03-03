@@ -62,37 +62,34 @@
               <div class="text-center">
 <form class="form-horizontal">
                 <h3><a href="anzeige.php">Ticket (Username)</a></h3>
-                <hr>
-                <h2 class="username">Angebot abgeben:</h2>
-    <a href="#" class="btn btn-success btn-cstm-ang">Ohne Änderung absenden</a>
-              <hr>    
+                <hr>   
                   <div class="form-group">
-                    <label for="avail" class="col-xs-12 col-sm-2 control-label">Stück verfügbar:</label>
+                    <label for="title" class="col-xs-12 col-sm-2 control-label">Titel:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" disabled id="avail" value="3">
+                      <input required type="text" class="form-control"  id="title" >
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="piece" class="col-xs-12 col-sm-2 control-label">Stück benötigt:</label>
+                    <label for="stars" class="col-xs-12 col-sm-2 control-label">Sterne:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="piece" min="1" max="3" value="3">
+                      <select id="stars" class="form-control">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                      </select>
                     </div>
-                  </div> 
+                  </div>  
                   <div class="form-group">
-                    <label for="isPrice" class="col-xs-12 col-sm-2 control-label">Preis - Vorgabe:</label>
+                    <label for="content" class="col-xs-12 col-sm-2 control-label">Kommentar:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" disabled id="isPrice" value="30">
+                      <input required type="text" class="form-control"  id="content">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="price" class="col-xs-12 col-sm-2 control-label">Preis - Angebot:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="price" min="1" value="3">
-                    </div>
-                  </div> 
-                  <div class="form-group">
+                 <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                      <button type="submit" class="btn btn-success">Absenden</button>
+                      <button type="submit" class="btn btn-success">Bewertung abgeben</button>
                     </div>
                   </div>     
                   </form>

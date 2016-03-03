@@ -61,7 +61,7 @@
 
               <div class="text-center">
 <form class="form-horizontal">
-                <h3><a href="anzeige.php">Ticket</a></h3>
+                <h3><a href="anzeige.php">Ticket (Username)</a></h3>
                 <a href="#" class="btn btn-success btn-cstm-ang">Annehmen</a>
                 <a href="#" class="btn btn-danger btn-cstm-ang">Ablehnen</a><hr>
                 <h2 class="username">Angebot abgeben:</h2>

@@ -145,12 +145,12 @@
                   </div> 
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                      <button type="submit" class="btn btn-primary">Speichern<button>
+                        <button type="submit" class="btn btn-primary">Speichern</button>
                     </div>
-                  </div>                    
+    </div>         
                 </form>  
               </div>
-          </div><!--1ROW-->
+    </div><!--1ROW-->
       <div class="row" >
           
         

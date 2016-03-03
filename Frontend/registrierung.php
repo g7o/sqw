@@ -80,70 +80,92 @@
                 <h4>Basisdaten:</h4>
                     <hr>
                   <div class="form-group">
-                    <label for="vname" class="col-xs-12 col-sm-2 control-label">Vorname:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="vname" class="col-xs-12 col-sm-4 control-label">Vorname:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="vname" placeholder="Oachkatzl">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="nname" class="col-xs-12 col-sm-2 control-label">Nachname:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="nname" class="col-xs-12 col-sm-4 control-label">Nachname:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="nname" placeholder="Schwoaf">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="uname" class="col-xs-12 col-sm-2 control-label">Username:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="uname" class="col-xs-12 col-sm-4 control-label">Username:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="uname" placeholder="oachkatzl-schwoaf">
                     </div>
                   </div>     
                   <div class="form-group">
-                    <label for="mail" class="col-xs-12 col-sm-2 control-label">E-Mail:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="mail" class="col-xs-12 col-sm-4 control-label">E-Mail:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="email" class="form-control" id="mail" placeholder="oachkatzl@sqwirrel.eu">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="birth" class="col-xs-12 col-sm-2 control-label">Geboren am:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="password" class="col-xs-12 col-sm-4 control-label">Passwort:</label>
+                    <div class="col-xs-12 col-sm-8">
+                      <input required type="password" class="form-control" id="password" >
+                    </div>
+                  </div>    
+                  <div class="form-group">
+                    <label for="password_check" class="col-xs-12 col-sm-4 control-label">Passwort erneut eingeben:</label>
+                    <div class="col-xs-12 col-sm-8">
+                      <input required type="password" class="form-control" id="password_check">
+                    </div>
+                  </div>    
+                  <div class="form-group">
+                    <label for="birth" class="col-xs-12 col-sm-4 control-label">Geboren am:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="date" class="form-control" id="birth" min="1936-01-01" max="1998-01-08">
                     </div>
-                  </div> 
+                  </div>
+                  <div class="form-group">
+                    <label for="sex" class="col-xs-12 col-sm-4 control-label">Geschlecht:</label>
+                    <div class="col-xs-12 col-sm-8">
+                      <select id="sex" class="form-control">
+                          <option>Bitte wählen...</option>
+                          <option>Männlich</option>
+                          <option>Weiblich</option>
+                      </select>
+                    </div>
+                  </div>    
                   <h4>Adressdaten:</h4>    
                   <hr>
                   <div class="form-group">
-                    <label for="street" class="col-xs-12 col-sm-2 control-label">Straße:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="street" class="col-xs-12 col-sm-4 control-label">Straße:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="street" placeholder="Nussstraße">
                     </div>
                   </div>     
                   <div class="form-group">
-                    <label for="hnumber" class="col-xs-12 col-sm-2 control-label">Adresszusatz:</label>
+                    <label for="hnumber" class="col-xs-12 col-sm-4 control-label">Adresszusatz:</label>
                     <div class="col-xs-4 col-sm-4">
                       <input required type="text" class="form-control" id="hnumber" placeholder="Hausnummer">
                     </div>
-                    <div class="col-xs-4 col-sm-3">
+                    <div class="col-xs-4 col-sm-2">
                       <input required type="text" class="form-control" id="snumber" placeholder="Stiege">
                     </div>
-                    <div class="col-xs-4 col-sm-3">
+                    <div class="col-xs-4 col-sm-2">
                       <input required type="text" class="form-control" id="tnumber" placeholder="Tür">
                     </div>                      
                   </div> 
                   <div class="form-group">
-                    <label for="plz" class="col-xs-12 col-sm-2 control-label">PLZ:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="plz" class="col-xs-12 col-sm-4 control-label">PLZ:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="plz" placeholder="1312">
                     </div>
                   </div>  
                   <div class="form-group">
-                    <label for="city" class="col-xs-12 col-sm-2 control-label">Stadt:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="city" class="col-xs-12 col-sm-4 control-label">Stadt:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="city" placeholder="Nusshausen">
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="country" class="col-xs-12 col-sm-2 control-label">Staat:</label>
-                    <div class="col-xs-12 col-sm-10">
+                    <label for="country" class="col-xs-12 col-sm-4 control-label">Staat:</label>
+                    <div class="col-xs-12 col-sm-8">
                       <input required type="text" class="form-control" id="country" placeholder="Nussland">
                     </div>
                   </div> 
