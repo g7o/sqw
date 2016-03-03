@@ -9,7 +9,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">      
-    <script type="text/javascript">
+      <script type="text/javascript" src="edit.js"></script>
+      <script type="text/javascript">
       function chg(){
           var txt= '"<span class="glyphicon glyphicon-open"></span>Datei hochladen"';
           if(document.getElementById("lbl").value != txt ){
@@ -75,7 +76,7 @@
               </div>                  
           </div> <!-- header -->
           <div class="row">
-              <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
+              <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center" id="ergebnis">
 <form class="form-horizontal">
                 <h4>Basisdaten:</h4>
                     <hr>
@@ -104,9 +105,9 @@
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="password" class="col-xs-12 col-sm-4 control-label">Passwort:</label>
+                    <label for="password_1" class="col-xs-12 col-sm-4 control-label">Passwort:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="password" class="form-control" id="password" >
+                      <input required type="password" class="form-control" id="password_1">
                     </div>
                   </div>    
                   <div class="form-group">
@@ -213,11 +214,12 @@
                   </div> 
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                      <button type="submit" class="btn btn-primary">Registrieren!</button>
+                      <a onclick="registration()" class="btn btn-primary">Registrieren!</a>
                     </div>
                   </div>                    
                 </form>  
               </div>
+
           </div> <!-- 1Row -->
       </div><!--MAIN-->
         <footer>
