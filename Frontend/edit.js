@@ -24,7 +24,36 @@
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlhttp.send("code="+art+"&textInput="+tInput+"&password=0");
 	}
-    
+function changePassword(){
+    var pwOld=encodeURIComponent(document.getElementById("pw-alt").value);
+    var pwNew=encodeURIComponent(document.getElementById("pw-neu").value);
+    var username=encodeURIComponent(document.getElementById("username").innerHTML);
+    var pwNewChk=encodeURIComponent(document.getElementById("pw-neu-check").value);
+    alert(username);
+    alert(pwOld);
+    alert(pwNew);
+    alert(pwNewChk);
+		if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+				document.getElementById("fehler-hint").innerHTML=xmlhttp.responseText;
+                document.getElementById("pw-alt").value="";
+                document.getElementById("pw-neu").value="";
+                document.getElementById("pw-neu-check").value="";
+                
+			}
+		}
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("code=2&username="+username+"&pwOld="+pwOld+"&pwNew="+pwNew+"&pwNewChk="+pwNewChk);
+	}    
     function clear(){
         alert("FEHLER");
         document.getElementById("ergebnis").innerHTML=" ";

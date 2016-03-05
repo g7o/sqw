@@ -39,12 +39,10 @@ $abfrage = "SELECT * FROM be WHERE name='$username'";
 $ergebnis = mysqli_query($connection,$abfrage);
 $row = mysqli_fetch_array($ergebnis);
 
-if($row[1] == $passwort)
-    {
+if($row[1] == $passwort){
     $_SESSION["username"] = $username;
     $abfrage = "INSERT INTO belog (user,IP) VALUES ('".$username."','".$addr."')";
     $ergebnis = mysqli_query($connection,$abfrage);
-    
     mysqli_close($connection);
     echo "Login erfolgreich!";
 echo '<meta http-equiv="refresh" content="3; URL=user.php">';

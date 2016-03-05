@@ -27,6 +27,14 @@
     <![endif]-->
   </head>
   <body>
+<?php
+session_start();
+$textButton="Login";
+if(isset($_SESSION["username"])){
+$name = $_SESSION["username"];
+$textButton=$name;
+}
+?>        
 <?php include_once("menue.inc");  ?>
       
       <div class="container con">

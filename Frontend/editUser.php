@@ -8,7 +8,8 @@
 <title>Sqwirrel</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">      
+    <link href="css/custom.css" rel="stylesheet">
+       <script type="text/javascript" src="edit.js"></script>
     <script type="text/javascript">
       function chg(){
           var txt= '"<span class="glyphicon glyphicon-open"></span>Datei hochladen"';
@@ -26,6 +27,14 @@
     <![endif]-->
   </head>
   <body>
+<?php
+session_start();
+$textButton="Login";
+if(isset($_SESSION["username"])){
+$name = $_SESSION["username"];
+$textButton=$name;
+}
+?>        
 <?php include_once("menue.inc");  ?>
       
       <div class="container con">
