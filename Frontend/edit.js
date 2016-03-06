@@ -89,6 +89,6 @@ function changePassword(){
                 document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
 			}
 		}        
-		xmlhttp.open("POST","editRegistration.php",true);
+		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");	xmlhttp.send("code=1&vname="+vname+"&nname="+nname+"&uname="+uname+"&sex="+sex+"&mail="+mail+"&birth="+birth+"&street="+street+"&hnumber="+hnumber+"&plz="+plz+"&city="+city+"&country="+country+"&picture="+picture+"&password_1="+password_1+"&password_check="+password_check);
 }
