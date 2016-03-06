@@ -29,14 +29,20 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
         $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
 function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password){
+    $queryMail="SELECT * FROM users where mail='$mail'";
+    if(mysqli_num_rows(mysqli_query($connection,$queryMail)) == 1){
+        echo 'Diese Email wird bereits verwendet. <br>';
+    }
+    $queryUser="SELECT * FROM users where username='$uname'";
+    if(mysqli_num_rows(mysqli_query($connection,$queryUser)) == 1){
+        echo 'Dieser Benutzername ist leider schon vergeben. <br>';
+    }  
     if($password==$password_check){
         $qString="INSERT INTO users VALUES(null,'$vname','$nname','$sex','$uname','$password','0','$mail','$birth','$plz','$country','$city','$street','$hnumber',null,'0','0','3','0')";
         $result=mysqli_query($connection,$qString);
         if($result){
             echo "Registrierung war erfolgreich!";
-        } else {
-            echo "Datenübermittelung fehlgeschlagen!";
-        } 
+        }
     }else{
         echo "Die beiden Passwörter stimmen nicht überein!";
     }
