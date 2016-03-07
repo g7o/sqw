@@ -96,7 +96,7 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="date" class="col-xs-12 col-sm-2 control-label">Datum:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="date" class="form-control" id="date" value="1997-01-01">
+                      <input required type="date" class="form-control" id="date">
                     </div>
                   </div> 
                   <div class="form-group">
