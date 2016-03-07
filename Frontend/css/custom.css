@@ -1,3 +1,21 @@
+@media (min-width: 768px) {
+  .navbar-static-bottom {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-static-bottom {
+    border-radius: 0;
+  }
+}
+
+.navbar-static-bottom {
+  z-index: 1000;
+  border-width: 0 0 1px;
+}
+
 .btn-cstm {
     margin-bottom: 3px;
     margin-top: 3px;

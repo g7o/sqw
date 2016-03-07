@@ -46,7 +46,9 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
 function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location){
     $res=mysqli_fetch_array(mysqli_query($connection,"SELECT id FROM users where username='$username'"));
     $resMax= mysqli_fetch_array(mysqli_query($connection,"SELECT activeSells from users where ID='$res[0]'"));
-    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment',curdate()+30,'1','$minprice')";
+    $dateH = date_create(date("Y-m-d H:i:s"));
+    $dayFut=date_modify($dateH,'+ 1 month');
+    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment','".date_format($dayFut, 'Y-m-d H:i:s')."','1','$minprice')";
     if($resMax[0]<=3){
         $result=mysqli_query($connection,$query);
         if($result){

@@ -196,7 +196,7 @@ $textButton=$name;
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>
           </div><!--5ROW-->          
       </div><!--MAIN-->
-        <footer>
+        <div class="navbar navbar-default navbar-static-bottom">
             
           <div class="container-fluid">
               <div class="row">
@@ -220,7 +220,7 @@ $textButton=$name;
               </div>                     
           </div>                 
             </div>
-      </footer>
+      </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
