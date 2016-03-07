@@ -29,7 +29,7 @@
       </div><!-- /btn-group -->
     </div><!-- /input-group -->
    </div>             
-                 <a class="navbar-btn btn btn-warning navbar-right col-xs-6 col-sm-2 col-md-1" data-toggle="modal" data-target="#userModal" style="font-weight: bold; color: white"><?php echo $textButton; ?></a>        
+                 <a class="navbar-btn btn btn-warning navbar-right col-xs-6 col-sm-2 col-md-1" id="login_btnr" data-toggle="modal" data-target="#userModal" style="font-weight: bold; color: white"><?php echo $textButton; ?></a>        
       </div>            
      </div>
   </div><!--NAV-->

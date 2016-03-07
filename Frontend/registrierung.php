@@ -94,7 +94,6 @@ $textButton=$name;
                     <label for="sex" class="col-xs-12 col-sm-4 control-label">Geschlecht:</label>
                     <div class="col-xs-12 col-sm-8">
                       <select id="sex" class="form-control">
-                          <option>Bitte wählen...</option>
                           <option>Männlich</option>
                           <option>Weiblich</option>
                       </select>
@@ -127,11 +126,15 @@ $textButton=$name;
                     </div>
                   </div> 
                   <div class="form-group">
-                    <label for="country" class="col-xs-12 col-sm-4 control-label">Staat:</label>
+                    <label for="country" class="col-xs-12 col-sm-4 control-label">Geschlecht:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="country" placeholder="Nussland">
+                      <select id="country" class="form-control">
+                          <option>Österreich</option>
+                          <option>Deutschland</option>
+                          <option>Schweiz</option>
+                      </select>
                     </div>
-                  </div> 
+                  </div>
                     <h4>Interessen:</h4>
                     <hr>
 

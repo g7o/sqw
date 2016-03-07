@@ -69,7 +69,13 @@ $textButton=$name;
                     <div class="col-xs-12 col-sm-10">
                       <input required type="number" class="form-control" id="origPrice" min="0">
                     </div>
-                  </div>     
+                  </div>   
+                  <div class="form-group">
+                    <label for="location" class="col-xs-12 col-sm-2 control-label">Ort:</label>
+                    <div class="col-xs-12 col-sm-10">
+                      <input required type="text" class="form-control" id="location">
+                    </div>
+                  </div>    
                     <div class="form-group">
                     <label for="categories" class="col-xs-12 col-sm-2 control-label">Kategorie:</label>
                     <div class="col-xs-12 col-sm-10 ">
