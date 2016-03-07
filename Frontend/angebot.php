@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+$textButton="Login";
+if(isset($_SESSION["username"])){
+$name = $_SESSION["username"];
+$textButton=$name;
+}
+?> 
+<?php
+ include("notLogedIn.inc");
+?>     
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,14 +29,7 @@
     <![endif]-->
   </head>
   <body>
-<?php
-session_start();
-$textButton="Login";
-if(isset($_SESSION["username"])){
-$name = $_SESSION["username"];
-$textButton=$name;
-}
-?>        
+      
   <?php include_once("menue.inc");  ?>
       
       <div class="container con">

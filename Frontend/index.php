@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$textButton="Login";
+if(isset($_SESSION["username"])){
+$name = $_SESSION["username"];
+$textButton=$name;
+}
+?> 
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -17,15 +25,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-<?php
-session_start();
-$textButton="Login";
-if(isset($_SESSION["username"])){
-$name = $_SESSION["username"];
-$textButton=$name;
-}
-?>        
+  <body>       
 <?php include_once("menue.inc");  ?>
       
       <div class="container con">

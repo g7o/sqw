@@ -40,7 +40,7 @@ $ergebnis = mysqli_query($connection,$abfrage);
 $row = mysqli_fetch_array($ergebnis);
 
 if($row[1] == $passwort){
-    $_SESSION["username"] = $username;
+    $_SESSION["user"] = $username;
     $abfrage = "INSERT INTO belog (user,IP) VALUES ('".$username."','".$addr."')";
     $ergebnis = mysqli_query($connection,$abfrage);
     mysqli_close($connection);

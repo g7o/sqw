@@ -2,8 +2,8 @@
 <html lang="en">
 <?php
 session_start();
-if(isset($_SESSION["username"]))
-$name = $_SESSION["username"];
+if(isset($_SESSION["user"]))
+$name = $_SESSION["user"];
 ?>
 <?php
  include("notLogedIn.inc");

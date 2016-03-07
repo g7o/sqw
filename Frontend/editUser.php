@@ -34,7 +34,10 @@ if(isset($_SESSION["username"])){
 $name = $_SESSION["username"];
 $textButton=$name;
 }
-?>        
+?>
+<?php
+ include("notLogedIn.inc");
+?>       
 <?php include_once("menue.inc");  ?>
       
       <div class="container con">
@@ -63,13 +66,7 @@ $textButton=$name;
                     <div class="col-xs-12 col-sm-10">
                       <input required type="text" class="form-control" id="nname" placeholder="Schwoaf">
                     </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="uname" class="col-xs-12 col-sm-2 control-label">Username:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="uname" placeholder="oachkatzl-schwoaf">
-                    </div>
-                  </div>     
+                  </div>    
                   <div class="form-group">
                     <label for="mail" class="col-xs-12 col-sm-2 control-label">E-Mail:</label>
                     <div class="col-xs-12 col-sm-10">

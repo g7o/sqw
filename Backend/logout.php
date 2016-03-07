@@ -32,7 +32,7 @@ session_start();
 ?>
 <?php
 
-if(!isset($_SESSION["username"]))
+if(!isset($_SESSION["user"]))
 
    {
 
@@ -42,7 +42,7 @@ if(!isset($_SESSION["username"]))
 
    } else {
 
-        unset($_SESSION["username"]);
+        unset($_SESSION["user"]);
 
         echo '<meta http-equiv="refresh" content="0; URL=index.php">';
 

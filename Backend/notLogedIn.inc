@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION["username"]))
+if(!isset($_SESSION["user"]))
    {
 echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

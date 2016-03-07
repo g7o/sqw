@@ -26,7 +26,10 @@ if(isset($_SESSION["username"])){
 $name = $_SESSION["username"];
 $textButton=$name;
 }
-?>        
+?>  
+<?php
+ include("notLogedIn.inc");
+?>       
 <?php include_once("menue.inc");  ?>
       
       <div class="container con">
