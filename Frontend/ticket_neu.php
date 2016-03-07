@@ -32,7 +32,7 @@ $textButton=$name;
 <?php include_once("menue.inc");  ?>
       
       <div class="container con">
-          <div class="row">
+          <div class="row" id="ergebnis">
               <?php 
                 include_once("Modal.inc"); 
               ?>
@@ -129,7 +129,7 @@ $textButton=$name;
                   </div> 
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                        <a class="btn btn-primary">Speichern</a>
+                        <a class="btn btn-primary" onClick="createNotice()">Speichern</a>
                     </div>
     </div>         
                 </form>  

@@ -22,12 +22,40 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
             $sex="Female";
         }
     }
+    if($code == 3){
+         $title=mysqli_real_escape_string($connection, $_POST['title']);
+         $price=mysqli_real_escape_string($connection, $_POST['price']);
+         $piece=mysqli_real_escape_string($connection, $_POST['piece']);
+         $minprice=mysqli_real_escape_string($connection, $_POST['minprice']);
+         $origPrice=mysqli_real_escape_string($connection, $_POST['origPrice']);
+         $categories=mysqli_real_escape_string($connection, $_POST['categories']);
+         $actors=mysqli_real_escape_string($connection, $_POST['actors']);
+         $date=mysqli_real_escape_string($connection, $_POST['date']);
+         $shipping=mysqli_real_escape_string($connection, $_POST['shipping']);
+         $payment=mysqli_real_escape_string($connection, $_POST['payment']);
+         $datei=mysqli_real_escape_string($connection, $_POST['datei']);
+         $username=mysqli_real_escape_string($connection, $_POST['username']);
+         $location=mysqli_real_escape_string($connection, $_POST['location']);
+    }
     if($code == 2){
         $username=mysqli_real_escape_string($connection, $_POST['username']);
         $pwOld=mysqli_real_escape_string($connection, $_POST['pwOld']);
         $pwNew=mysqli_real_escape_string($connection, $_POST['pwNew']);
         $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
+function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location){
+    $res=mysqli_fetch_array(mysqli_query($connection,"SELECT id FROM users where username='$username'"));
+    $resMax= mysqli_fetch_array(mysqli_query($connection,"SELECT activeSells from users where ID='$res[0]'"));
+    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment',curdate()+30,'1','$minprice')";
+    if($resMax[0]<=3){
+        $result=mysqli_query($connection,$query);
+        if($result){
+            echo "funktioniert";
+        }else{
+            echo "funktioniert nicht". mysqli_error($connection);
+        }
+    }
+}
 function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password){
     $queryMail="SELECT * FROM users where mail='$mail'";
     if(mysqli_num_rows(mysqli_query($connection,$queryMail)) == 1){
@@ -77,7 +105,9 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
             case 1: insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password);
                 break;
             case 2: changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk);
-                break;                
+                break;
+            case 3: createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location);
+                break;
             default: echo "Fehler";
                 break;
         }
