@@ -290,6 +290,10 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 $urlContact='<a>'.$glyphContact.'</a>';
                                 $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
                                 $urlRemove='<a>'.$glyphRemove.'</a>';
+                                if($row[16]==0)
+                                    $type="Gratiskonto";
+                                esle
+                                    $type="Händlerkonto";
                                 if($row[15]==0)
                                     $s="nein";
                                 else
@@ -299,7 +303,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
                                 <td>$row[7]</td>
-                                <td>$row[16]</td>                                                            
+                                <td>$type</td>                                                            
                                 <td>$s</td>                            
                                 <td>$row[17]</td> 
                                 <td>$urlEdit</td>
@@ -316,6 +320,8 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>St&uuml;ck</td>
                                 <td>Preis</td>
                                 <td>Originalpreis</td>
+                                <td>Mindestpreis</td>
+                                <td>Kategorie</td>
                                 <td>Ort</td>
                                 <td>L&auml;uft bis</td>
                                 <td>Aktiv</td>
@@ -327,6 +333,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 $glyphEdit='<span id="'.$row[13].'" onclick="'.$shE.'" class="glyphicon glyphicon-pencil" aria-hidden="true">'; 
                                 $urlEdit='<a>'.$glyphEdit.'</a>';
                                 $authorResult=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE id='$row[2]'"));
+                                $categoryResult=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM categories WHERE id='$row[6]'"));
                                 if($row[13]==0)
                                     $s="nein";
                                 else
@@ -337,6 +344,8 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>$row[3]</td>
                                 <td>$row[4]</td>
                                 <td>$row[5]</td>
+                                <td>$row[14]</td>
+                                <td>$categoryResult[1]</td>
                                 <td>$row[8]</td>
                                 <td>$row[12]</td>
                                 <td>$s</td>

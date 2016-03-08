@@ -46,7 +46,9 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
 function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location){
     $res=mysqli_fetch_array(mysqli_query($connection,"SELECT id FROM users where username='$username'"));
     $resMax= mysqli_fetch_array(mysqli_query($connection,"SELECT activeSells from users where ID='$res[0]'"));
-    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment',curdate()+30,'1','$minprice')";
+    $date = date("Y-m-d");
+    $dayFut=date_modify($date,'+ 1 month');
+    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment','$dayFut','1','$minprice')";
     if($resMax[0]<=3){
         $result=mysqli_query($connection,$query);
         if($result){
@@ -56,7 +58,20 @@ function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$cat
         }
     }
 }
+    function generateToken($connection,$mail){
+        $token=md5(uniqid(rand(), true));
+        $tokenQuery=mysqli_query($connection,"INSERT INTO tokens values('$token','$mail'");
+        $to=$mail;
+        $message="Ihr Token: ".$token;
+        $from='Sqwirrel';
+        $fromMail='support@sqwirrel.com';
+        if(!mail ($to ,"Bestätigungslink für Sqwirrel Online-Ticketbörse", $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8'))
+            echo "Fehler beim Senden des Bestätigungslinks! <br>";
+        else
+            echo "Besätigungsemail erfolgreich gesendet! Überprüfen Sie nun ihre Email. <br>";
+    }
 function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password){
+    generateToken($connection,$mail);
     $queryMail="SELECT * FROM users where mail='$mail'";
     if(mysqli_num_rows(mysqli_query($connection,$queryMail)) == 1){
         echo 'Diese Email wird bereits verwendet. Sie werden nun in 5 Sekunden automatisch weitergeleitet. <br>';
@@ -68,7 +83,7 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
         echo '<meta http-equiv="refresh" content="5; URL=registrierung.php">';
     }  
     if($password==$password_check){
-        $qString="INSERT INTO users VALUES(null,'$vname','$nname','$sex','$uname','$password','0','$mail','$birth','$plz','$country','$city','$street','$hnumber',null,'0','0','3','0')";
+        $qString="INSERT INTO users VALUES(null,'$vname','$nname','$sex','$uname','$password','0','$mail','$birth','$plz','$country','$city','$street','$hnumber',null,'0','0','3','0','0')";
         $result=mysqli_query($connection,$qString);
         if($result){
             echo "Registrierung war erfolgreich! Sie werden nun auf die Startseite weitergeleitet!";
@@ -78,6 +93,7 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
         echo "Die beiden Passwörter stimmen nicht überein! Sie werden nun in 5 Sekunden automatisch weitergeleitet.";
         echo '<meta http-equiv="refresh" content="5; URL=registrierung.php">';
     }
+    echo"".mysqli_error($connection);
 }
 
         function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
