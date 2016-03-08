@@ -47,6 +47,7 @@ $textButton=$name;
               </div>                  
           </div> <!-- header -->
           <div class="row">
+                <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center" id="ergebnis">
               <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
                 <form class="form-horizontal">
                   <div class="form-group">
@@ -70,7 +71,7 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="betreff" class="col-xs-12 col-sm-2 control-label">Kategorie:</label>
                     <div class="col-xs-12 col-sm-10">
-                        <select class="form-control">
+                        <select id="categories" class="form-control">
                           <option>Allgemein</option>
                           <option>Problem melden</option>
                           <option>Fragen zum Konto</option>
@@ -82,7 +83,7 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="betreff" class="col-xs-12 col-sm-2 control-label">Nachricht:</label>
                     <div class="col-xs-12 col-sm-10">
-                       <textarea required class="form-control" rows="7" placeholder="Eure Seite ist einfach leiwand!"></textarea> 
+                       <textarea required class="form-control" rows="7" id="message" placeholder="Eure Seite ist einfach leiwand!"></textarea> 
                     </div>
                   </div> 
                   <div class="form-group col-xs-12">
@@ -95,13 +96,14 @@ $textButton=$name;
                   </div> 
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-12 center-block">
-                      <a class="btn btn-primary">Absenden</a>
+                      <a class="btn btn-primary" onClick="contactAdmin()">Absenden</a>
                     </div>
                   </div>                    
                 </form>
           </div> <!-- 1Row -->
       </div><!--MAIN-->
       </div>
+    </div>
         <?php 
             include_once("footer.inc"); 
         ?>

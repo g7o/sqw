@@ -22,6 +22,13 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
             $sex="Female";
         }
     }
+    if($code == 6){
+        $name=mysqli_real_escape_string($connection,$_POST['name']);
+        $email=mysqli_real_escape_string($connection,$_POST['email']);
+        $betreff=mysqli_real_escape_string($connection,$_POST['betreff']);
+        $categories=mysqli_real_escape_string($connection,$_POST['categories']);
+        $message=mysqli_real_escape_string($connection,$_POST['message']);
+    }
     if($code ==4){
         $token=mysqli_real_escape_string($connection, $_POST['token']);
         $mail=mysqli_real_escape_string($connection, $_POST['mail']);
@@ -102,7 +109,6 @@ function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$cat
 function generateToken($connection,$mail){
         $token=md5(uniqid(rand(), true));
         $tokenQuery=mysqli_query($connection,"INSERT INTO tokens values('$token','$mail')");
-        echo "".mysqli_error($connection);
         $to=$mail;
         $link="http://www.htl-hl.ac.at/wi/sqwirrel/frontend/confirm.php?token=".$token."&mail=".$mail;
         $message="Ihr Token: ".$token."Link".$link;
@@ -158,6 +164,15 @@ function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
         return;
     }
 }
+function contactForm($connection,$name,$email,$betreff,$categories,$message){
+        $to="manuel.pollak92@gmail.com";
+        $from="Kontakformularanfrage von ".$name;
+        $fromMail=$email;
+        if(!mail ($to ,$betreff, $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8'))
+            echo "Fehler beim Senden des Kontaktformulars! <br>";
+        else
+            echo "Kontaktformular erfolgreich gesendet. <br>";
+}
  if($connection){
         switch($code){
             case 1: insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password);
@@ -168,7 +183,9 @@ function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
                 break;
             case 4: confirm($connection,$token,$mail);
                 break;
-            case 5: updateNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$username,$location,$id)
+            case 5: updateNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$username,$location,$id);
+                break;
+            case 6: contactForm($connection,$name,$email,$betreff,$categories,$message);
                 break;
             default: echo "Fehler";
                 break;

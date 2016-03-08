@@ -59,6 +59,30 @@ function changePassword(){
         document.getElementById("ergebnis").innerHTML=" ";
         document.getElementById("hidden-btn").classList.add("btn-hidden");
     }
+function contactAdmin(){
+    var name=encodeURIComponent(document.getElementById('name').value);
+    var email=encodeURIComponent(document.getElementById('email').value);
+    var betreff=encodeURIComponent(document.getElementById('betreff').value);
+    var categories=encodeURIComponent(document.getElementById('categories').value);
+    var message=encodeURIComponent(document.getElementById('message').value);
+     if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+        
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+			}
+		}        
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("code=6&name="+name+"&email="+email+"&betreff="+betreff+"&categories="+categories+"&message="+message);
+}
 function editTicket(){
         var title=encodeURIComponent(document.getElementById('title').value);
         var price=encodeURIComponent(document.getElementById('price').value);
