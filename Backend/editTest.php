@@ -16,10 +16,8 @@
         $password=$_GET['password'];
         $pwOld=$_GET['pwOld'];
     }
-    if(code==19){
+    if($code==560){
         $textInput=$_GET['textInput'];
-        $mail=$_GET['mail'];
-        $subject=$_GET['subject'];
     }
     if($code == 17){
         $username=$_GET['username'];
@@ -50,7 +48,7 @@
                echo "Check war erfolgreich!";
            }
         }//FERTIG
-        function search($connection,$qString,$table){
+       /* function search($connection,$qString,$table){
             $result=mysqli_query($connection,$qString);
             if(mysqli_num_rows($result)==0){
                 echo "Die Suche hat keinen Treffer ergeben.";
@@ -149,6 +147,7 @@
           return;
             }
         } //FERTIG  
+        */
         function delete($connection,$qString,$table,$control,$controlItem){ 
            
            $check=mysqli_query($connection,"SELECT ".$control." FROM ".$table." WHERE ".$control."='$controlItem'");
@@ -162,6 +161,17 @@
            }
            
         }      //Fertig
+     function listCategories($connection,$qString){
+            $check=mysqli_query($connection,"SELECT type FROM categories where hauptKat=''"); 
+                while($row = mysqli_fetch_object($check)){  
+                    echo $row->type."\n";
+                }
+         echo"<br/>";
+            $result=mysqli_query($connection,"SELECT type from categories WHERE hauptKat='$qString'");
+               while($row = mysqli_fetch_object($result)){  
+                echo $row->type."<br/>";
+               }
+        }
         function changePassword($connection,$qString,$password){ 
            if($password != null){
                $check=mysqli_query($connection,"SELECT username FROM users WHERE username='$qString'");
@@ -225,6 +235,16 @@
                 echo "Der User ".$username." wurde erfolgreich angelegt.";
             }    
         } 
+       function contactUser($connection,$mail,$textInput,$subject){
+            $to=$mail;
+            $message=$textInput;
+            $from='Sqwirrel';
+            $fromMail='support@Sqwirrel.com';
+            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
+                echo "Fehler bei der Übermittlung!";
+            else
+                echo "Email erfolgreich gesendet!";
+        }
         function editUser($connection,$username,$mail){
             $check= mysqli_fetch_object(mysqli_query($connection,"SELECT * FROM users WHERE username='$username'"));
             if($check)
@@ -244,16 +264,6 @@
             }else{
                 echo "Fehler";
             }
-        }
-    function contactUser($connection,$mail,$textInput,$subject){
-            $to=$mail;
-            $message=$textInput;
-            $from='Sqwirrel';
-            $fromMail='support@Sqwirrel.com';
-            if(!mail ($to ,$subject , $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8' . "\r\n"))
-                echo "Fehler bei der Übermittlung!";
-            else
-                echo "Email erfolgreich gesendet!";
         }
     if($connection){
         switch($code){
@@ -275,7 +285,7 @@
                 break;   
             case 18: editUser($connection,$username,$mail);
                 break; 
-            case 19: contactUser($connection,$mail,$textInput,$subject);
+            case 19: contactUser($connection,$firstname,$mail);
                 break;                 
             case 20: delete($connection,"DELETE FROM notice WHERE ID='$textInput'","notice","ID",$textInput);
                 break;
@@ -320,6 +330,8 @@
             case 541: check($connection,"SELECT title FROM categories WHERE title='$textInput'");
                 break;
             case 550: changePasswordBe($connection, $username, $password, $pwOld);
+                break;
+            case 560: listCategories($connection,$textInput);
                 break;
         }
         mysqli_close($connection);

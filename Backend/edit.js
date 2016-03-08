@@ -90,7 +90,7 @@ function changeCategories(type,typeNew){
 		xmlhttp.send("code=44&type="+type+"&typeNew="+typeNew);
 }
 function shEdForm(username,mail,activated,retailer,max){
-        clearInterval(wait);    
+    clearInterval(wait);    
     mail = encodeURIComponent(mail);
     activated = encodeURIComponent(activated);
     retailer = encodeURIComponent(retailer);

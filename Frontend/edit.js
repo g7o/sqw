@@ -59,6 +59,36 @@ function changePassword(){
         document.getElementById("ergebnis").innerHTML=" ";
         document.getElementById("hidden-btn").classList.add("btn-hidden");
     }
+function editTicket(){
+        var title=encodeURIComponent(document.getElementById('title').value);
+        var price=encodeURIComponent(document.getElementById('price').value);
+        var piece=encodeURIComponent(document.getElementById('piece').value);
+        var minprice=encodeURIComponent(document.getElementById('minprice').value);
+        var origPrice=encodeURIComponent(document.getElementById('origPrice').value);
+        var categories=encodeURIComponent(document.getElementById('categories').value);
+        var actors=encodeURIComponent(document.getElementById('actors').value);
+        var date=encodeURIComponent(document.getElementById('date').value);
+        var shipping=encodeURIComponent(document.getElementById('shipping').value);
+        var payment=encodeURIComponent(document.getElementById('payment').value);
+        var username=encodeURIComponent(document.getElementById('login_btn').innerHTML);
+        var location=encodeURIComponent(document.getElementById('location').value);
+        if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+        
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+			}
+		}        
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");	xmlhttp.send("code=5&title="+title+"&piece="+piece+"&price="+price+"&minprice="+minprice+"&origPrice="+origPrice+"&categories="+categories+"&actors="+actors+"&date="+date+"&shipping="+shipping+"&payment="+payment+"&username="+username+"&location="+location);
+}
     function createNotice(){
         var title=encodeURIComponent(document.getElementById('title').value);
         var price=encodeURIComponent(document.getElementById('price').value);
@@ -73,7 +103,6 @@ function changePassword(){
         var datei=encodeURIComponent(document.getElementById('datei').value);
         var username=encodeURIComponent(document.getElementById('login_btn').innerHTML);
         var location=encodeURIComponent(document.getElementById('location').value);
-        alert(username);
         if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
@@ -94,7 +123,6 @@ function changePassword(){
     function getToken(){
         var token=encodeURIComponent(document.getElementById('token').value);
         var mail=encodeURIComponent(document.getElementById('mail').innerHTML);
-        alert(mail);
         if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();

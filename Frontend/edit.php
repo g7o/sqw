@@ -26,6 +26,21 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
         $token=mysqli_real_escape_string($connection, $_POST['token']);
         $mail=mysqli_real_escape_string($connection, $_POST['mail']);
     }
+    if($code == 5){
+        $title=mysqli_real_escape_string($connection, $_POST['title']);
+        $price=mysqli_real_escape_string($connection, $_POST['price']);
+        $piece=mysqli_real_escape_string($connection, $_POST['piece']);
+        $minprice=mysqli_real_escape_string($connection, $_POST['minprice']);
+        $origPrice=mysqli_real_escape_string($connection, $_POST['origPrice']);
+        $categories=mysqli_real_escape_string($connection, $_POST['categories']);
+        $actors=mysqli_real_escape_string($connection, $_POST['actors']);
+        $date=mysqli_real_escape_string($connection, $_POST['date']);
+        $shipping=mysqli_real_escape_string($connection, $_POST['shipping']);
+        $payment=mysqli_real_escape_string($connection, $_POST['payment']);
+        $id=mysqli_real_escape_string($connection, $_POST['id']);
+        $username=mysqli_real_escape_string($connection, $_POST['username']);
+        $location=mysqli_real_escape_string($connection, $_POST['location']);
+    }
     if($code == 3){
          $title=mysqli_real_escape_string($connection, $_POST['title']);
          $price=mysqli_real_escape_string($connection, $_POST['price']);
@@ -61,12 +76,17 @@ function confirm($connection,$token,$mail){
         echo "Fehler!";
     }
 }
+function updateNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$username,$location,$id){
+    $query="UPDATE notice SET title='$title',pieces='$piece',price='$price',originalprice='$origPrice',category='$categories',actors='$actors',location='location',dateandtime='$date',shipping='$shipping',payment='$payment',minprice='$minprice' WHERE ID='$id'";
+    $res=mysqli_query($connection,$query);
+    if($result)
+        echo "Daten geändert";
+    else
+        echo "Daten nicht geändert";
+}
 function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location){
     $res=mysqli_fetch_array(mysqli_query($connection,"SELECT id FROM users where username='$username'"));
     $resMax= mysqli_fetch_array(mysqli_query($connection,"SELECT activeSells from users where ID='$res[0]'"));
-    $date = date("Y-m-d");
-    $dayFut=date_modify($date,'+ 1 month');
-    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment','$dayFut','1','$minprice')";
     $dateH = date_create(date("Y-m-d H:i:s"));
     $dayFut=date_modify($dateH,'+ 1 month');
     $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment','".date_format($dayFut, 'Y-m-d H:i:s')."','1','$minprice')";
@@ -117,27 +137,27 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
         echo '<meta http-equiv="refresh" content="5; URL=registrierung.php">';
     }
     echo"".mysqli_error($connection);
+}        
+function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
+    if($pwNew == $pwNewChk){
+        $check= mysqli_fetch_array(mysqli_query($connection,"SELECT password FROM users WHERE username='$username'"));
+        $pw=md5($pwOld);
+        $pwcheck=$check[0];
+        if($pw == $pwcheck) {
+            $pwN=md5($pwNew);
+            mysqli_query($connection,"UPDATE users SET password='$pwN' WHERE username='$username'");
+            echo '<span class="help-block hint-success">Das Passwort wurde erfolgreich ge&auml;ndert!</span>';
+            return;
+        }else{
+            //echo '<span class="help-block hint-failure">Das eingegebene Passwort ist falsch!</span>';
+        echo $username;
+            return;
+        }   
+    } else {
+        echo '<span class="help-block hint-failure">Die beiden Passw&ouml;rter stimmen nicht &uuml;berein!</span>';
+        return;
+    }
 }
-        function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
-            if($pwNew == $pwNewChk){
-                $check= mysqli_fetch_array(mysqli_query($connection,"SELECT password FROM users WHERE username='$username'"));
-                $pw=md5($pwOld);
-                $pwcheck=$check[0];
-                if($pw == $pwcheck) {
-                    $pwN=md5($pwNew);
-                    mysqli_query($connection,"UPDATE users SET password='$pwN' WHERE username='$username'");
-                    echo '<span class="help-block hint-success">Das Passwort wurde erfolgreich ge&auml;ndert!</span>';
-                    return;
-                }else{
-                    //echo '<span class="help-block hint-failure">Das eingegebene Passwort ist falsch!</span>';
-                    echo $username;
-                    return;
-                }   
-            } else {
-                echo '<span class="help-block hint-failure">Die beiden Passw&ouml;rter stimmen nicht &uuml;berein!</span>';
-                return;
-            }
-        }
  if($connection){
         switch($code){
             case 1: insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password);
@@ -147,6 +167,8 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
             case 3: createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location);
                 break;
             case 4: confirm($connection,$token,$mail);
+                break;
+            case 5: updateNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$username,$location,$id)
                 break;
             default: echo "Fehler";
                 break;

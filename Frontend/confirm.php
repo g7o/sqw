@@ -47,20 +47,19 @@ $textButton=$name;
                   <hr>                  
 <form class="form-horizontal">
               <div class="form-group">
-                    <label for="token" class="col-xs-12 col-sm-4 control-label">Token eingeben:</label>
-                    <div class="col-xs-12 col-sm-8">
+                    <label for="token" class="col-xs-12 col-sm-3 control-label">Token eingeben:</label>
+                    <div class="col-xs-12 col-sm-9">
                       <input required type="text" class="form-control" id="token" placeholder="Token">
-                    <div class="col-xs-12 col-sm-8">
-                      <input type="text" class="form-control" id="mail" value="<?php echo $_GET['mail']; ?>">
-                    </div>
-                  </div>
+                    
+                  </div></div>
+                  
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
                       <a onclick="getToken()" class="btn btn-primary">Bestätigen</a>
                     </div>
                   </div> 
-                  </div> 
-    
+                   
+    <span class="fehler-hint-hidden" id="mail"><?php echo $_GET['mail']; ?></span>
                 </form>  
               </div>
 

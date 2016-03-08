@@ -95,7 +95,7 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="date" class="col-xs-12 col-sm-2 control-label">Datum:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="date" class="form-control" id="date" value="1997-01-01">
+                      <input required type="date" class="form-control" id="date">
                     </div>
                   </div> 
                   <div class="form-group">
@@ -139,31 +139,9 @@ $textButton=$name;
         
       </div>
       </div><!--MAIN-->
-        <footer>
-            
-          <div class="container-fluid">
-              <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <ul class="footer-content footer-content-left pull-left">
-                    <li><a  href="#">FAQ</a></li>
-                      <li><a href="#">Händler werden</a></li>
-                      <li><a  href="#">Über Uns</a></li>
-                      <li><a href="#">Kontakt</a></li>
-                      <li><a  href="#">AGB</a></li>
-                  </ul>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <ul class="footer-content footer-content-right pull-right">
-                    <li>Sqwirrel</li>
-                      <li>HTL Hollabrunn - 5AHWII</li>
-                      <li>Berger, Gattringer, Pollak</li>
-                      <li>2020, Hollabrunn</li>
-                      <li><a href="#">Impressum</a></li>
-                  </ul>
-              </div>                     
-          </div>                 
-            </div>
-      </footer>
+        <?php 
+            include_once("footer.inc"); 
+        ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

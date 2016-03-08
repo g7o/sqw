@@ -290,10 +290,6 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 $urlContact='<a>'.$glyphContact.'</a>';
                                 $glyphRemove='<span id="'.$row[4].'" onclick="deleteUser(this.id)" class="glyphicon glyphicon-remove" aria-hidden="true">';
                                 $urlRemove='<a>'.$glyphRemove.'</a>';
-                                if($row[16]==0)
-                                    $type="Gratiskonto";
-                                esle
-                                    $type="Händlerkonto";
                                 if($row[15]==0)
                                     $s="nein";
                                 else
@@ -303,7 +299,7 @@ $optActivYes='<option value="1">Aktiv</option><option value="0">Inaktiv</option>
                                 <td>$row[2]</td>
                                 <td>$row[1]</td>
                                 <td>$row[7]</td>
-                                <td>$type</td>                                                            
+                                <td>$row[16]</td>                                                            
                                 <td>$s</td>                            
                                 <td>$row[17]</td> 
                                 <td>$urlEdit</td>
