@@ -22,6 +22,10 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
             $sex="Female";
         }
     }
+    if($code ==4){
+        $token=mysqli_real_escape_string($connection, $_POST['token']);
+        $mail=mysqli_real_escape_string($connection, $_POST['mail']);
+    }
     if($code == 3){
          $title=mysqli_real_escape_string($connection, $_POST['title']);
          $price=mysqli_real_escape_string($connection, $_POST['price']);
@@ -43,12 +47,29 @@ $code=mysqli_real_escape_string($connection, $_POST['code']);
         $pwNew=mysqli_real_escape_string($connection, $_POST['pwNew']);
         $pwNewChk=mysqli_real_escape_string($connection, $_POST['pwNewChk']);
     }
+function confirm($connection,$token,$mail){
+    $tokenCheck=mysqli_fetch_array(mysqli_query($connection,"SELECT nametoken FROM tokens WHERE nametoken='$token'"));
+    if($tokenCheck[0] == $token){
+        $result=mysqli_query($connection,"DELETE FROM tokens WHERE nametoken='$token'");
+        $result2=mysqli_query($connection,"UPDATE users SET isActivated='1' WHERE mail='$mail'");
+        if($result2)
+            echo"Konto erfolgreich aktiviert";
+        else
+            echo "Kontobestätigung fehlgeschlagen";
+    }
+    else{
+        echo "Fehler!";
+    }
+}
 function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location){
     $res=mysqli_fetch_array(mysqli_query($connection,"SELECT id FROM users where username='$username'"));
     $resMax= mysqli_fetch_array(mysqli_query($connection,"SELECT activeSells from users where ID='$res[0]'"));
     $date = date("Y-m-d");
     $dayFut=date_modify($date,'+ 1 month');
     $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment','$dayFut','1','$minprice')";
+    $dateH = date_create(date("Y-m-d H:i:s"));
+    $dayFut=date_modify($dateH,'+ 1 month');
+    $query="INSERT INTO notice (ID, title, UserID, pieces, price, originalprice, category, actors, location, dateandtime, shipping, payment, validuntil, active,minprice) VALUES(null,'$title','$res[0]','$piece','$price','$origPrice','$categories','$actors','$location','$date','$shipping','$payment','".date_format($dayFut, 'Y-m-d H:i:s')."','1','$minprice')";
     if($resMax[0]<=3){
         $result=mysqli_query($connection,$query);
         if($result){
@@ -58,17 +79,19 @@ function createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$cat
         }
     }
 }
-    function generateToken($connection,$mail){
+function generateToken($connection,$mail){
         $token=md5(uniqid(rand(), true));
-        $tokenQuery=mysqli_query($connection,"INSERT INTO tokens values('$token','$mail'");
+        $tokenQuery=mysqli_query($connection,"INSERT INTO tokens values('$token','$mail')");
+        echo "".mysqli_error($connection);
         $to=$mail;
-        $message="Ihr Token: ".$token;
+        $link="http://www.htl-hl.ac.at/wi/sqwirrel/frontend/confirm.php?token=".$token."&mail=".$mail;
+        $message="Ihr Token: ".$token."Link".$link;
         $from='Sqwirrel';
         $fromMail='support@sqwirrel.com';
         if(!mail ($to ,"Bestätigungslink für Sqwirrel Online-Ticketbörse", $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8'))
             echo "Fehler beim Senden des Bestätigungslinks! <br>";
         else
-            echo "Besätigungsemail erfolgreich gesendet! Überprüfen Sie nun ihre Email. <br>";
+            echo "Bestätigungsemail erfolgreich gesendet! Überprüfen Sie nun ihre Email. <br>";
     }
 function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$street,$hnumber,$plz,$city,$country,$picture,$password_check,$password){
     generateToken($connection,$mail);
@@ -95,7 +118,6 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
     }
     echo"".mysqli_error($connection);
 }
-
         function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
             if($pwNew == $pwNewChk){
                 $check= mysqli_fetch_array(mysqli_query($connection,"SELECT password FROM users WHERE username='$username'"));
@@ -123,6 +145,8 @@ function insertRegistration($connection,$vname,$nname,$uname,$sex,$mail,$birth,$
             case 2: changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk);
                 break;
             case 3: createNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$datei,$username,$location);
+                break;
+            case 4: confirm($connection,$token,$mail);
                 break;
             default: echo "Fehler";
                 break;

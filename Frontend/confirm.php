@@ -46,220 +46,32 @@ $textButton=$name;
                   <h1>Kostenloses Konto anlegen:</h1>
                   <hr>                  
 <form class="form-horizontal">
-                <h4>Basisdaten:</h4>
-                    <hr>
-                  <div class="form-group">
-                    <label for="vname" class="col-xs-12 col-sm-4 control-label">Vorname:</label>
+              <div class="form-group">
+                    <label for="token" class="col-xs-12 col-sm-4 control-label">Token eingeben:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="vname" placeholder="Oachkatzl">
+                      <input required type="text" class="form-control" id="token" placeholder="Token">
+                    <div class="col-xs-12 col-sm-8">
+                      <input type="text" class="form-control" id="mail" value="<?php echo $_GET['mail']; ?>">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="nname" class="col-xs-12 col-sm-4 control-label">Nachname:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="nname" placeholder="Schwoaf">
-                    </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="uname" class="col-xs-12 col-sm-4 control-label">Username:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="uname" placeholder="oachkatzl-schwoaf">
-                    </div>
-                  </div>     
-                  <div class="form-group">
-                    <label for="mail" class="col-xs-12 col-sm-4 control-label">E-Mail:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="email" class="form-control" id="mail" placeholder="oachkatzl@sqwirrel.eu">
-                    </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="password_1" class="col-xs-12 col-sm-4 control-label">Passwort:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="password" class="form-control" id="password_1">
-                    </div>
-                  </div>    
-                  <div class="form-group">
-                    <label for="password_check" class="col-xs-12 col-sm-4 control-label">Passwort erneut eingeben:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="password" class="form-control" id="password_check">
-                    </div>
-                  </div>    
-                  <div class="form-group">
-                    <label for="birth" class="col-xs-12 col-sm-4 control-label">Geboren am:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="date" class="form-control" id="birth">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="sex" class="col-xs-12 col-sm-4 control-label">Geschlecht:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <select id="sex" class="form-control">
-                          <option>Männlich</option>
-                          <option>Weiblich</option>
-                      </select>
-                    </div>
-                  </div>    
-                  <h4>Adressdaten:</h4>    
-                  <hr>
-                  <div class="form-group">
-                    <label for="street" class="col-xs-12 col-sm-4 control-label">Straße:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="street" placeholder="Nussstraße">
-                    </div>
-                  </div>     
-                  <div class="form-group">
-                    <label for="hnumber" class="col-xs-12 col-sm-4 control-label">Adresszusatz:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="hnumber" placeholder="Hausnummer/Stiege/Tür">
-                    </div>                    
-                  </div> 
-                  <div class="form-group">
-                    <label for="plz" class="col-xs-12 col-sm-4 control-label">PLZ:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="plz" placeholder="1312">
-                    </div>
-                  </div>  
-                  <div class="form-group">
-                    <label for="city" class="col-xs-12 col-sm-4 control-label">Stadt:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="city" placeholder="Nusshausen">
-                    </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="country" class="col-xs-12 col-sm-4 control-label">Land:</label>
-                    <div class="col-xs-12 col-sm-8">
-                      <select id="country" class="form-control">
-                          <option>Österreich</option>
-                          <option>Deutschland</option>
-                          <option>Schweiz</option>
-                      </select>
-                    </div>
-                  </div>
-                    <h4>Interessen:</h4>
-                    <hr>
-
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Sport" type="button" class="btn btn-default btn-filter" >
-                        Sport
-                      </button>                        
-                  </div>       
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Musik" type="button" class="btn btn-default btn-filter" >
-                        Musik
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Theater" type="button" class="btn btn-default btn-filter" >
-                        Theater
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Filme" type="button" class="btn btn-default btn-filter" >
-                        Filme
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Seminare" type="button" class="btn btn-default btn-filter" >
-                        Seminare
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Vortrag" type="button" class="btn btn-default btn-filter" >
-                        Vorträge
-                      </button>                        
-                  </div>     
-                <h4 >Profilbild auswählen: (optional)</h4>
-                <hr>
-                  <div class="form-group col-xs-12">
-                    <label id="lbl" for="datei" class="col-x2-12 text-center center-block"><span class="glyphicon glyphicon-open"></span>Datei hochladen</label>
-                      
-                    <input type="file" id="datei" class="inputfile" accept="image/png, image/jpeg, image/gif, application/pdf, " onchange="chg()">
-                    <p class="help-block">Erlaubte Dateien: .JPG | .PNG | .PDF | .JPEG | .GIF</p>
-                      
-                  </div> 
                   <div class="form-group">
                     <div class=" col-xs-12 col-sm-12  center-block">
-                      <a onclick="registration()" class="btn btn-primary">Registrieren!</a>
+                      <a onclick="getToken()" class="btn btn-primary">Bestätigen</a>
                     </div>
-                  </div>                    
+                  </div> 
+                  </div> 
+    
                 </form>  
               </div>
 
           </div> <!-- 1Row -->
       </div><!--MAIN-->
-        <footer>
-            
-          <div class="container-fluid">
-              <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <ul class="footer-content footer-content-left pull-left">
-                    <li><a  href="#">FAQ</a></li>
-                      <li><a href="#">Händler werden</a></li>
-                      <li><a  href="#">Über Uns</a></li>
-                      <li><a href="#">Kontakt</a></li>
-                      <li><a  href="#">AGB</a></li>
-                  </ul>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <ul class="footer-content footer-content-right pull-right">
-                    <li>Sqwirrel</li>
-                      <li>HTL Hollabrunn - 5AHWII</li>
-                      <li>Berger, Gattringer, Pollak</li>
-                      <li>2020, Hollabrunn</li>
-                      <li><a href="#">Impressum</a></li>
-                  </ul>
-              </div>                     
-          </div>                 
-            </div>
-      </footer>
+        <?php 
+            include_once("footer.inc"); 
+        ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script>
-        $("#Musik").click(function(){
-            if($("#Musik").hasClass("active")==false){
-                $("#Musik").addClass("active");
-            } else {
-                $("#Musik").removeClass("active");
-            }
-        }); 
-        $("#Vortrag").click(function(){
-            if($("#Vortrag").hasClass("active")==false){
-                $("#Vortrag").addClass("active");
-            } else {
-                $("#Vortrag").removeClass("active");
-            }
-        });  
-        $("#Seminare").click(function(){
-            if($("#Seminare").hasClass("active")==false){
-                $("#Seminare").addClass("active");
-            } else {
-                $("#Seminare").removeClass("active");
-            }
-        });  
-        $("#Theater").click(function(){
-            if($("#Theater").hasClass("active")==false){
-                $("#Theater").addClass("active");
-            } else {
-                $("#Theater").removeClass("active");
-            }
-        });        
-        $("#Sport").click(function(){
-            if($("#Sport").hasClass("active")==false){
-                $("#Sport").addClass("active");
-            } else {
-                $("#Sport").removeClass("active");
-            }
-        });
-        $("#Filme").click(function(){
-            if($("#Filme").hasClass("active")==false){
-                $("#Filme").addClass("active");
-            } else {
-                $("#Filmett").removeClass("active");
-            }
-        });        
-
-      </script>
   </body>
 </html>

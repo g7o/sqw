@@ -91,6 +91,28 @@ function changePassword(){
 		xmlhttp.open("POST","edit.php",true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");	xmlhttp.send("code=3&title="+title+"&piece="+piece+"&price="+price+"&minprice="+minprice+"&origPrice="+origPrice+"&categories="+categories+"&actors="+actors+"&date="+date+"&shipping="+shipping+"&payment="+payment+"&datei="+datei+"&username="+username+"&location="+location);
     }
+    function getToken(){
+        var token=encodeURIComponent(document.getElementById('token').value);
+        var mail=encodeURIComponent(document.getElementById('mail').innerHTML);
+        alert(mail);
+        if (window.XMLHttpRequest){
+			//IE7+, Chrome, Firefox, Safari, Opera
+			xmlhttp=new XMLHttpRequest();
+		}
+        
+		else{
+			//IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200 ){
+                document.getElementById("ergebnis").innerHTML=xmlhttp.responseText;
+			}
+		}        
+		xmlhttp.open("POST","edit.php",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("code=4&token="+token+"&mail="+mail);
+    }
     function registration(){
         var vname = encodeURIComponent(document.getElementById('vname').value);
         var nname = encodeURIComponent(document.getElementById('nname').value);
