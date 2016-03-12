@@ -1,4 +1,8 @@
-f
+    <?php 
+            include_once("dbCon.inc"); 
+                $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE username='$textButton'"));
+                ?>
+
 <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
                 <div class="navbar-header">
@@ -18,10 +22,10 @@ f
 <div class="input-group">
       <input type="text" class="form-control" aria-label="...">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">meine Anzeigen<span class="caret"></span></button>
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Einstellungen<span class="caret"></span></button>
         <ul class="dropdown-menu dropdown-menu-right">
           <li><a href="ticket_neu.php">neue Anzeige erstellen</a></li>
-          <li><a href="#">Another action</a></li>
+          <li><?php echo '<a href="profile.php?user='.$row[0].'"</a> mein Profil'; ?></li>
           <li><a href="#">Something else here</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#">Separated link</a></li>
