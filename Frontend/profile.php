@@ -105,16 +105,21 @@ $textButton=$name;
           <div class="col-xs-12">Keine vorhanden</div>
       </div><!--4ROW-->  <hr> 
       <div class="row">
- <h2 class="text-left username">Angebote:</h2>
+ <h2 class="text-left username">Angebote von:</h2>
               <hr>          
-        <div class="list-group">
-          <a href="anzeige.php" type="button" class="list-group-item">Toten Hosen</a>
-          <a href="anzeige.php" type="button" class="list-group-item">Revolverheld</a>
-          <a href="anzeige.php" type="button" class="list-group-item">JAVA lernen</a>
-          <a href="anzeige.php" type="button" class="list-group-item">Deadpool</a>
-          <a href="anzeige.php" type="button" class="list-group-item">Österreich-Türkei</a>
-        </div>      
-      </div><!--5ROW-->
+            <?php 
+            $ergebnis2 = mysqli_query($connection,"SELECT ID FROM users WHERE username='$name'");
+                            while($row = mysqli_fetch_array($ergebnis2)){
+                                echo '<div class="list-group">';
+                           $ergebnis = mysqli_query($connection,"SELECT * FROM notice where userID=".$row['ID'].""); 
+                            while($row2 = mysqli_fetch_array($ergebnis)){
+                                 echo '<a href="anzeige.php" type="button" class="list-group-item">'.$row2['actors'].'</a>';
+                            }
+                                echo ' </div>';
+                            }
+                                                                    
+                          ?>               
+        
       </div><!--MAIN-->
         <?php 
             include_once("footer.inc"); 
