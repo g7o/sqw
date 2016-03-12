@@ -230,14 +230,13 @@ $textButton=$name;
                 $("#Sport").removeClass("active");
             }
         });
-        $("#Filme").click(function(){
+       $("#Filme").click(function(){
             if($("#Filme").hasClass("active")==false){
                 $("#Filme").addClass("active");
             } else {
-                $("#Filmett").removeClass("active");
+                $("#Filme").removeClass("active");
             }
-        });        
-
+        });     
       </script>
   </body>
 </html>
