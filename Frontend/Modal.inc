@@ -69,7 +69,7 @@ echo '<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-la
                     <div class="col-xs-6 col-xs-offset-3 text-center">
                     <a id="pw-save" onclick="changePassword()" id="submit" class="btn btn-primary">Speichern</a>
                     </div>
-            </div>  
+            </div>
             <span class="fehler-hint-hidden" id="username">'.$name.'</span>
         </form>
 

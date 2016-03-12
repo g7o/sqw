@@ -85,7 +85,7 @@ $textButton=$name;
                                 echo '<p class="anz">'.$row2['actors'].'</p>';
                                 echo '<p class="anz">'.$row2['dateandtime'].'</p>';
                                 echo '<p class="anz">'.$row2['location'].'</p>';
-                                echo '<h5 class="anz">'.$row2['price'].'</h5>';
+                                echo '<h5 class="anz">'.$row2['price'].' €</h5>';
                                 echo '<p class="anz"><a href="anzeige.php?ticket='.$row2['ID'].'" class="btn btn-primary " role="button">Details</a></p>';
                                 echo '</div>';
                                 echo '</div>';
@@ -100,10 +100,24 @@ $textButton=$name;
       <div class="row">
                <h2 class="text-left username">Meine Bewertungen:</h2>
               <hr>
-          <div class="col-xs-12">Keine vorhanden</div>
+            <?php 
+             $ergebnis2 = mysqli_query($connection,"SELECT ID FROM users WHERE username='$name'");
+                            while($row = mysqli_fetch_array($ergebnis2)){
+                                $id=mysqli_real_escape_string($connection, $_GET['user']);
+                            $ergebnis = mysqli_query($connection,"SELECT * FROM rating where drawee=".$row['ID'].""); 
+                            while($row2 = mysqli_fetch_array($ergebnis)){
+                                $ergebnis2 = mysqli_query($connection,"SELECT username FROM users where id=".$row2['author'].""); 
+                                $row3 = mysqli_fetch_array($ergebnis2);
+                                echo '<div class="col-xs-12"> Autor: '.$row3['0'].'</div>';
+                                echo '<div class="col-xs-12"> Text: '.$row2['content'].'</div>';
+                                echo '<div class="col-xs-12"> Sterne: '.$row2['stars'].'</div>';
+                            }
+                               
+                            }
+               ?>     
       </div><!--4ROW-->  <hr> 
       <div class="row">
- <h2 class="text-left username">Angebote:</h2>
+ <h2 class="text-left username">Angebote von:</h2>
               <hr>     
           <div class="list-group">
             <?php 
