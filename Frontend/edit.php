@@ -83,7 +83,10 @@ function confirm($connection,$token,$mail){
         echo "Fehler!";
     }
 }
-function updateNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$username,$location,$id){
+function updateNotice($connection,$title,$piece,$price,$minprice,$origPrice,$categories,$actors,$date,$shipping,$payment,$username,$location,$username){
+    $res2=mysqli_fetch_array(mysqli_query($connection,"SELECT id FROM users where username='$username'"));
+    $q="SELECT ID FROM notice WHERE title='$title' and userID='$res2[0]'";
+    $result=mysqli_query($connection,$q);
     $query="UPDATE notice SET title='$title',pieces='$piece',price='$price',originalprice='$origPrice',category='$categories',actors='$actors',location='location',dateandtime='$date',shipping='$shipping',payment='$payment',minprice='$minprice' WHERE ID='$id'";
     $res=mysqli_query($connection,$query);
     if($result)
@@ -111,10 +114,17 @@ function generateToken($connection,$mail){
         $tokenQuery=mysqli_query($connection,"INSERT INTO tokens values('$token','$mail')");
         $to=$mail;
         $link="http://www.htl-hl.ac.at/wi/sqwirrel/frontend/confirm.php?token=".$token."&mail=".$mail;
-        $message="Ihr Token: ".$token."Link".$link;
+        $message='<h1>Kontoaktivierung</h1><p>Vielen Dank für Ihre Registrierung bei <bold>Sqwirrel</bold>. Um die Registrierung abzuschließen, klicken Sie bitte auf diesen <a href="'.$link.'">Link</a> und geben Sie ihren Token ein.</p><p>Ihr Token: <bold>'.$token.'</bold></p>';    
         $from='Sqwirrel';
         $fromMail='support@sqwirrel.com';
-        if(!mail ($to ,"Bestätigungslink für Sqwirrel Online-Ticketbörse", $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8'))
+        $header  = "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html; charset=utf-8\r\n";
+
+        $header .= "From: $from <$fromMail>\r\n";
+        $header .= "Reply-To: $fromMail\r\n";
+        // $header .= "Cc: $cc\r\n";  // falls an CC gesendet werden soll
+        $header .= "X-Mailer: PHP ". phpversion();    
+        if(!mail ($to ,"Bestätigungslink für Sqwirrel Online-Ticketbörse", $message,$header))
             echo "Fehler beim Senden des Bestätigungslinks! <br>";
         else
             echo "Bestätigungsemail erfolgreich gesendet! Überprüfen Sie nun ihre Email. <br>";
@@ -165,8 +175,8 @@ function changePassword($connection, $username, $pwOld, $pwNew, $pwNewChk){
     }
 }
 function contactForm($connection,$name,$email,$betreff,$categories,$message){
-        $to="manuel.pollak92@gmail.com";
-        $from="Kontakformularanfrage von ".$name;
+        $to="sqwirrel@danielgattringer.com";
+        $from="Kontakformular von ".$name." Kategorie ".$categories;
         $fromMail=$email;
         if(!mail ($to ,$betreff, $message,"From: $from <$fromMail>",'Content-type: text/plain; charset=utf-8'))
             echo "Fehler beim Senden des Kontaktformulars! <br>";

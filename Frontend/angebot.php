@@ -1,16 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<?php
-session_start();
-$textButton="Login";
-if(isset($_SESSION["username"])){
-$name = $_SESSION["username"];
-$textButton=$name;
-}
-?> 
-<?php
- include("notLogedIn.inc");
-?>     
+<html lang="en">    
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +7,7 @@ $textButton=$name;
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Sqwirrel</title>
     <!-- Bootstrap -->
+<link href="favicon.ico" rel="icon" type="image/x-icon">      
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">      
  <script type="text/javascript" src="edit.js"></script>
@@ -29,7 +19,17 @@ $textButton=$name;
     <![endif]-->
   </head>
   <body>
-      
+<?php
+session_start();
+$textButton="Login";
+if(isset($_SESSION["username"])){
+$name = $_SESSION["username"];
+$textButton=$name;
+}
+?> 
+<?php
+ include("notLogedIn.inc");
+?>       
   <?php include_once("menue.inc");  ?>
       
       <div class="container con">
@@ -37,10 +37,16 @@ $textButton=$name;
               <?php 
                 include_once("Modal.inc"); 
               ?>
-
+               <?php 
+              include_once("dbCon.inc"); 
+              $id=mysqli_real_escape_string($connection, $_GET['angebot']);
+                $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM notice WHERE id='$id'"));
+                $row2=mysqli_fetch_array(mysqli_query($connection,"SELECT username FROM users WHERE id='$row[2]'"));
+                
+              ?>           
               <div class="text-center">
 <form class="form-horizontal">
-                <h3><a href="anzeige.php">Ticket (Username)</a></h3>
+                <h3><?php echo'<a href="anzeige.php?ticket='.$row['ID'].'">'?> <?php echo $row[1]; ?></a></h3>
                 <hr>
                 <h2 class="username">Angebot abgeben:</h2>
     <a href="#" class="btn btn-success btn-cstm-ang">Ohne Änderung absenden</a>
@@ -48,25 +54,25 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="avail" class="col-xs-12 col-sm-2 control-label">Stück verfügbar:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" disabled id="avail" value="3">
+                      <input required type="text" class="form-control" disabled id="avail" value="<?php echo $row[3]; ?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="piece" class="col-xs-12 col-sm-2 control-label">Stück benötigt:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="piece" min="1" max="3" value="3">
+                      <input required type="number" class="form-control" id="piece" min="1" max="<?php echo $row[3]; ?>">
                     </div>
                   </div> 
                   <div class="form-group">
                     <label for="isPrice" class="col-xs-12 col-sm-2 control-label">Preis - Vorgabe:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" disabled id="isPrice" value="30">
+                      <input required type="text" class="form-control" disabled id="isPrice" value="<?php echo $row[4]; ?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="price" class="col-xs-12 col-sm-2 control-label">Preis - Angebot:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="number" class="form-control" id="price" min="1" value="3">
+                      <input required type="number" class="form-control" id="price" min="<?php echo $row[14]; ?>">
                     </div>
                   </div> 
                   <div class="form-group">

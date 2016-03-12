@@ -51,25 +51,25 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="vname" class="col-xs-12 col-sm-4 control-label">Vorname:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="vname" placeholder="Oachkatzl">
+                      <input required type="text" class="form-control" id="vname">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="nname" class="col-xs-12 col-sm-4 control-label">Nachname:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="nname" placeholder="Schwoaf">
+                      <input required type="text" class="form-control" id="nname">
                     </div>
                   </div> 
                   <div class="form-group">
                     <label for="uname" class="col-xs-12 col-sm-4 control-label">Username:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="uname" placeholder="oachkatzl-schwoaf">
+                      <input required type="text" class="form-control" id="uname">
                     </div>
                   </div>     
                   <div class="form-group">
                     <label for="mail" class="col-xs-12 col-sm-4 control-label">E-Mail:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="email" class="form-control" id="mail" placeholder="oachkatzl@sqwirrel.eu">
+                      <input required type="email" class="form-control" id="mail" placeholder="zB. max12@gmail.com">
                     </div>
                   </div> 
                   <div class="form-group">
@@ -104,7 +104,7 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="street" class="col-xs-12 col-sm-4 control-label">Straße:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="street" placeholder="Nussstraße">
+                      <input required type="text" class="form-control" id="street">
                     </div>
                   </div>     
                   <div class="form-group">
@@ -116,13 +116,13 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="plz" class="col-xs-12 col-sm-4 control-label">PLZ:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="plz" placeholder="1312">
+                      <input required type="text" class="form-control" id="plz">
                     </div>
                   </div>  
                   <div class="form-group">
                     <label for="city" class="col-xs-12 col-sm-4 control-label">Stadt:</label>
                     <div class="col-xs-12 col-sm-8">
-                      <input required type="text" class="form-control" id="city" placeholder="Nusshausen">
+                      <input required type="text" class="form-control" id="city">
                     </div>
                   </div> 
                   <div class="form-group">
@@ -172,7 +172,7 @@ $textButton=$name;
                 <hr>
                   <div class="form-group col-xs-12">
                     <label id="lbl" for="datei" class="col-x2-12 text-center center-block"><span class="glyphicon glyphicon-open"></span>Datei hochladen</label>
-                      
+                      <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
                     <input type="file" id="datei" class="inputfile" accept="image/png, image/jpeg, image/gif, application/pdf, " onchange="chg()">
                     <p class="help-block">Erlaubte Dateien: .JPG | .PNG | .PDF | .JPEG | .GIF</p>
                       
@@ -187,7 +187,7 @@ $textButton=$name;
 
           </div> <!-- 1Row -->
       </div><!--MAIN-->
-        <?php 
+         <?php 
             include_once("footer.inc"); 
         ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

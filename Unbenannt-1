@@ -49,13 +49,12 @@ $textButton=$name;
                                 echo '<p class="anz">'.$row2['dateandtime'].'</p>';
                                 echo '<p class="anz">'.$row2['location'].'</p>';
                                 echo '<h5 class="anz">'.$row2['price'].'</h5>';
-                                echo '<p class="anz"><a href="anzeige.php?ticket='.$row2['ID'].'" class="btn btn-primary " role="button">Details</a></p>';
+                                echo '<p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>';
                                 echo '</div>';
                                 echo '</div>';
-                               
+                                echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>';
                                 
                             }
-                                echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>';
                                 echo ' </div>';
                             }
                                                                     

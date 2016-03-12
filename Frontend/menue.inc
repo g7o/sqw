@@ -1,4 +1,4 @@
-
+f
 <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
                 <div class="navbar-header">
@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>                
-                <a class="nav navbar-brand">
+                <a class="nav navbar-brand" href="index.php">
                     Sqwirrel
                 </a>
                 </div>
@@ -29,7 +29,9 @@
       </div><!-- /btn-group -->
     </div><!-- /input-group -->
    </div>             
-                 <a class="navbar-btn btn btn-warning navbar-right col-xs-6 col-sm-2 col-md-1" id="login_btn" data-toggle="modal" data-target="#userModal" style="font-weight: bold; color: white"><?php echo $textButton; ?></a>        
-      </div>            
+   <div class="navbar-right col-xs-12 col-sm-6 col-md-4">
+                 <a class="navbar-btn btn btn-warning col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8" id="login_btn" data-toggle="modal" data-target="#userModal" style="font-weight: bold; color: white"><?php echo $textButton; ?></a> 
+    </div>
+      </div>
      </div>
   </div><!--NAV-->

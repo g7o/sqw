@@ -15,6 +15,7 @@
       }
     </script>
     <!-- Bootstrap -->
+<link href="favicon.ico" rel="icon" type="image/x-icon">      
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">      
  <script type="text/javascript" src="edit.js"></script>
@@ -47,31 +48,30 @@ $textButton=$name;
               </div>                  
           </div> <!-- header -->
           <div class="row">
-                <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center" id="ergebnis">
               <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
                 <form class="form-horizontal">
                   <div class="form-group">
                     <label for="name" class="col-xs-12 col-sm-2 control-label">Name:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="name" placeholder="Oachkatzl Schwoaf">
+                      <input required type="text" class="form-control" id="name">
                     </div>
                   </div> 
                   <div class="form-group">
                     <label for="email" class="col-xs-12 col-sm-2 control-label">E-Mail:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="email" class="form-control" id="email" placeholder="oachkatzl@sqwirrel.eu">
+                      <input required type="email" class="form-control" id="email" placeholder="zB. test@stest.eu">
                     </div>
                   </div> 
                   <div class="form-group">
                     <label for="betreff" class="col-xs-12 col-sm-2 control-label">Betreff:</label>
                     <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="betreff" placeholder="Hallo Sqwirrel-Team">
+                      <input required type="text" class="form-control" id="betreff">
                     </div>
                   </div> 
                   <div class="form-group">
                     <label for="betreff" class="col-xs-12 col-sm-2 control-label">Kategorie:</label>
                     <div class="col-xs-12 col-sm-10">
-                        <select id="categories" class="form-control">
+                        <select class="form-control">
                           <option>Allgemein</option>
                           <option>Problem melden</option>
                           <option>Fragen zum Konto</option>
@@ -83,7 +83,7 @@ $textButton=$name;
                   <div class="form-group">
                     <label for="betreff" class="col-xs-12 col-sm-2 control-label">Nachricht:</label>
                     <div class="col-xs-12 col-sm-10">
-                       <textarea required class="form-control" rows="7" id="message" placeholder="Eure Seite ist einfach leiwand!"></textarea> 
+                       <textarea required class="form-control" rows="7" placeholder="Eure Seite ist einfach leiwand!"></textarea> 
                     </div>
                   </div> 
                   <div class="form-group col-xs-12">
@@ -96,14 +96,13 @@ $textButton=$name;
                   </div> 
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-12 center-block">
-                      <a class="btn btn-primary" onClick="contactAdmin()">Absenden</a>
+                      <a class="btn btn-primary">Absenden</a>
                     </div>
                   </div>                    
                 </form>
           </div> <!-- 1Row -->
       </div><!--MAIN-->
       </div>
-    </div>
         <?php 
             include_once("footer.inc"); 
         ?>

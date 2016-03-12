@@ -7,6 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Sqwirrel</title>
     <!-- Bootstrap -->
+<link href="favicon.ico" rel="icon" type="image/x-icon">      
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">      
  <script type="text/javascript" src="edit.js"></script>
@@ -80,10 +81,12 @@ $textButton=$name;
                     <label for="categories" class="col-xs-12 col-sm-2 control-label">Kategorie:</label>
                     <div class="col-xs-12 col-sm-10 ">
                       <select id="categories" class="form-control">
-                          <option>Sport</option>
-                          <option>KAt 1</option>
-                          <option>KAt 2</option>
-                          <option>KAt 3</option>
+                        <?php  include_once("dbCon.inc"); 
+                            $ergebnis = mysqli_query($connection,"SELECT * FROM categories");
+                            while($row = mysqli_fetch_array($ergebnis)){
+                                echo '<option value="'.$row['ID'].'">'.$row['type'].'</option>';
+                            }
+                          ?>
                       </select>
                     </div>
                   </div>

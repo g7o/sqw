@@ -1,3 +1,4 @@
+<div class="empty"></div>
 <footer class="footer">
             
           <div class="container-fluid">
@@ -6,8 +7,8 @@
                   <ul class="footer-content footer-content-left pull-left">
                     <li><a  href="#">FAQ</a></li>
                       <li><a href="#">Händler werden</a></li>
-                      <li><a  href="#">Über Uns</a></li>
-                      <li><a href="#">Kontakt</a></li>
+                      <li><a href="#">Über Uns</a></li>
+                      <li><a href="kontaktformular.php">Kontakt</a></li>
                       <li><a  href="#">AGB</a></li>
                   </ul>
               </div>

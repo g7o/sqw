@@ -85,6 +85,7 @@ function contactAdmin(){
 }
 function editTicket(){
         var title=encodeURIComponent(document.getElementById('title').value);
+    alert(title);
         var price=encodeURIComponent(document.getElementById('price').value);
         var piece=encodeURIComponent(document.getElementById('piece').value);
         var minprice=encodeURIComponent(document.getElementById('minprice').value);
@@ -96,6 +97,7 @@ function editTicket(){
         var payment=encodeURIComponent(document.getElementById('payment').value);
         var username=encodeURIComponent(document.getElementById('login_btn').innerHTML);
         var location=encodeURIComponent(document.getElementById('location').value);
+        var username=encodeURIComponent(document.getElementById('login_btn').innerHTML);
         if (window.XMLHttpRequest){
 			//IE7+, Chrome, Firefox, Safari, Opera
 			xmlhttp=new XMLHttpRequest();
