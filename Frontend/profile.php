@@ -89,8 +89,6 @@ $textButton=$name;
                                 echo '<p class="anz"><a href="anzeige.php?ticket='.$row2['ID'].'" class="btn btn-primary " role="button">Details</a></p>';
                                 echo '</div>';
                                 echo '</div>';
-                               
-                                
                             }
                                 echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>';
                                 echo ' </div>';
@@ -105,21 +103,23 @@ $textButton=$name;
           <div class="col-xs-12">Keine vorhanden</div>
       </div><!--4ROW-->  <hr> 
       <div class="row">
- <h2 class="text-left username">Angebote von:</h2>
-              <hr>          
+ <h2 class="text-left username">Angebote:</h2>
+              <hr>     
+          <div class="list-group">
             <?php 
-            $ergebnis2 = mysqli_query($connection,"SELECT ID FROM users WHERE username='$name'");
+             $ergebnis2 = mysqli_query($connection,"SELECT ID FROM users WHERE username='$name'");
                             while($row = mysqli_fetch_array($ergebnis2)){
-                                echo '<div class="list-group">';
+                                $id=mysqli_real_escape_string($connection, $_GET['user']);
                            $ergebnis = mysqli_query($connection,"SELECT * FROM notice where userID=".$row['ID'].""); 
                             while($row2 = mysqli_fetch_array($ergebnis)){
-                                 echo '<a href="anzeige.php" type="button" class="list-group-item">'.$row2['actors'].'</a>';
+                                
+                                 echo '<a href="anzeige.php?ticket='.$row2[0].'" type="button" class="list-group-item">'.$row2['actors'].'</a>';
                             }
-                                echo ' </div>';
+                               
                             }
-                                                                    
-                          ?>               
-        
+               ?>     
+               </div>
+        </div>
       </div><!--MAIN-->
         <?php 
             include_once("footer.inc"); 
