@@ -37,8 +37,9 @@ $textButton=$name;
               <?php 
               include_once("dbCon.inc"); 
               $id=mysqli_real_escape_string($connection, $_GET['ticket']);
-                $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM notice WHERE id='$id'"));
+               $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM notice WHERE id='$id'"));
                $row2=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE ID='$row[2]'"));
+               $row3=mysqli_fetch_array(mysqli_query($connection,"SELECT type FROM categories WHERE ID='$row[6]'"));
               ?>              
               <img class="img-circle img-responsive center-block" src="sqwirrel_logo1.png" >
               <h1 class="text-center username"><?php echo $row[1]; ?></h1>
@@ -49,13 +50,13 @@ $textButton=$name;
           <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left" >              
                   <div style="font-size: 1.6em">
-                      <span class="glyphicon glyphicon-chevron-right"></span>X Stück : <?php echo $row[3]; ?><br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Preis :<?php echo $row[4]; ?><br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Originalpreis: <?php echo $row[5]; ?><br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Kategorie: <?php echo $row[6]; ?><br>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Stückanzahl: <?php echo $row[3]; ?><br>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Preis: <?php echo $row[4]; ?> € <br>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Originalpreis: <?php echo $row[5]; ?> €<br>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Kategorie: <?php echo $row3[0]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Teams | Bands | Künstler: <?php echo $row[7]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Ort: <?php echo $row[8]; ?><br>                      
-                      <span class="glyphicon glyphicon-chevron-right"></span>Datum - Zeit: <?php echo $row[9]; ?><br>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Datum und Zeit: <?php echo $row[9]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Abholung / Versand: <?php echo $row[10]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <?php echo '<a href="profile.php?user='.$row2[0].'"</a>'.$row2[4].''; ?>
                   </div>

@@ -55,29 +55,11 @@ $textButton=$name;
               <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
 <form class="form-horizontal">
                 <h4>Basisdaten:</h4>
-                    <hr>
-                  <div class="form-group">
-                    <label for="vname" class="col-xs-12 col-sm-2 control-label">Vorname:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="vname" placeholder="Oachkatzl">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="nname" class="col-xs-12 col-sm-2 control-label">Nachname:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="text" class="form-control" id="nname" placeholder="Schwoaf">
-                    </div>
-                  </div>    
+                    <hr> 
                   <div class="form-group">
                     <label for="mail" class="col-xs-12 col-sm-2 control-label">E-Mail:</label>
                     <div class="col-xs-12 col-sm-10">
                       <input required type="email" class="form-control" id="mail" placeholder="oachkatzl@sqwirrel.eu">
-                    </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="birth" class="col-xs-12 col-sm-2 control-label">Geboren am:</label>
-                    <div class="col-xs-12 col-sm-10">
-                      <input required type="date" class="form-control" id="birth" min="1936-01-01" max="1998-01-08">
                     </div>
                   </div> 
                   <h4>Adressdaten:</h4>    
