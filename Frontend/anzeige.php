@@ -36,10 +36,11 @@ $textButton=$name;
               ?>
               <?php 
               include_once("dbCon.inc"); 
-              $id=mysqli_real_escape_string($connection, $_GET['ticket']);
+               $id=mysqli_real_escape_string($connection, $_GET['ticket']);
                $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM notice WHERE id='$id'"));
                $row2=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE ID='$row[2]'"));
                $row3=mysqli_fetch_array(mysqli_query($connection,"SELECT type FROM categories WHERE ID='$row[6]'"));
+               $row4=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM shipping WHERE ID='$row[10]'"));
               ?>              
               <img class="img-circle img-responsive center-block" src="sqwirrel_logo1.png" >
               <h1 class="text-center username"><?php echo $row[1]; ?></h1>
@@ -57,7 +58,7 @@ $textButton=$name;
                       <span class="glyphicon glyphicon-chevron-right"></span>Teams | Bands | Künstler: <?php echo $row[7]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Ort: <?php echo $row[8]; ?><br>                      
                       <span class="glyphicon glyphicon-chevron-right"></span>Datum und Zeit: <?php echo $row[9]; ?><br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Abholung / Versand: <?php echo $row[10]; ?><br>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Abholung / Versand: <?php echo $row4[1]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <?php echo '<a href="profile.php?user='.$row2[0].'"</a>'.$row2[4].''; ?>
                   </div>
                   <?php

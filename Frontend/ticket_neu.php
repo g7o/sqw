@@ -106,8 +106,12 @@ $textButton=$name;
                     <label for="shipping" class="col-xs-12 col-sm-2 control-label">Versand:</label>
                     <div class="col-xs-12 col-sm-10">
                       <select id="shipping" class="form-control">
-                          <option>Versand</option>
-                          <option>Abholung</option>
+                         <?php 
+                            $ergebnis = mysqli_query($connection,"SELECT * FROM shipping");
+                            while($row = mysqli_fetch_array($ergebnis)){
+                                echo '<option value="'.$row['ID'].'">'.$row['description'].'</option>';
+                            }
+                          ?>
                       </select>
                     </div>
                   </div> 
@@ -115,8 +119,12 @@ $textButton=$name;
                     <label for="payment" class="col-xs-12 col-sm-2 control-label">Bezahlung:</label>
                     <div class="col-xs-12 col-sm-10">
                       <select id="payment" class="form-control">
-                          <option>Bar</option>
-                          <option>Überweisung</option>
+                   <?php 
+                            $ergebnis = mysqli_query($connection,"SELECT * FROM payment");
+                            while($row = mysqli_fetch_array($ergebnis)){
+                                echo '<option value="'.$row['ID'].'">'.$row['description'].'</option>';
+                            }
+                          ?>
                       </select>
                     </div>
                   </div> 
