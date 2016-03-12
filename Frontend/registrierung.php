@@ -137,37 +137,16 @@ $textButton=$name;
                   </div>
                     <h4>Interessen:</h4>
                     <hr>
-
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Sport" type="button" class="btn btn-default btn-filter" >
-                        Sport
-                      </button>                        
-                  </div>       
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Musik" type="button" class="btn btn-default btn-filter" >
-                        Musik
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Theater" type="button" class="btn btn-default btn-filter" >
-                        Theater
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Filme" type="button" class="btn btn-default btn-filter" >
-                        Filme
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Seminare" type="button" class="btn btn-default btn-filter" >
-                        Seminare
-                      </button>                        
-                  </div> 
-                  <div class="col-xs-6 col-md-4">
-                      <button id="Vortrag" type="button" class="btn btn-default btn-filter" >
-                        Vorträge
-                      </button>                        
-                  </div>     
+ <?php
+    $ergebnis = mysqli_query($connection,"SELECT * FROM categories"); 
+            while($row2 = mysqli_fetch_array($ergebnis)){
+                  echo '<div class="col-xs-6 col-md-4">';
+                    echo '<button id="'.$row2[1].'" type="button" class="btn btn-default btn-filter">';
+                        echo $row2[1];
+                      echo '</button>';                        
+                  echo '</div>';
+            }
+              ?>
                 <h4 >Profilbild auswählen: (optional)</h4>
                 <hr>
                   <div class="form-group col-xs-12">
