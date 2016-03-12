@@ -41,7 +41,7 @@ $textButton=$name;
               include_once("dbCon.inc"); 
               $id=mysqli_real_escape_string($connection, $_GET['angebot']);
                 $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM notice WHERE id='$id'"));
-                $row2=mysqli_fetch_array(mysqli_query($connection,"SELECT username FROM users WHERE id='$row[2]'"));
+               
                 
               ?>           
               <div class="text-center">

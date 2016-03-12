@@ -38,6 +38,7 @@ $textButton=$name;
               include_once("dbCon.inc"); 
               $id=mysqli_real_escape_string($connection, $_GET['ticket']);
                 $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM notice WHERE id='$id'"));
+               $row2=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE ID='$row[2]'"));
               ?>              
               <img class="img-circle img-responsive center-block" src="sqwirrel_logo1.png" >
               <h1 class="text-center username"><?php echo $row[1]; ?></h1>
@@ -56,12 +57,13 @@ $textButton=$name;
                       <span class="glyphicon glyphicon-chevron-right"></span>Ort: <?php echo $row[8]; ?><br>                      
                       <span class="glyphicon glyphicon-chevron-right"></span>Datum - Zeit: <?php echo $row[9]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Abholung / Versand: <?php echo $row[10]; ?><br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <a href="#"><?php echo $row[3]; ?></a>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <?php echo '<a href="profile.php?user='.$row2[0].'"</a>'.$row2[4].''; ?>
                   </div>
                   <?php
                   echo'<p><a href= "angebot.php?angebot='.$row['ID'].'" class="btn btn-success center-block" style="margin-bottom: 5px;">Angebot abgeben</a>';
                     ?>
-                   <a href="#" class="btn btn-warning center-block">Merken</a> <a href="#" class="btn btn-link center-block btn-sm">Melden</a></p> 
+                   <a href="#" class="btn btn-warning center-block">Merken</a> 
+                    <a href="#" class="btn btn-link center-block btn-sm">Melden</a></p> 
               </div>
           </div>      
         

@@ -37,6 +37,11 @@ $textButton=$name;
               <?php 
                 include_once("Modal.inc"); 
               ?>
+               <?php 
+              include_once("dbCon.inc"); 
+              $id=mysqli_real_escape_string($connection, $_GET['user']);
+                $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE id='$id'"));
+              ?>     
                   <div class="hidden-xs col-xs-6 col-sm-6">
                   <div class="col-xs-12">
                       <img class="hidden-xs img-responsive pull-right" src="default_user.png">
@@ -45,11 +50,10 @@ $textButton=$name;
                   <div class="col-xs-12 col-sm-6">
                       <a href="editUser.php" class="pull-right">Bearbeiten</a>
                       <ul class="user-list">
-                          <li>USERNAME</li>
-                          <li>VORNAME</li>
-                          <li>NACHNAME</li>
-                          <li>EMAIL</li>
-                          <li>KONTOTYP</li>
+                          <li> Username: <?php echo $row[4]; ?></li>
+                          <li> Vorname: <?php echo $row[1]; ?></li>
+                          <li> Nachname: <?php echo $row[2]; ?></li>
+                          <li> Email: <?php echo $row[7]; ?></li>
                       </ul>                    
                   </div>     
               
@@ -66,45 +70,33 @@ $textButton=$name;
       <div class="row" >
 <h2 class="text-left username">Aktuelle Verkäufe:</h2>
           <hr>
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>                    
-                    <p class="anz"><a href="#" class="btn btn-danger " role="button">Löschen</a></p>
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>  
-                    <p class="anz"><a href="#" class="btn btn-danger " role="button">Löschen</a></p>
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->   
-            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice">          
-                    <img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">
-                    <hr> <!-- Horizontal Line -->
-                    <h3 class="anz">TITEL</h3>
-                    <p class="anz">Teams/Bands/Künstler</p>
-                    <p class="anz">TT.MM.JJJJ</p>
-                    <p class="anz">Ort</p>
-                    <h5 class="anz">PREIS</h5>
-                    <p class="anz"><a href="#" class="btn btn-primary " role="button">Details</a></p>
-                    <p class="anz"><a href="#" class="btn btn-danger " role="button">Löschen</a></p>
-                </div> <!-- End Col 12 -->
-            </div><!-- End Col 12 6 4 4 -->             
+           <?php  include_once("dbCon.inc");
+             $ergebnis2 = mysqli_query($connection,"SELECT ID FROM users WHERE username='$name'");
+                            while($row = mysqli_fetch_array($ergebnis2)){
+                                echo '<div class="row">';
+                                
+                           $ergebnis = mysqli_query($connection,"SELECT * FROM notice where userID=".$row['ID'].""); 
+                            while($row2 = mysqli_fetch_array($ergebnis)){
+                                echo '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">';
+                                echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notice"> ';         
+                                echo '<img class="img-responsive img-circle center-block " src="sqwirrel_logo1.png">';
+                                echo '<hr>';
+                                echo '<h3 class="anz">'.$row2['title'].'</h3>';
+                                echo '<p class="anz">'.$row2['actors'].'</p>';
+                                echo '<p class="anz">'.$row2['dateandtime'].'</p>';
+                                echo '<p class="anz">'.$row2['location'].'</p>';
+                                echo '<h5 class="anz">'.$row2['price'].'</h5>';
+                                echo '<p class="anz"><a href="anzeige.php?ticket='.$row2['ID'].'" class="btn btn-primary " role="button">Details</a></p>';
+                                echo '</div>';
+                                echo '</div>';
+                               
+                                
+                            }
+                                echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> <p> <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></p></div>';
+                                echo ' </div>';
+                            }
+                                                                    
+                          ?>                             
       </div><!--2ROW--><hr>
     
       <div class="row">
