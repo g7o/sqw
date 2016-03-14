@@ -59,7 +59,7 @@ $textButton=$name;
                       <span class="glyphicon glyphicon-chevron-right"></span>Ort: <?php echo $row[8]; ?><br>                      
                       <span class="glyphicon glyphicon-chevron-right"></span>Datum und Zeit: <?php echo $row[9]; ?><br>
                       <span class="glyphicon glyphicon-chevron-right"></span>Abholung / Versand: <?php echo $row4[1]; ?><br>
-                      <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <?php echo '<a href="profile.php?user='.$row2[0].'"</a>'.$row2[4].''; ?>
+                      <span class="glyphicon glyphicon-chevron-right"></span>Verkäufer: <?php echo '<a href="user.php?user='.$row2[0].'"</a>'.$row2[4].''; ?>
                   </div>
                   <?php
                   echo'<p><a href= "angebot.php?angebot='.$row['ID'].'" class="btn btn-success center-block" style="margin-bottom: 5px;">Angebot abgeben</a>';

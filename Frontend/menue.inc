@@ -1,4 +1,4 @@
-    <?php 
+<?php
             include_once("dbCon.inc"); 
                 $row=mysqli_fetch_array(mysqli_query($connection,"SELECT * FROM users WHERE username='$textButton'"));
                 ?>
